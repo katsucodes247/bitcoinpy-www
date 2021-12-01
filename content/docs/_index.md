@@ -1,18 +1,26 @@
 ---
-title: "Themes' Docs"
+title: "Overview"
 weight: 1
 ---
 
-These docs consists of two parts:
+These docs consists of a list of maintained and up-to-date Bitcoin Python libraries. Goal is to
+provide a solid starting point for Python developers willing to work and interact with Bitcoin
+protocol. Weather it's constructing transactions or fetching data from a Bitcoin RPC server.
 
-1. Hugo Compose Themes docs
-2. Hugo Clarity Theme docs.
+### Running Bitcoin
 
-Please note that the features listed under each theme are independent of each other. That is to say, some features may only be found in one theme and not in both.
+Bitcoin node can be ran on several networks (mainet, testnet, signet, regtest). Under this section
+you'll learn how to setup and run a Bitcoin node which you can then use as a "portal" into the
+Bitcoin protocol. [Read more](/docs/running-bitcoin/)
 
-<!-- That content is better than dummy lorem ipsum 2) That content serves a good real-world demo for this theme 3) Publish more structured docs for each theme which are better than long blocky READMEs -->
+### Libraries
 
-{{< button "./compose/" "Compose Theme Docs" "mb-1" >}}
+#### python-bitcoinlib
 
-{{< button "./clarity/" "Clarity Theme Docs" >}}
+Python3 library providing an interface to Bitcoin data structures and protocol. [Read more](/docs/python-bitcoinlib/)
 
+#### buidl
+
+Python3 library with no dependencies. Provides an interface to Bitcoin data structures. There are
+more functionalities included into this library which are for more advanced use and will be
+described on this page at later stage. [Read more](/docs/buidl/)

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="145.13997mm"
+   height="30.754574mm"
+   viewBox="0 0 145.13997 30.754574"
+   version="1.1"
+   id="svg167340"
+   sodipodi:docname="bitcoinpy-light.svg"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview167342"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:lockguides="false"
+     inkscape:zoom="1.8116734"
+     inkscape:cx="266.88033"
+     inkscape:cy="120.33074"
+     inkscape:window-width="1920"
+     inkscape:window-height="1008"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs167337" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-22.211067,-66.157978)">
+    <g
+       id="g157979-7"
+       style="display:inline"
+       transform="matrix(0.9611227,0,0,0.9611227,0.03455384,-44.601251)">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:32.8086px;line-height:1.25;font-family:sans-serif;fill:#f2f2f2;fill-opacity:1;stroke:none;stroke-width:0.820217"
+         x="23.365763"
+         y="140.92139"
+         id="text2211-2"><tspan
+           sodipodi:role="line"
+           id="tspan2209-2"
+           style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:32.8086px;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Bold Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke-width:0.820217"
+           x="23.365763"
+           y="140.92139">Bitcoin</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:32.8083px;line-height:1.25;font-family:sans-serif;fill:#3473a6;fill-opacity:1;stroke:none;stroke-width:0.763938"
+         x="129.38535"
+         y="141.00284"
+         id="text101096-6"><tspan
+           sodipodi:role="line"
+           id="tspan101094-1"
+           style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:32.8083px;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu Bold Italic';fill:#3473a6;fill-opacity:1;stroke-width:0.763938"
+           x="129.38535"
+           y="141.00284">P</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:32.8083px;line-height:1.25;font-family:sans-serif;fill:#ffcb36;fill-opacity:1;stroke:none;stroke-width:0.763938"
+         x="150.23154"
+         y="140.47504"
+         id="text101096-5-0"><tspan
+           sodipodi:role="line"
+           id="tspan101094-0-6"
+           style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:32.8083px;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu Bold Italic';fill:#ffcb36;fill-opacity:1;stroke-width:0.763938"
+           x="150.23154"
+           y="140.47504">y</tspan></text>
+    </g>
+  </g>
+</svg>

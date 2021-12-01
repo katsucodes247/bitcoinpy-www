@@ -1,5 +1,5 @@
 +++
-title = "Compose"
+title = "BitcoinPy"
 [data]
 baseChartOn = 3
 colors = ["#627c62", "#11819b", "#ef7f1a", "#4e1154"]
@@ -11,23 +11,30 @@ title = "Projects"
 {{< block "grid-2" >}}
 {{< column >}}
 
-# Compose your Docs with **Ease**.
+# Home of Bitcoin Python
 
-Compose is a lean `Hugo` domentation theme, inspired by [forestry.io](https://forestry.io/docs/welcome/).
+**BitcoinPy** is aiming to be the ultimate Python resource for Bitcoin.
 
-{{< tip "warning" >}}
-Feel free to open a [PR](https://github.com/onweru/compose/pulls), raise an [issue](https://github.com/onweru/compose/issues/new/choose "Open a Github Issue")(s) or request new feature(s). {{< /tip >}}
+Goal of BitcoinPy is to be a living documentation of Bitcoin related Python libraries and tools,
+along with code examples of how to interact with Bitcoin using Python.
+
+{{< button "docs/" "Get Started" >}}
 
 {{< tip >}}
-You can generate diagrams, flowcharts, and piecharts from text in a similar manner as markdown using [mermaid](./docs/compose/mermaid/).
+If you notice any issues, misinformation, have a suggestion for new content or have came across a
+bugs in the code examples...
 
-Or, [generate graphs, charts](docs/compose/graphs-charts-tables/#show-a-pie-doughnut--bar-chart-at-once) and tables from a csv, ~~or a json~~ file.
+Open a [Pull Request](https://github.com/onsats/bitcoinpy-website/pulls/) or an [Issue](https://github.com/onweru/compose/issues/new/) on GitHub.
 {{< /tip >}}
 
-{{< button "docs/compose/" "Read the Docs" >}}{{< button "https://github.com/onweru/compose" "Download Theme" >}}
+### Join #bitcoin-python on Libera
+
+[Follow the guide](https://libera.chat/guides/connect) on joinin #bitcoin-python on Libera.
+
 {{< /column >}}
 
 {{< column >}}
-![diy](/images/scribble.jpg)
+![shadowy super coders](/images/shadowy-super-coder.jpg)
+`Python shadowy super coders - UNITE!`
 {{< /column >}}
 {{< /block >}}
