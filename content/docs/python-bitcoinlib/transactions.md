@@ -136,9 +136,13 @@ If the transaction is broadcasted successfully a transaction id will be returned
 ## P2WSH
 
 P2WSH is an abbreviation for Pay to Witness Script Hash. P2WSH is the **native Segwit** version of
-a P2SH. "Script Hash addresses" are intended for multisig or other "smart contract" address. If all
+a P2SH.
+
+{{< tip >}}
+"Script Hash addresses" are intended for multisig or other "smart contract" address. If all
 you wish to do is receive payment to an address (without multisig) it's better to use P2WPKH as
 it's cheaper to spend from those addresses.
+{{< /tip >}}
 
 P2WSH has the same semantics as P2SH, except that the signature is not placed at the same location
 as before. Segregated Witness (SegWit) moves the proof of ownership from the scriptSig part of the
@@ -271,6 +275,7 @@ SelectParams('regtest')
 h = hashlib.sha256(b'correct horse battery staple').digest()
 seckey = CBitcoinSecret.from_secret_bytes(h)
 
+public_key = seckey.pub
 address = P2PKHBitcoinAddress.from_pubkey(public_key)
 print('Address:', str(address))
 # outputs: Address: mrdwvWkma2D6n9mGsbtkazedQQuoksnqJV
@@ -350,9 +355,11 @@ If the transaction is broadcasted successfully a transaction id will be returned
 P2SH is an abbreviation for Pay to Script Hash. It allows you to lock coins to the hash of a
 script, and you then provide that original script when you come unlock those coins.
 
+{{< tip >}}
 "Script Hash addresses" are intended for multisig or other "smart contract" address. If all
 you wish to do is receive payment to an address (without multisig) it's better to use P2WPKH as
 it's cheaper to spend from those addresses.
+{{< /tip >}}
 
 scriptPubKey: `OP_HASH160` `<scriptHash>` `OP_EQUAL`
 
