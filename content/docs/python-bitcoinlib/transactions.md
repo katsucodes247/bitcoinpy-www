@@ -140,7 +140,10 @@ a P2SH. "Script Hash addresses" are intended for multisig or other "smart contra
 you wish to do is receive payment to an address (without multisig) it's better to use P2WPKH as
 it's cheaper to spend from those addresses.
 
-P2WSH has the same semantics as P2SH, except that the signature is not placed at the same location as before. Segregated Witness (SegWit) moves the proof of ownership from the scriptSig part of the transaction to a new part called the witness of the input. Script Hash allows you to lock coins to the hash of a script, and you then provide that original script when you come unlock those coins.
+P2WSH has the same semantics as P2SH, except that the signature is not placed at the same location
+as before. Segregated Witness (SegWit) moves the proof of ownership from the scriptSig part of the
+transaction to a new part called the witness of the input. Script Hash allows you to lock coins to
+the hash of a script, and you then provide that original script when you come unlock those coins.
 
 scriptPubKey: `0` `<witnessScriptHash>`
 
@@ -453,7 +456,8 @@ Now that we have our signed and encoded transaction, we can broadcast it using
 
 `bitcoin-cli sendrawtransaction <transaction>`
 
-If the transaction is broadcasted successfully a transaction id will be returned. In this case it was `5cf00f81103b8b0283d98cec2f20421496eba6cc0660b263275e06f142686650`.
+If the transaction is broadcasted successfully a transaction id will be returned. In this case it
+was `5cf00f81103b8b0283d98cec2f20421496eba6cc0660b263275e06f142686650`.
 
 
 --------------
