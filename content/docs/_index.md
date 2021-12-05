@@ -19,8 +19,12 @@ Bitcoin protocol. [Read more](/docs/running-bitcoin/)
 
 Python3 library providing an interface to Bitcoin data structures and protocol. [Read more](/docs/python-bitcoinlib/)
 
+Library supports **mainnet**, **testnet** and **regtest**. It does not support signet (a PR for that [is open](https://github.com/petertodd/python-bitcoinlib/pull/266)).
+
 #### buidl
 
 Python3 library with no dependencies. Provides an interface to Bitcoin data structures. There are
 more functionalities included into this library which are for more advanced use and will be
 described on this page at later stage. [Read more](/docs/buidl/)
+
+Library only supports **mainnet**, **testnet** and **signet** and requires internet to work. 
