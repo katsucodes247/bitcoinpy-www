@@ -4,7 +4,7 @@ weight: 2
 ---
 
 {{< tip >}}
-Library only supports mainnet, testnet and signet and requires internet to work. 
+Library supports mainnet, testnet and signet and requires internet to work. 
 {{< /tip >}}
 
 Despite this section being called Transactions, it will actually show how to generate specific
@@ -124,7 +124,17 @@ scriptPubKey: `0` `<witnessScriptHash>`
 
 witnessScriptHash: `sha256(pubKey OP_CHECKSIG)`
 
-### Generate address
+{{< tip "warning" >}}
+Below are two types of examples; for **singlesig** and **multisig**. Singlesig means only one 
+signature can unlock the funds in the address and multisig means multiple signatures are needed to
+unlock the funds.
+
+The example for singlesig should only serve as an example. We don't recommend using it in the real
+world because it is not its intention to be used for addresses with single signatures.
+{{< /tip >}}
+
+
+### Generate address (singlesig)
 
 ```py
 import hashlib
@@ -148,7 +158,7 @@ print('Address:', str(address))
 # outputs: tb1qgatzazqjupdalx4v28pxjlys2s3yja9gr3xuca3ugcqpery6c3sqtuzpzy
 ```
 
-### Spend from address
+### Spend from address (singlesig)
 
 Assuming the previously generated address has received funds, we can spend them. In order to spend
 them, we'll need information about the transaction id (txid) and a vector of an output (vout). You
@@ -208,6 +218,14 @@ Now that we have our signed and encoded transaction, we can broadcast it using
 
 If the transaction is broadcasted successfully a transaction id will be returned. In this case it
 was `19e8dc2d719e14bc652bda4809007a72c17bdee6e174d4c02f570c48cad691cd`.
+
+### Generate address (multisig)
+
+`todo`
+
+### Spend from address (multisig)
+
+`todo`
 
 
 ## P2PKH
@@ -302,7 +320,17 @@ it's cheaper to spend from those addresses.
 
 scriptPubKey: `OP_HASH160` `<scriptHash>` `OP_EQUAL`
 
-### Generate address
+{{< tip "warning" >}}
+Below are two types of examples; for **singlesig** and **multisig**. Singlesig means only one 
+signature can unlock the funds in the address and multisig means multiple signatures are needed to
+unlock the funds.
+
+The example for singlesig should only serve as an example. We don't recommend using it in the real
+world because it is not its intention to be used for addresses with single signatures.
+{{< /tip >}}
+
+
+### Generate address (singlesig)
 
 ```py
 import hashlib
@@ -324,7 +352,7 @@ print("Address", address)
 # outputs: Address: 2Msc7itHhx2x8MEkTthvtED9pFC36J7QpQb
 ```
 
-### Spend from address
+### Spend from address (singlesig)
 
 Assuming the previously generated address has received funds, we can spend them. In order to spend
 them, we'll need information about the transaction id (txid) and a vector of an output (vout). You
@@ -388,6 +416,14 @@ Now that we have our signed and encoded transaction, we can broadcast it using
 
 If the transaction is broadcasted successfully a transaction id will be returned. In this case it
 was `9987191906843b5c99218cbae7f73d0ae85c0b62b78fdaf9755eb6a4a9856858`.
+
+### Generate address (multisig)
+
+`todo`
+
+### Spend from address (multisig)
+
+`todo`
 
 
 --------------

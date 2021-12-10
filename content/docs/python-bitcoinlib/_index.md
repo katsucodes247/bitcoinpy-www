@@ -8,4 +8,5 @@ weight: 3
 
 Python3 library providing an interface to Bitcoin data structures and protocol.
 
-Library supports **mainnet**, **testnet** and **regtest**. It does not support signet (a PR for that [is open](https://github.com/petertodd/python-bitcoinlib/pull/266)).
+Library supports **mainnet**, **testnet** and **regtest**. A PR for [signet](https://github.com/petertodd/python-bitcoinlib/pull/266)
+has been merged but the version that supports it hasn't been released yet.

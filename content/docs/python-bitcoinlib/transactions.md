@@ -4,8 +4,8 @@ weight: 2
 ---
 
 {{< tip >}}
-Library supports mainnet, testnet and regtest. It does not support signet (a PR for that 
-[is open](https://github.com/petertodd/python-bitcoinlib/pull/266)).
+Library supports mainnet, testnet and regtest. A PR for [signet](https://github.com/petertodd/python-bitcoinlib/pull/266)
+has been merged but the version that supports it hasn't been released yet.
 {{< /tip >}}
 
 Despite this section being called Transactions, it will actually show how to generate specific
@@ -153,7 +153,16 @@ scriptPubKey: `0` `<witnessScriptHash>`
 
 witnessScriptHash: `sha256(pubKey OP_CHECKSIG)`
 
-### Generate address
+{{< tip "warning" >}}
+Below are two types of examples; for **singlesig** and **multisig**. Singlesig means only one 
+signature can unlock the funds in the address and multisig means multiple signatures are needed to
+unlock the funds.
+
+The example for singlesig should only serve as an example. We don't recommend using it in the real
+world because it is not its intention to be used for addresses with single signatures.
+{{< /tip >}}
+
+### Generate address (singlesig)
 
 ```py
 import hashlib
@@ -183,7 +192,7 @@ print('Address:', str(address))
 # outputs: Address: bcrt1qgatzazqjupdalx4v28pxjlys2s3yja9gr3xuca3ugcqpery6c3sqx9g8h7
 ```
 
-### Spend from address
+### Spend from address (singlesig)
 
 Assuming the previously generated address has received funds, we can spend them. In order to spend
 them, we'll need information about the transaction id (txid) and a vector of an output (vout). You
@@ -250,6 +259,13 @@ Now that we have our signed and encoded transaction, we can broadcast it using
 `bitcoin-cli sendrawtransaction <transaction>`
 
 If the transaction is broadcasted successfully a transaction id will be returned. In this case it was `2f033335f99298cefa1895c399b2ab41f0dd1c9141b746159b2f9416dab53133`.
+
+### Generate address (multisig)
+
+`todo`
+
+### Spend from address (multisig)
+`todo`
 
 
 ## P2PKH
@@ -363,7 +379,17 @@ it's cheaper to spend from those addresses.
 
 scriptPubKey: `OP_HASH160` `<scriptHash>` `OP_EQUAL`
 
-### Generate address
+{{< tip "warning" >}}
+Below are two types of examples; for **singlesig** and **multisig**. Singlesig means only one 
+signature can unlock the funds in the address and multisig means multiple signatures are needed to
+unlock the funds.
+
+The example for singlesig should only serve as an example. We don't recommend using it in the real
+world because it is not its intention to be used for addresses with single signatures.
+{{< /tip >}}
+
+
+### Generate address (singlesig)
 
 ```py
 import hashlib
@@ -397,7 +423,7 @@ print('Address:',str(address))
 # outputs: Address: 2Msc7itHhx2x8MEkTthvtED9pFC36J7QpQb
 ```
 
-### Spend from address
+### Spend from address (singlesig)
 
 Assuming the previously generated address has received funds, we can spend them. In order to spend
 them, we'll need information about the transaction id (txid) and a vector of an output (vout). You
@@ -465,6 +491,46 @@ Now that we have our signed and encoded transaction, we can broadcast it using
 If the transaction is broadcasted successfully a transaction id will be returned. In this case it
 was `5cf00f81103b8b0283d98cec2f20421496eba6cc0660b263275e06f142686650`.
 
+
+
+```py
+import hashlib
+
+from bitcoin import SelectParams
+from bitcoin.core import b2x, lx, COIN, COutPoint, CMutableTxOut, CMutableTxIn, CMutableTransaction, Hash160
+from bitcoin.core.script import CScript, OP_DUP, OP_HASH160, OP_EQUALVERIFY, OP_CHECKSIG, SignatureHash, SIGHASH_ALL
+from bitcoin.core.scripteval import VerifyScript, SCRIPT_VERIFY_P2SH
+from bitcoin.wallet import CBitcoinAddress, CBitcoinSecret
+
+SelectParams('regtest')
+
+# Create the (in)famous correct brainwallet secret key.
+h = hashlib.sha256(b'correct horse battery staple').digest()
+seckey = CBitcoinSecret.from_secret_bytes(h)
+
+# Create a redeemScript. Similar to a scriptPubKey the redeemScript must be
+# satisfied for the funds to be spent.
+redeem_script = CScript([seckey.pub, OP_CHECKSIG])
+
+# Create the magic P2SH scriptPubKey format from that redeemScript. You should
+# look at the CScript.to_p2sh_scriptPubKey() function in bitcoin.core.script to
+# understand what's happening, as well as read BIP16:
+# https://github.com/bitcoin/bips/blob/master/bip-0016.mediawiki
+script_pubkey = redeem_script.to_p2sh_scriptPubKey()
+
+# Convert the P2SH scriptPubKey to a base58 Bitcoin address and print it.
+# You'll need to send some funds to it to create a txout to spend.
+address = CBitcoinAddress.from_scriptPubKey(script_pubkey)
+print('Address:',str(address))
+# outputs: Address: 2Msc7itHhx2x8MEkTthvtED9pFC36J7QpQb
+```
+### Generate address (multisig)
+
+`todo`
+
+### Spend from address (multisig)
+
+`todo`
 
 --------------
 
