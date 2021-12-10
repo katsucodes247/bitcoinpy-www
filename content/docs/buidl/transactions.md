@@ -163,6 +163,8 @@ to a watchlist run [importaddress](https://chainquery.com/bitcoin-cli/importaddr
 `bitcoin-cli importaddress <address> "<label>" false false`
 
 ```py
+# we are continuing the code from above
+
 txid = bytes.fromhex("f24d3d8c85ded6d0fbe898a09a2c9f8a8388e4edcf139e52c8714814d85f8273")
 vout = 0
 
@@ -247,6 +249,8 @@ to a watchlist run [importaddress](https://chainquery.com/bitcoin-cli/importaddr
 `bitcoin-cli importaddress <address> "<label>" false false`
 
 ```py
+# we are continuing the code from above
+
 txid = bytes.fromhex("06633b187444530eb74284730e45c00946b7f83c4acca5213037e44406b0dceb")
 vout = 1
 
@@ -301,7 +305,23 @@ scriptPubKey: `OP_HASH160` `<scriptHash>` `OP_EQUAL`
 ### Generate address
 
 ```py
-# todo
+import hashlib
+
+from buidl.ecc import PrivateKey, Signature
+from buidl.bech32 import decode_bech32
+from buidl.helper import decode_base58, big_endian_to_int, SIGHASH_ALL, int_to_byte
+from buidl.script import P2PKHScriptPubKey, RedeemScript, Script, P2WPKHScriptPubKey
+from buidl.tx import Tx, TxIn, TxOut
+
+h = hashlib.sha256(b'correct horse battery staple').digest()
+private_key = PrivateKey(secret=big_endian_to_int(h), network="signet")
+
+# Create a redeemScript. Similar to a scriptPubKey the redeemScript must be satisfied for the funds
+# to be spent.
+redeem_script = RedeemScript([private_key.point.sec(), 0xac])
+address = redeem_script.address("signet")
+print("Address", address)
+# outputs: Address: 2Msc7itHhx2x8MEkTthvtED9pFC36J7QpQb
 ```
 
 ### Spend from address
@@ -319,7 +339,46 @@ to a watchlist run [importaddress](https://chainquery.com/bitcoin-cli/importaddr
 `bitcoin-cli importaddress <address> "<label>" false false`
 
 ```py
-# todo
+# we are continuing the code from above
+
+txid = bytes.fromhex("65665709c7d83b7efb8e58f5c6e08a3ebefd752dd83d7af9e0022b13388c3780")
+vout = 1
+
+# Specify the amount send to your P2WSH address.
+COIN = 100000000
+amount = int(0.001 * COIN)
+
+# Calculate an amount for the upcoming new UTXO. Set a high fee (5%) to bypass bitcoind minfee
+# setting on regtest.
+amount_less_fee = int(amount * 0.99)
+
+# Create the txin structure, which includes the outpoint. The scriptSig defaults to being empty as
+# is necessary for spending a P2WSH output.
+txin = TxIn(txid, vout)
+
+# Specify a destination address and create the txout.
+h160 = decode_bech32("tb1qqqlcpznqkfa65wqd48mzzghpwzefgpvtvl0a7k")[2]
+txout = TxOut(amount=amount_less_fee, script_pubkey=P2WPKHScriptPubKey(h160))
+
+tx = Tx(1, [txin], [txout], 0, network="signet") #, segwit=True)
+
+sighash = tx.sig_hash_legacy(0, redeem_script)
+
+# signed sighash
+signed_sighash = private_key.sign(sighash).der() + int_to_byte(SIGHASH_ALL)
+
+txin.script_sig = Script([signed_sighash, redeem_script.raw_serialize()])
+
+tx.check_sig_legacy(
+    0,
+    private_key.point,
+    Signature.parse(signed_sighash[:-1]),
+    redeem_script=redeem_script,
+)
+
+# Done! Print the transaction
+print(tx.serialize().hex())
+# outputs: 010000000180378c38132b02e0f97a3dd82d75fdbe3e8ae0c6f5588efb7e3bd8c709576665010000006c473044022040048e65bb5a58c69d9f514472b5d581f83105422210c134edf20c2ba1d2be50022029069037cc852b83b341a397c0a753bbaf6aefee9e9455483ffaa39666784ad80123210378d430274f8c5ec1321338151e9f27f4c676a008bdf8638d07c0b6be9ab35c71acffffffff01b882010000000000160014003f808a60b27baa380da9f62122e170b294058b00000000
 ```
 
 Now that we have our signed and encoded transaction, we can broadcast it using
@@ -328,7 +387,7 @@ Now that we have our signed and encoded transaction, we can broadcast it using
 `bitcoin-cli sendrawtransaction <transaction>`
 
 If the transaction is broadcasted successfully a transaction id will be returned. In this case it
-was `todo`.
+was `9987191906843b5c99218cbae7f73d0ae85c0b62b78fdaf9755eb6a4a9856858`.
 
 
 --------------

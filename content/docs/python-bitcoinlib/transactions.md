@@ -382,19 +382,18 @@ seckey = CBitcoinSecret.from_secret_bytes(h)
 
 # Create a redeemScript. Similar to a scriptPubKey the redeemScript must be
 # satisfied for the funds to be spent.
-txin_redeemScript = CScript([seckey.pub, OP_CHECKSIG])
-print(b2x(txin_redeemScript))
+redeem_script = CScript([seckey.pub, OP_CHECKSIG])
 
 # Create the magic P2SH scriptPubKey format from that redeemScript. You should
 # look at the CScript.to_p2sh_scriptPubKey() function in bitcoin.core.script to
 # understand what's happening, as well as read BIP16:
 # https://github.com/bitcoin/bips/blob/master/bip-0016.mediawiki
-txin_scriptPubKey = txin_redeemScript.to_p2sh_scriptPubKey()
+script_pubkey = redeem_script.to_p2sh_scriptPubKey()
 
 # Convert the P2SH scriptPubKey to a base58 Bitcoin address and print it.
 # You'll need to send some funds to it to create a txout to spend.
-txin_p2sh_address = CBitcoinAddress.from_scriptPubKey(txin_scriptPubKey)
-print('Address:',str(txin_p2sh_address))
+address = CBitcoinAddress.from_scriptPubKey(script_pubkey)
+print('Address:',str(address))
 # outputs: Address: 2Msc7itHhx2x8MEkTthvtED9pFC36J7QpQb
 ```
 
@@ -444,14 +443,14 @@ tx = CMutableTransaction([txin], [txout])
 # corresponding SignatureHash() function will use that same script when it
 # replaces the scriptSig in the transaction being hashed with the script being
 # executed.
-sighash = SignatureHash(txin_redeemScript, tx, 0, SIGHASH_ALL)
+sighash = SignatureHash(redeem_script, tx, 0, SIGHASH_ALL)
 
 # Now sign it. We have to append the type of signature we want to the end, in
 # this case the usual SIGHASH_ALL.
 sig = seckey.sign(sighash) + bytes([SIGHASH_ALL])
 
 # Set the scriptSig of our transaction input appropriately.
-txin.scriptSig = CScript([sig, txin_redeemScript])
+txin.scriptSig = CScript([sig, redeem_script])
 
 # Done! Print the transaction
 print(b2x(tx.serialize()))
