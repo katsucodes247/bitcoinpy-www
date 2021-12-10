@@ -31,6 +31,10 @@ Open a [Pull Request](https://github.com/i0x0ff/bitcoinpy-www/pulls/) or an [Iss
 
 [Follow the guide](https://libera.chat/guides/connect) on joinin #bitcoin-python on Libera.
 
+### Join BitcoinPy on Telegram
+
+Join the [Telegram group](https://t.me/+zA7WCbYcEjw5OTA0).
+
 {{< /column >}}
 
 {{< column >}}
