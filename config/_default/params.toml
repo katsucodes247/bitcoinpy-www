@@ -2,7 +2,7 @@ mainSections = ["posts"] # use it for blog page section
 
 uniqueHomePage = true # change to false to add sidebar to homepage
 
-repo = "https://github.com/onsats/bitcoinpy-website"
+repo = "https://github.com/i0x0ff/bitcoinpy-www/"
 
 time_format_blog = "Monday, January 02, 2006"
 time_format_default = "January 2, 2006"
@@ -23,7 +23,7 @@ codeLineNumbers = true
   name = "GitHub"
   iconLight = "images/GitHubMarkLight.svg"
   iconDark = "images/GitHubMarkDark.svg"
-  url = "https://github.com/onsats/bitcoinpy-website"
+  url = "https://github.com/i0x0ff/bitcoinpy-www/"
 
 # optional
 [author]

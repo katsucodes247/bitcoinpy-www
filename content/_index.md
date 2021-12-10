@@ -24,7 +24,7 @@ along with code examples of how to interact with Bitcoin using Python.
 If you notice any issues, misinformation, have a suggestion for new content or have came across a
 bugs in the code examples...
 
-Open a [Pull Request](https://github.com/onsats/bitcoinpy-website/pulls/) or an [Issue](https://github.com/onweru/compose/issues/new/) on GitHub.
+Open a [Pull Request](https://github.com/i0x0ff/bitcoinpy-www/pulls/) or an [Issue](https://github.com/i0x0ff/bitcoinpy-www/issues/new/) on GitHub.
 {{< /tip >}}
 
 ### Join #bitcoin-python on Libera
