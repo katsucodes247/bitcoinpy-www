@@ -1,3 +1,3 @@
-## Guide
+## BITCOINPY
 
-This guide covers the necessary bits. As the project evolves, it will only become more comprehensive
+**BitcoinPy** is aiming to be the ultimate Python resource for Bitcoin.
