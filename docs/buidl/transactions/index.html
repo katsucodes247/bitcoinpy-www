@@ -1,6 +1,6 @@
 <!doctype html><html lang=en class=dark>
 <head><meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.90.0">
+<meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.90.1">
 <link rel=apple-touch-icon sizes=180x180 href=https://bitcoinpy.dev/favicons/apple-touch-icon.png>
 <link rel=icon type=image/png sizes=32x32 href=https://bitcoinpy.dev/favicons/favicon-32x32.png>
 <link rel=icon type=image/png sizes=16x16 href=https://bitcoinpy.dev/favicons/favicon-16x16.png>
@@ -16,7 +16,7 @@ Bitcoin doesn't actually have transaction types but has different types of addre
 <meta itemprop=name content="Transactions">
 <meta itemprop=description content="Library supports mainnet, testnet and signet and requires internet to work.  Despite this section being called Transactions, it will actually show how to generate specific types of Bitcoin addresses and then make a transaction to spend the funds that each specific address type will hold.
 Bitcoin doesn't actually have transaction types but has different types of addresses. Each type of address has a different way of &#34;unlocking&#34; its funds.">
-<meta itemprop=wordCount content="1961">
+<meta itemprop=wordCount content="2786">
 <meta itemprop=keywords content><meta name=twitter:card content="summary">
 <meta name=twitter:title content="Transactions">
 <meta name=twitter:description content="Library supports mainnet, testnet and signet and requires internet to work.  Despite this section being called Transactions, it will actually show how to generate specific types of Bitcoin addresses and then make a transaction to spend the funds that each specific address type will hold.
@@ -126,6 +126,7 @@ Bitcoin doesn't actually have transaction types but has different types of addre
 <li><a href=#spend-from-address-multisig-1>Spend from address (multisig)</a></li>
 </ul>
 </li>
+<li><a href=#p2tr>P2TR</a></li>
 </ul>
 </nav>
 </section>
@@ -161,6 +162,12 @@ Bitcoin doesn't actually have transaction types but has different types of addre
 <li><a href=#spend-from-address-singlesig-1>Spend from address (singlesig)</a></li>
 <li><a href=#generate-address-multisig-1>Generate address (multisig)</a></li>
 <li><a href=#spend-from-address-multisig-1>Spend from address (multisig)</a></li>
+</ul>
+</li>
+<li><a href=#p2tr>P2TR</a>
+<ul>
+<li><a href=#generate-address-2>Generate address</a></li>
+<li><a href=#spend-from-address-2>Spend from address</a></li>
 </ul>
 </li>
 </ul>
@@ -341,9 +348,92 @@ to a watchlist run <a href=https://chainquery.com/bitcoin-cli/importaddress>impo
 <p>If the transaction is broadcasted successfully a transaction id will be returned. In this case it
 was <code>19e8dc2d719e14bc652bda4809007a72c17bdee6e174d4c02f570c48cad691cd</code>.</p>
 <h3 id=generate-address-multisig>Generate address (multisig)</h3>
-<p><code>todo</code></p>
-<h3 id=spend-from-address-multisig>Spend from address (multisig)</h3>
-<p><code>todo</code></p>
+<p>In this example we show how to create a 2-of-2 multisig address. This means that two signatures are
+required in order to unlock funds.</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-py data-lang=py><span class=ln> 1</span><span class=kn>import</span> <span class=nn>hashlib</span>
+<span class=ln> 2</span>
+<span class=ln> 3</span><span class=kn>from</span> <span class=nn>buidl.ecc</span> <span class=kn>import</span> <span class=n>PrivateKey</span><span class=p>,</span> <span class=n>Signature</span>
+<span class=ln> 4</span><span class=kn>from</span> <span class=nn>buidl.helper</span> <span class=kn>import</span> <span class=n>decode_base58</span><span class=p>,</span> <span class=n>big_endian_to_int</span>
+<span class=ln> 5</span><span class=kn>from</span> <span class=nn>buidl.bech32</span> <span class=kn>import</span> <span class=n>decode_bech32</span><span class=p>,</span> <span class=n>encode_bech32_checksum</span>
+<span class=ln> 6</span><span class=kn>from</span> <span class=nn>buidl.script</span> <span class=kn>import</span> <span class=n>P2PKHScriptPubKey</span><span class=p>,</span> <span class=n>RedeemScript</span><span class=p>,</span> <span class=n>WitnessScript</span><span class=p>,</span> <span class=n>P2WPKHScriptPubKey</span>
+<span class=ln> 7</span><span class=kn>from</span> <span class=nn>buidl.tx</span> <span class=kn>import</span> <span class=n>Tx</span><span class=p>,</span> <span class=n>TxIn</span><span class=p>,</span> <span class=n>TxOut</span>
+<span class=ln> 8</span><span class=kn>from</span> <span class=nn>buidl.witness</span> <span class=kn>import</span> <span class=n>Witness</span>
+<span class=ln> 9</span>
+<span class=ln>10</span><span class=c1># first signature</span>
+<span class=ln>11</span><span class=n>h</span> <span class=o>=</span> <span class=n>hashlib</span><span class=o>.</span><span class=n>sha256</span><span class=p>(</span><span class=sa>b</span><span class=s1>&#39;correct horse battery staple first&#39;</span><span class=p>)</span><span class=o>.</span><span class=n>digest</span><span class=p>()</span>
+<span class=ln>12</span><span class=n>private_key1</span> <span class=o>=</span> <span class=n>PrivateKey</span><span class=p>(</span><span class=n>secret</span><span class=o>=</span><span class=n>big_endian_to_int</span><span class=p>(</span><span class=n>h</span><span class=p>),</span> <span class=n>network</span><span class=o>=</span><span class=s2>&#34;signet&#34;</span><span class=p>)</span>
+<span class=ln>13</span>
+<span class=ln>14</span><span class=c1># second signature</span>
+<span class=ln>15</span><span class=n>h</span> <span class=o>=</span> <span class=n>hashlib</span><span class=o>.</span><span class=n>sha256</span><span class=p>(</span><span class=sa>b</span><span class=s1>&#39;correct horse battery staple second&#39;</span><span class=p>)</span><span class=o>.</span><span class=n>digest</span><span class=p>()</span>
+<span class=ln>16</span><span class=n>private_key2</span> <span class=o>=</span> <span class=n>PrivateKey</span><span class=p>(</span><span class=n>secret</span><span class=o>=</span><span class=n>big_endian_to_int</span><span class=p>(</span><span class=n>h</span><span class=p>),</span> <span class=n>network</span><span class=o>=</span><span class=s2>&#34;signet&#34;</span><span class=p>)</span>
+<span class=ln>17</span>
+<span class=ln>18</span><span class=c1># Create a witnessScript and corresponding redeemScript. Similar to a scriptPubKey</span>
+<span class=ln>19</span><span class=c1># the redeemScript must be satisfied for the funds to be spent.</span>
+<span class=ln>20</span><span class=n>redeem_script</span> <span class=o>=</span> <span class=n>WitnessScript</span><span class=p>(</span>
+<span class=ln>21</span>    <span class=p>[</span><span class=mh>0x52</span><span class=p>,</span> <span class=n>private_key1</span><span class=o>.</span><span class=n>point</span><span class=o>.</span><span class=n>sec</span><span class=p>(),</span> <span class=n>private_key2</span><span class=o>.</span><span class=n>point</span><span class=o>.</span><span class=n>sec</span><span class=p>(),</span> <span class=mh>0x52</span><span class=p>,</span> <span class=mh>0xAE</span><span class=p>]</span>
+<span class=ln>22</span><span class=p>)</span>
+<span class=ln>23</span>
+<span class=ln>24</span><span class=n>address</span> <span class=o>=</span> <span class=n>redeem_script</span><span class=o>.</span><span class=n>address</span><span class=p>(</span><span class=s2>&#34;signet&#34;</span><span class=p>)</span>
+<span class=ln>25</span><span class=nb>print</span><span class=p>(</span><span class=s1>&#39;Address:&#39;</span><span class=p>,</span> <span class=nb>str</span><span class=p>(</span><span class=n>address</span><span class=p>))</span>
+<span class=ln>26</span><span class=c1># outputs: tb1qljlyqaexx4mmhpl66e6nqdtagjaht87pghuq6p0f98a765c9uj9susmlvt</span>
+</code></pre></div><h3 id=spend-from-address-multisig>Spend from address (multisig)</h3>
+<p>Assuming the previously generated address has received funds, we can spend them. In order to spend
+them, we'll need information about the transaction id (txid) and a vector of an output (vout). You
+can get both from an explorer or by querying your running Bitcoin node by running
+<a href=https://chainquery.com/bitcoin-cli/listunspent>listunspent</a> along with some filters:</p>
+<p><code>bitcoin-cli listunspent 1 9999999 "[\"address\"]"</code></p>
+<p>Note that you must have an address in the watchlist in order to get any output. To add an address
+to a watchlist run <a href=https://chainquery.com/bitcoin-cli/importaddress>importaddress</a>:</p>
+<p><code>bitcoin-cli importaddress &lt;address> "&lt;label>" false false</code></p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-py data-lang=py><span class=ln> 1</span><span class=c1># we are continuing the code from above</span>
+<span class=ln> 2</span>
+<span class=ln> 3</span><span class=n>txid</span> <span class=o>=</span> <span class=nb>bytes</span><span class=o>.</span><span class=n>fromhex</span><span class=p>(</span><span class=s2>&#34;e810379ffa5ca20a30f2210d93517aef28d3f20e20b920190161d4f6491a0903&#34;</span><span class=p>)</span>
+<span class=ln> 4</span><span class=n>vout</span> <span class=o>=</span> <span class=mi>0</span>
+<span class=ln> 5</span>
+<span class=ln> 6</span><span class=c1># Specify the amount send to your P2WSH address.</span>
+<span class=ln> 7</span><span class=n>COIN</span> <span class=o>=</span> <span class=mi>100000000</span>
+<span class=ln> 8</span><span class=n>amount</span> <span class=o>=</span> <span class=nb>int</span><span class=p>(</span><span class=mf>0.001</span> <span class=o>*</span> <span class=n>COIN</span><span class=p>)</span>
+<span class=ln> 9</span>
+<span class=ln>10</span><span class=c1># Calculate an amount for the upcoming new UTXO. Set a high fee (5%) to bypass bitcoind minfee</span>
+<span class=ln>11</span><span class=c1># setting on regtest.</span>
+<span class=ln>12</span><span class=n>amount_less_fee</span> <span class=o>=</span> <span class=nb>int</span><span class=p>(</span><span class=n>amount</span> <span class=o>*</span> <span class=mf>0.99</span><span class=p>)</span>
+<span class=ln>13</span>
+<span class=ln>14</span><span class=c1># Create the txin structure, which includes the outpoint. The scriptSig defaults to being empty as</span>
+<span class=ln>15</span><span class=c1># is necessary for spending a P2WSH output.</span>
+<span class=ln>16</span><span class=n>txin</span> <span class=o>=</span> <span class=n>TxIn</span><span class=p>(</span><span class=n>txid</span><span class=p>,</span> <span class=n>vout</span><span class=p>)</span>
+<span class=ln>17</span>
+<span class=ln>18</span><span class=c1># Specify a destination address and create the txout.</span>
+<span class=ln>19</span><span class=n>h160</span> <span class=o>=</span> <span class=n>decode_bech32</span><span class=p>(</span><span class=s2>&#34;tb1qwp3c26rlgzlq4axergvt04300shexn4f56q5f7&#34;</span><span class=p>)[</span><span class=mi>2</span><span class=p>]</span>
+<span class=ln>20</span><span class=n>txout</span> <span class=o>=</span> <span class=n>TxOut</span><span class=p>(</span><span class=n>amount</span><span class=o>=</span><span class=n>amount_less_fee</span><span class=p>,</span> <span class=n>script_pubkey</span><span class=o>=</span><span class=n>P2WPKHScriptPubKey</span><span class=p>(</span><span class=n>h160</span><span class=p>))</span>
+<span class=ln>21</span>
+<span class=ln>22</span><span class=n>tx</span> <span class=o>=</span> <span class=n>Tx</span><span class=p>(</span><span class=mi>1</span><span class=p>,</span> <span class=p>[</span><span class=n>txin</span><span class=p>],</span> <span class=p>[</span><span class=n>txout</span><span class=p>],</span> <span class=mi>0</span><span class=p>,</span> <span class=n>network</span><span class=o>=</span><span class=s2>&#34;signet&#34;</span><span class=p>,</span> <span class=n>segwit</span><span class=o>=</span><span class=kc>True</span><span class=p>)</span>
+<span class=ln>23</span>
+<span class=ln>24</span><span class=n>sig1</span> <span class=o>=</span> <span class=n>tx</span><span class=o>.</span><span class=n>get_sig_segwit</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=n>private_key1</span><span class=p>,</span> <span class=n>witness_script</span><span class=o>=</span><span class=n>redeem_script</span><span class=p>)</span>
+<span class=ln>25</span><span class=n>sig2</span> <span class=o>=</span> <span class=n>tx</span><span class=o>.</span><span class=n>get_sig_segwit</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=n>private_key2</span><span class=p>,</span> <span class=n>witness_script</span><span class=o>=</span><span class=n>redeem_script</span><span class=p>)</span>
+<span class=ln>26</span>
+<span class=ln>27</span><span class=n>tx</span><span class=o>.</span><span class=n>check_sig_segwit</span><span class=p>(</span>
+<span class=ln>28</span>    <span class=mi>0</span><span class=p>,</span>
+<span class=ln>29</span>    <span class=n>private_key1</span><span class=o>.</span><span class=n>point</span><span class=p>,</span>
+<span class=ln>30</span>    <span class=n>Signature</span><span class=o>.</span><span class=n>parse</span><span class=p>(</span><span class=n>sig1</span><span class=p>[:</span><span class=o>-</span><span class=mi>1</span><span class=p>]),</span>
+<span class=ln>31</span>    <span class=n>witness_script</span><span class=o>=</span><span class=n>redeem_script</span><span class=p>,</span>
+<span class=ln>32</span><span class=p>)</span>
+<span class=ln>33</span>
+<span class=ln>34</span><span class=n>tx</span><span class=o>.</span><span class=n>check_sig_segwit</span><span class=p>(</span>
+<span class=ln>35</span>    <span class=mi>0</span><span class=p>,</span>
+<span class=ln>36</span>    <span class=n>private_key2</span><span class=o>.</span><span class=n>point</span><span class=p>,</span>
+<span class=ln>37</span>    <span class=n>Signature</span><span class=o>.</span><span class=n>parse</span><span class=p>(</span><span class=n>sig2</span><span class=p>[:</span><span class=o>-</span><span class=mi>1</span><span class=p>]),</span>
+<span class=ln>38</span>    <span class=n>witness_script</span><span class=o>=</span><span class=n>redeem_script</span><span class=p>,</span>
+<span class=ln>39</span><span class=p>)</span>
+<span class=ln>40</span>
+<span class=ln>41</span><span class=n>txin</span><span class=o>.</span><span class=n>finalize_p2wsh_multisig</span><span class=p>([</span><span class=n>sig1</span><span class=p>,</span> <span class=n>sig2</span><span class=p>],</span> <span class=n>redeem_script</span><span class=p>)</span>
+<span class=ln>42</span>
+<span class=ln>43</span><span class=nb>print</span><span class=p>(</span><span class=n>tx</span><span class=o>.</span><span class=n>serialize</span><span class=p>()</span><span class=o>.</span><span class=n>hex</span><span class=p>())</span>
+<span class=ln>44</span><span class=c1># outputs: 0100000000010103091a49f6d461011920b9200ef2d328ef7a51930d21f2300aa25cfa9f3710e80000000000ffffffff01b882010000000000160014706385687f40be0af4d91a18b7d62f7c2f934ea90400483045022100b24100d90fdd15d3e694789106f780c4c13f4929ec5cc82445418bedac9dfc93022038f5cc4ade88b41f1398d5f1e31a9d4f9d861f67aa24dff30a6d20e509b591c801483045022100fa9f78c7769010a57aa96939b32fad0d216a1dcf3a1f44a09f0e7b29f56b773402207a795dad938599c920d864001b454ae2f44358f5ac098e913049ea7fd9925cb001475221038d19497c3922b807c91b829d6873ae5bfa2ae500f3237100265a302fdce87b052103d3a9dff5a0bb0267f19a9ee1c374901c39045fbe041c1c168d4da4ce0112595552ae00000000</span>
+</code></pre></div><p>Now that we have our signed and encoded transaction, we can broadcast it using
+<a href=https://chainquery.com/bitcoin-cli/sendrawtransaction>sendrawtransaction</a>:</p>
+<p><code>bitcoin-cli sendrawtransaction &lt;transaction></code></p>
+<p>If the transaction is broadcasted successfully a transaction id will be returned. In this case it
+was <code>6064651b405e0e1d6b5cdc0056c3deda11af3593ca64d43b1cd4abff45b7376b</code>.</p>
 <h2 id=p2pkh>P2PKH</h2>
 <p>P2PKH is an abbreviation for Pay to Public Key Hash.</p>
 <p>scriptPubKey: <code>OP_DUP</code> <code>OP_HASH160</code> <code>&lt;pubKeyHash></code> <code>OP_EQUALVERIFY</code> <code>OP_CHECKSIG</code></p>
@@ -493,8 +583,101 @@ to a watchlist run <a href=https://chainquery.com/bitcoin-cli/importaddress>impo
 <p>If the transaction is broadcasted successfully a transaction id will be returned. In this case it
 was <code>9987191906843b5c99218cbae7f73d0ae85c0b62b78fdaf9755eb6a4a9856858</code>.</p>
 <h3 id=generate-address-multisig-1>Generate address (multisig)</h3>
+<p>In this example we show how to create a 2-of-2 multisig address. This means that two signatures are
+required in order to unlock funds.</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-py data-lang=py><span class=ln> 1</span><span class=kn>import</span> <span class=nn>hashlib</span>
+<span class=ln> 2</span>
+<span class=ln> 3</span><span class=kn>from</span> <span class=nn>buidl.ecc</span> <span class=kn>import</span> <span class=n>PrivateKey</span><span class=p>,</span> <span class=n>Signature</span>
+<span class=ln> 4</span><span class=kn>from</span> <span class=nn>buidl.helper</span> <span class=kn>import</span> <span class=n>decode_base58</span><span class=p>,</span> <span class=n>big_endian_to_int</span>
+<span class=ln> 5</span><span class=kn>from</span> <span class=nn>buidl.bech32</span> <span class=kn>import</span> <span class=n>decode_bech32</span><span class=p>,</span> <span class=n>encode_bech32_checksum</span>
+<span class=ln> 6</span><span class=kn>from</span> <span class=nn>buidl.script</span> <span class=kn>import</span> <span class=n>P2PKHScriptPubKey</span><span class=p>,</span> <span class=n>RedeemScript</span><span class=p>,</span> <span class=n>WitnessScript</span><span class=p>,</span> <span class=n>P2WPKHScriptPubKey</span>
+<span class=ln> 7</span><span class=kn>from</span> <span class=nn>buidl.tx</span> <span class=kn>import</span> <span class=n>Tx</span><span class=p>,</span> <span class=n>TxIn</span><span class=p>,</span> <span class=n>TxOut</span>
+<span class=ln> 8</span><span class=kn>from</span> <span class=nn>buidl.witness</span> <span class=kn>import</span> <span class=n>Witness</span>
+<span class=ln> 9</span>
+<span class=ln>10</span><span class=c1># first signature</span>
+<span class=ln>11</span><span class=n>h</span> <span class=o>=</span> <span class=n>hashlib</span><span class=o>.</span><span class=n>sha256</span><span class=p>(</span><span class=sa>b</span><span class=s1>&#39;correct horse battery staple first&#39;</span><span class=p>)</span><span class=o>.</span><span class=n>digest</span><span class=p>()</span>
+<span class=ln>12</span><span class=n>private_key1</span> <span class=o>=</span> <span class=n>PrivateKey</span><span class=p>(</span><span class=n>secret</span><span class=o>=</span><span class=n>big_endian_to_int</span><span class=p>(</span><span class=n>h</span><span class=p>),</span> <span class=n>network</span><span class=o>=</span><span class=s2>&#34;signet&#34;</span><span class=p>)</span>
+<span class=ln>13</span>
+<span class=ln>14</span><span class=c1># second signature</span>
+<span class=ln>15</span><span class=n>h</span> <span class=o>=</span> <span class=n>hashlib</span><span class=o>.</span><span class=n>sha256</span><span class=p>(</span><span class=sa>b</span><span class=s1>&#39;correct horse battery staple second&#39;</span><span class=p>)</span><span class=o>.</span><span class=n>digest</span><span class=p>()</span>
+<span class=ln>16</span><span class=n>private_key2</span> <span class=o>=</span> <span class=n>PrivateKey</span><span class=p>(</span><span class=n>secret</span><span class=o>=</span><span class=n>big_endian_to_int</span><span class=p>(</span><span class=n>h</span><span class=p>),</span> <span class=n>network</span><span class=o>=</span><span class=s2>&#34;signet&#34;</span><span class=p>)</span>
+<span class=ln>17</span>
+<span class=ln>18</span><span class=c1># Create a redeem script</span>
+<span class=ln>19</span><span class=n>redeem_script</span> <span class=o>=</span> <span class=n>RedeemScript</span><span class=o>.</span><span class=n>create_p2sh_multisig</span><span class=p>(</span>
+<span class=ln>20</span>    <span class=n>quorum_m</span><span class=o>=</span><span class=mi>2</span><span class=p>,</span>
+<span class=ln>21</span>    <span class=n>pubkey_hexes</span><span class=o>=</span><span class=p>[</span>
+<span class=ln>22</span>        <span class=n>private_key1</span><span class=o>.</span><span class=n>point</span><span class=o>.</span><span class=n>sec</span><span class=p>()</span><span class=o>.</span><span class=n>hex</span><span class=p>(),</span>
+<span class=ln>23</span>        <span class=n>private_key2</span><span class=o>.</span><span class=n>point</span><span class=o>.</span><span class=n>sec</span><span class=p>()</span><span class=o>.</span><span class=n>hex</span><span class=p>(),</span>
+<span class=ln>24</span>    <span class=p>],</span>
+<span class=ln>25</span>    <span class=n>sort_keys</span><span class=o>=</span><span class=kc>False</span><span class=p>,</span>
+<span class=ln>26</span><span class=p>)</span>
+<span class=ln>27</span>
+<span class=ln>28</span><span class=n>address</span> <span class=o>=</span> <span class=n>redeem_script</span><span class=o>.</span><span class=n>address</span><span class=p>(</span><span class=s2>&#34;signet&#34;</span><span class=p>)</span>
+<span class=ln>29</span><span class=nb>print</span><span class=p>(</span><span class=s1>&#39;Address:&#39;</span><span class=p>,</span> <span class=nb>str</span><span class=p>(</span><span class=n>address</span><span class=p>))</span>
+<span class=ln>30</span><span class=c1># outputs: 2N3avDJKpr9c8pkRSYgWAsHSVCmRX3ce3w7</span>
+</code></pre></div><h3 id=spend-from-address-multisig-1>Spend from address (multisig)</h3>
+<p>Assuming the previously generated address has received funds, we can spend them. In order to spend
+them, we'll need information about the transaction id (txid) and a vector of an output (vout). You
+can get both from an explorer or by querying your running Bitcoin node by running
+<a href=https://chainquery.com/bitcoin-cli/listunspent>listunspent</a> along with some filters:</p>
+<p><code>bitcoin-cli listunspent 1 9999999 "[\"address\"]"</code></p>
+<p>Note that you must have an address in the watchlist in order to get any output. To add an address
+to a watchlist run <a href=https://chainquery.com/bitcoin-cli/importaddress>importaddress</a>:</p>
+<p><code>bitcoin-cli importaddress &lt;address> "&lt;label>" false false</code></p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-py data-lang=py><span class=ln> 1</span><span class=c1># we are continuing the code from above</span>
+<span class=ln> 2</span>
+<span class=ln> 3</span><span class=n>txid</span> <span class=o>=</span> <span class=nb>bytes</span><span class=o>.</span><span class=n>fromhex</span><span class=p>(</span><span class=s2>&#34;20a58d3d90b0a9758f2e717dfb4195f270323221b8be01b06c95551807654b9c&#34;</span><span class=p>)</span>
+<span class=ln> 4</span><span class=n>vout</span> <span class=o>=</span> <span class=mi>1</span>
+<span class=ln> 5</span>
+<span class=ln> 6</span><span class=c1># Specify the amount send to your P2WSH address.</span>
+<span class=ln> 7</span><span class=n>COIN</span> <span class=o>=</span> <span class=mi>100000000</span>
+<span class=ln> 8</span><span class=n>amount</span> <span class=o>=</span> <span class=nb>int</span><span class=p>(</span><span class=mf>0.001</span> <span class=o>*</span> <span class=n>COIN</span><span class=p>)</span>
+<span class=ln> 9</span>
+<span class=ln>10</span><span class=c1># Calculate an amount for the upcoming new UTXO. Set a high fee (5%) to bypass bitcoind minfee</span>
+<span class=ln>11</span><span class=c1># setting on regtest.</span>
+<span class=ln>12</span><span class=n>amount_less_fee</span> <span class=o>=</span> <span class=nb>int</span><span class=p>(</span><span class=n>amount</span> <span class=o>*</span> <span class=mf>0.99</span><span class=p>)</span>
+<span class=ln>13</span>
+<span class=ln>14</span><span class=c1># Create the txin structure, which includes the outpoint. The scriptSig defaults to being empty as</span>
+<span class=ln>15</span><span class=c1># is necessary for spending a P2WSH output.</span>
+<span class=ln>16</span><span class=n>txin</span> <span class=o>=</span> <span class=n>TxIn</span><span class=p>(</span><span class=n>txid</span><span class=p>,</span> <span class=n>vout</span><span class=p>)</span>
+<span class=ln>17</span>
+<span class=ln>18</span><span class=c1># Specify a destination address and create the txout.</span>
+<span class=ln>19</span><span class=n>h160</span> <span class=o>=</span> <span class=n>decode_bech32</span><span class=p>(</span><span class=s2>&#34;tb1qwp3c26rlgzlq4axergvt04300shexn4f56q5f7&#34;</span><span class=p>)[</span><span class=mi>2</span><span class=p>]</span>
+<span class=ln>20</span><span class=n>txout</span> <span class=o>=</span> <span class=n>TxOut</span><span class=p>(</span><span class=n>amount</span><span class=o>=</span><span class=n>amount_less_fee</span><span class=p>,</span> <span class=n>script_pubkey</span><span class=o>=</span><span class=n>P2WPKHScriptPubKey</span><span class=p>(</span><span class=n>h160</span><span class=p>))</span>
+<span class=ln>21</span>
+<span class=ln>22</span><span class=n>tx</span> <span class=o>=</span> <span class=n>Tx</span><span class=p>(</span><span class=mi>1</span><span class=p>,</span> <span class=p>[</span><span class=n>txin</span><span class=p>],</span> <span class=p>[</span><span class=n>txout</span><span class=p>],</span> <span class=mi>0</span><span class=p>,</span> <span class=n>network</span><span class=o>=</span><span class=s2>&#34;signet&#34;</span><span class=p>)</span> <span class=c1># , segwit=True)</span>
+<span class=ln>23</span>
+<span class=ln>24</span><span class=n>sig1</span> <span class=o>=</span> <span class=n>tx</span><span class=o>.</span><span class=n>get_sig_legacy</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=n>private_key1</span><span class=p>,</span> <span class=n>redeem_script</span><span class=o>=</span><span class=n>redeem_script</span><span class=p>)</span>
+<span class=ln>25</span><span class=n>sig2</span> <span class=o>=</span> <span class=n>tx</span><span class=o>.</span><span class=n>get_sig_legacy</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=n>private_key2</span><span class=p>,</span> <span class=n>redeem_script</span><span class=o>=</span><span class=n>redeem_script</span><span class=p>)</span>
+<span class=ln>26</span>
+<span class=ln>27</span><span class=n>tx</span><span class=o>.</span><span class=n>check_sig_segwit</span><span class=p>(</span>
+<span class=ln>28</span>    <span class=mi>0</span><span class=p>,</span>
+<span class=ln>29</span>    <span class=n>private_key1</span><span class=o>.</span><span class=n>point</span><span class=p>,</span>
+<span class=ln>30</span>    <span class=n>Signature</span><span class=o>.</span><span class=n>parse</span><span class=p>(</span><span class=n>sig1</span><span class=p>[:</span><span class=o>-</span><span class=mi>1</span><span class=p>]),</span>
+<span class=ln>31</span>    <span class=n>redeem_script</span><span class=o>=</span><span class=n>redeem_script</span><span class=p>,</span>
+<span class=ln>32</span><span class=p>)</span>
+<span class=ln>33</span>
+<span class=ln>34</span><span class=n>tx</span><span class=o>.</span><span class=n>check_sig_segwit</span><span class=p>(</span>
+<span class=ln>35</span>    <span class=mi>0</span><span class=p>,</span>
+<span class=ln>36</span>    <span class=n>private_key2</span><span class=o>.</span><span class=n>point</span><span class=p>,</span>
+<span class=ln>37</span>    <span class=n>Signature</span><span class=o>.</span><span class=n>parse</span><span class=p>(</span><span class=n>sig2</span><span class=p>[:</span><span class=o>-</span><span class=mi>1</span><span class=p>]),</span>
+<span class=ln>38</span>    <span class=n>redeem_script</span><span class=o>=</span><span class=n>redeem_script</span><span class=p>,</span>
+<span class=ln>39</span><span class=p>)</span>
+<span class=ln>40</span>
+<span class=ln>41</span><span class=n>txin</span><span class=o>.</span><span class=n>finalize_p2sh_multisig</span><span class=p>([</span><span class=n>sig1</span><span class=p>,</span> <span class=n>sig2</span><span class=p>],</span> <span class=n>redeem_script</span><span class=p>)</span>
+<span class=ln>42</span>
+<span class=ln>43</span><span class=nb>print</span><span class=p>(</span><span class=n>tx</span><span class=o>.</span><span class=n>serialize</span><span class=p>()</span><span class=o>.</span><span class=n>hex</span><span class=p>())</span>
+<span class=ln>44</span><span class=c1># outputs: 01000000019c4b65071855956cb001beb821323270f29541fb7d712e8f75a9b0903d8da52001000000da004730440220470aef78655414f73ca5ae0feec073d49a134ba1bc3b3ea85d2aa864a9735a66022029382bd5f497dc8435f75dff4ebe6cb7205064738487bbfd7099fd3741c61bc901483045022100aa867aeba637ef0aa8f6386e06bcce5010afb081087ab4e3d01ce610f57eaa4702204b50096f8225cac48a93cddab25be1463b160c77605b93556cc215ed83c0d0f301475221038d19497c3922b807c91b829d6873ae5bfa2ae500f3237100265a302fdce87b052103d3a9dff5a0bb0267f19a9ee1c374901c39045fbe041c1c168d4da4ce0112595552aeffffffff01b882010000000000160014706385687f40be0af4d91a18b7d62f7c2f934ea900000000</span>
+</code></pre></div><p>Now that we have our signed and encoded transaction, we can broadcast it using
+<a href=https://chainquery.com/bitcoin-cli/sendrawtransaction>sendrawtransaction</a>:</p>
+<p><code>bitcoin-cli sendrawtransaction &lt;transaction></code></p>
+<p>If the transaction is broadcasted successfully a transaction id will be returned. In this case it
+was <code>8439bee332441a97a5bd01396c95353a26a163287e12bd691e1940b734f77478</code>.</p>
+<h2 id=p2tr>P2TR</h2>
+<p>todo</p>
+<h3 id=generate-address-2>Generate address</h3>
 <p><code>todo</code></p>
-<h3 id=spend-from-address-multisig-1>Spend from address (multisig)</h3>
+<h3 id=spend-from-address-2>Spend from address</h3>
 <p><code>todo</code></p>
 <hr>
 <p>Sources:</p>
