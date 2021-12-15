@@ -296,14 +296,14 @@ sig2 = tx.get_sig_segwit(0, private_key2, witness_script=redeem_script)
 
 tx.check_sig_segwit(
     0,
-    private_key.point,
+    private_key1.point,
     Signature.parse(sig1[:-1]),
     witness_script=redeem_script,
 )
 
 tx.check_sig_segwit(
     0,
-    private_key.point,
+    private_key2.point,
     Signature.parse(sig2[:-1]),
     witness_script=redeem_script,
 )
@@ -514,11 +514,110 @@ was `9987191906843b5c99218cbae7f73d0ae85c0b62b78fdaf9755eb6a4a9856858`.
 
 ### Generate address (multisig)
 
-`todo`
+In this example we show how to create a 2-of-2 multisig address. This means that two signatures are
+required in order to unlock funds.
+
+```py
+import hashlib
+
+from buidl.ecc import PrivateKey, Signature
+from buidl.helper import decode_base58, big_endian_to_int
+from buidl.bech32 import decode_bech32, encode_bech32_checksum
+from buidl.script import P2PKHScriptPubKey, RedeemScript, WitnessScript, P2WPKHScriptPubKey
+from buidl.tx import Tx, TxIn, TxOut
+from buidl.witness import Witness
+
+# first signature
+h = hashlib.sha256(b'correct horse battery staple first').digest()
+private_key1 = PrivateKey(secret=big_endian_to_int(h), network="signet")
+
+# second signature
+h = hashlib.sha256(b'correct horse battery staple second').digest()
+private_key2 = PrivateKey(secret=big_endian_to_int(h), network="signet")
+
+# Create a redeem script
+redeem_script = RedeemScript.create_p2sh_multisig(
+    quorum_m=2,
+    pubkey_hexes=[
+        private_key1.point.sec().hex(),
+        private_key2.point.sec().hex(),
+    ],
+    sort_keys=False,
+)
+
+address = redeem_script.address("signet")
+print('Address:', str(address))
+# outputs: 2N3avDJKpr9c8pkRSYgWAsHSVCmRX3ce3w7
+```
 
 ### Spend from address (multisig)
 
-`todo`
+Assuming the previously generated address has received funds, we can spend them. In order to spend
+them, we'll need information about the transaction id (txid) and a vector of an output (vout). You
+can get both from an explorer or by querying your running Bitcoin node by running
+[listunspent](https://chainquery.com/bitcoin-cli/listunspent) along with some filters:
+
+`bitcoin-cli listunspent 1 9999999 "[\"address\"]"`
+
+Note that you must have an address in the watchlist in order to get any output. To add an address
+to a watchlist run [importaddress](https://chainquery.com/bitcoin-cli/importaddress):
+
+`bitcoin-cli importaddress <address> "<label>" false false`
+
+```py
+# we are continuing the code from above
+
+txid = bytes.fromhex("20a58d3d90b0a9758f2e717dfb4195f270323221b8be01b06c95551807654b9c")
+vout = 1
+
+# Specify the amount send to your P2WSH address.
+COIN = 100000000
+amount = int(0.001 * COIN)
+
+# Calculate an amount for the upcoming new UTXO. Set a high fee (5%) to bypass bitcoind minfee
+# setting on regtest.
+amount_less_fee = int(amount * 0.99)
+
+# Create the txin structure, which includes the outpoint. The scriptSig defaults to being empty as
+# is necessary for spending a P2WSH output.
+txin = TxIn(txid, vout)
+
+# Specify a destination address and create the txout.
+h160 = decode_bech32("tb1qwp3c26rlgzlq4axergvt04300shexn4f56q5f7")[2]
+txout = TxOut(amount=amount_less_fee, script_pubkey=P2WPKHScriptPubKey(h160))
+
+tx = Tx(1, [txin], [txout], 0, network="signet") # , segwit=True)
+
+sig1 = tx.get_sig_legacy(0, private_key1, redeem_script=redeem_script)
+sig2 = tx.get_sig_legacy(0, private_key2, redeem_script=redeem_script)
+
+tx.check_sig_segwit(
+    0,
+    private_key1.point,
+    Signature.parse(sig1[:-1]),
+    redeem_script=redeem_script,
+)
+
+tx.check_sig_segwit(
+    0,
+    private_key2.point,
+    Signature.parse(sig2[:-1]),
+    redeem_script=redeem_script,
+)
+
+txin.finalize_p2sh_multisig([sig1, sig2], redeem_script)
+
+print(tx.serialize().hex())
+# outputs: 01000000019c4b65071855956cb001beb821323270f29541fb7d712e8f75a9b0903d8da52001000000da004730440220470aef78655414f73ca5ae0feec073d49a134ba1bc3b3ea85d2aa864a9735a66022029382bd5f497dc8435f75dff4ebe6cb7205064738487bbfd7099fd3741c61bc901483045022100aa867aeba637ef0aa8f6386e06bcce5010afb081087ab4e3d01ce610f57eaa4702204b50096f8225cac48a93cddab25be1463b160c77605b93556cc215ed83c0d0f301475221038d19497c3922b807c91b829d6873ae5bfa2ae500f3237100265a302fdce87b052103d3a9dff5a0bb0267f19a9ee1c374901c39045fbe041c1c168d4da4ce0112595552aeffffffff01b882010000000000160014706385687f40be0af4d91a18b7d62f7c2f934ea900000000
+```
+
+Now that we have our signed and encoded transaction, we can broadcast it using
+[sendrawtransaction](https://chainquery.com/bitcoin-cli/sendrawtransaction):
+
+`bitcoin-cli sendrawtransaction <transaction>`
+
+If the transaction is broadcasted successfully a transaction id will be returned. In this case it
+was `8439bee332441a97a5bd01396c95353a26a163287e12bd691e1940b734f77478`.
 
 
 ## P2TR
