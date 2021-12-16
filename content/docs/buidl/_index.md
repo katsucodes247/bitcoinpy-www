@@ -10,4 +10,6 @@ Python3 library with no dependencies. Provides an interface to Bitcoin data stru
 more functionalities included into this library which are for more advanced use and will be
 described on this page at later stage.
 
-Library only supports **mainnet**, **testnet** and **signet** and requires internet to work. 
+{{< tip >}}
+Library supports mainnet, testnet and signet and requires internet to work. 
+{{< /tip >}}

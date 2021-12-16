@@ -1,6 +1,7 @@
 ---
 title: "Regtest Guide"
 weight: 2
+draft: true
 ---
 
 We assume you're running a Bitcoin node on Regtest. In case you're not and you're not sure how to configure your Bitcoin node to run on Regtest [have a look at this guide](/docs/running-bitcoin/#regtest).
