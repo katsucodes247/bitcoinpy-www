@@ -1,22 +1,22 @@
 +++
-title = "BitcoinPy"
+title = "Bitcoin resource for Python developers"
+description = "Learn how to develop for Bitcoin using Python projects and tooling"
 [data]
 baseChartOn = 3
 colors = ["#627c62", "#11819b", "#ef7f1a", "#4e1154"]
 columnTitles = ["Section", "Status", "Author"]
 fileLink = "content/projects.csv"
 title = "Projects"
-
 +++
 {{< block "grid-2" >}}
 {{< column >}}
 
 # Home of Bitcoin Python
 
-**BitcoinPy** is aiming to be the ultimate Python resource for Bitcoin.
+**BitcoinPy** is aiming to be the ultimate Bitcoin resource for Python developers.
 
-Goal of BitcoinPy is to be a living documentation of Bitcoin related Python libraries and tools,
-along with code examples of how to interact with Bitcoin using Python.
+BitcoinPy is a **living documentation** of Bitcoin related Python libraries and tools with emphasis on
+providing **code examples** how to use Python to develop and interact with Bitcoin.
 
 {{< button "docs/" "Get Started" >}}
 

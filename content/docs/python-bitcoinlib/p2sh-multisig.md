@@ -15,8 +15,8 @@ it's cheaper to spend from those addresses.
 scriptPubKey: `OP_HASH160` `<scriptHash>` `OP_EQUAL`
 
 {{< tip "warning" >}}
-The example for singlesig should only serve as an example. We don't recommend using it in the real
-world because it is not its intention to be used for addresses with single signatures.
+The example for 1-of-1 should only serve as an example. We don't recommend using it in the real
+world because it is not its intention. Instead of 1-of-1 use P2PKH!
 {{< /tip >}}
 
 

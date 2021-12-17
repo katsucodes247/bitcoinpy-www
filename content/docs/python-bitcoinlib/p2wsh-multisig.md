@@ -22,8 +22,8 @@ scriptPubKey: `0` `<witnessScriptHash>`
 witnessScriptHash: `sha256(pubKey OP_CHECKSIG)`
 
 {{< tip "warning" >}}
-The example for singlesig should only serve as an example. We don't recommend using it in the real
-world because it is not its intention to be used for addresses with single signatures.
+The example for 1-of-1 should only serve as an example. We don't recommend using it in the real
+world because it is not its intention. Instead of 1-of-1 use P2PKH!
 {{< /tip >}}
 
 ## Generate address (1-of-1)
