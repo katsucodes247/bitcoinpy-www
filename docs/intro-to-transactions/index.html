@@ -8,20 +8,17 @@
 <link rel=mask-icon href=https://bitcoinpy.dev/favicons/safari-pinned-tab.svg color=#004750>
 <link rel="shortcut icon" href=https://bitcoinpy.dev/favicons/favicon.ico>
 <meta name=msapplication-config content="https://bitcoinpy.dev/favicons/browserconfig.xml">
-<title>Search | BitcoinPy</title><meta property="og:title" content="Search">
+<title>Intro to Transactions | BitcoinPy</title><meta property="og:title" content="Intro to Transactions">
 <meta property="og:description" content>
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://bitcoinpy.dev/search/"><meta property="article:section" content>
-<meta itemprop=name content="Search">
-<meta itemprop=description content>
-<meta itemprop=wordCount content="0">
-<meta itemprop=keywords content><meta name=twitter:card content="summary">
-<meta name=twitter:title content="Search">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://bitcoinpy.dev/docs/intro-to-transactions/">
+<meta itemprop=name content="Intro to Transactions">
+<meta itemprop=description content><meta name=twitter:card content="summary">
+<meta name=twitter:title content="Intro to Transactions">
 <meta name=twitter:description content>
 <link rel=stylesheet href=https://bitcoinpy.dev/css/styles.d68a90e27a257ef394ed19bb97738b1d590d21aa0e0b5a5025613c6638df6b18b2747e45b95ec3ecb5b437a73434cb6eed001de3b302393b9b0cdb25136c2bba.css integrity="sha512-1oqQ4nolfvOU7Rm7l3OLHVkNIaoOC1pQJWE8ZjjfaxiydH5FuV7D7LW0N6c0NMtu7QAd47MCOTubDNslE2wrug=="><link rel=stylesheet href=/overrides.css>
-<meta name=description content>
 </head>
-<body class=page-page id=pagetop>
+<body class=page-section id=pagetop>
 <header class=nav_header>
 <nav class="wrap nav menu">
 <a href=https://bitcoinpy.dev/ class=nav_brand>
@@ -38,6 +35,7 @@
 <label for=find class=search_label><svg class="icon icon_search"><use xlink:href="#search"/></svg>
 </label>
 <input type=search class=search_field placeholder="Search the docs" id=find autocomplete=off>
+<div class="search_results results"></div>
 </div>
 </li>
 <li class=nav-item>
@@ -62,10 +60,132 @@
 </ul>
 </nav>
 </header>
-<div class="main wrap pt-4">
-<main id=results>
-<div class=results id=searchpage></div>
-</main></div>
+<div class="main wrap pt-4"><div class=grid-auto><aside class="aside menu">
+<div>
+<label class="aside_toggle toggle" title="Docs Menu" role=button>Docs Menu <svg class="icon icon_harmburger"><use xlink:href="#harmburger"/></svg></label>
+</div>
+<section class="section aside_inner">
+<h2 class=section_title><a href=https://bitcoinpy.dev/docs/ class=group>Overview</a></h2>
+<section id=docs-overview>
+<section class="section aside_inner">
+<h2 class=section_title><a href=https://bitcoinpy.dev/docs/running-bitcoin/ class=group>Running Bitcoin</a></h2>
+</section>
+<section class="section aside_inner">
+<h2 class="section_title active"><a href=https://bitcoinpy.dev/docs/intro-to-transactions/ class=group>Intro to Transactions</a></h2>
+</section>
+<section class="section aside_inner">
+<h2 class=section_title><a href=https://bitcoinpy.dev/docs/python-bitcoinlib/ class=group>python-bitcoinlib</a></h2>
+<section id=docs-python-bitcoinlib>
+<h3 class=section_link><a id=docs-p2wpkh-address href=https://bitcoinpy.dev/docs/python-bitcoinlib/p2wpkh/>P2WPKH address</a></h3><nav id=TableOfContents>
+<ul>
+<li><a href=#generate-address>Generate address</a></li>
+<li><a href=#spend-from-address>Spend from address</a></li>
+</ul>
+</nav>
+<h3 class=section_link><a id=docs-p2wsh-address-multisig href=https://bitcoinpy.dev/docs/python-bitcoinlib/p2wsh-multisig/>P2WSH address (multisig)</a></h3><nav id=TableOfContents>
+<ul>
+<li><a href=#generate-address-1-of-1>Generate address (1-of-1)</a></li>
+<li><a href=#spend-from-address-1-of-1>Spend from address (1-of-1)</a></li>
+<li><a href=#generate-address-2-of-2>Generate address (2-of-2)</a></li>
+<li><a href=#spend-from-address-2-of-2>Spend from address (2-of-2)</a></li>
+</ul>
+</nav>
+<h3 class=section_link><a id=docs-p2pkh-address href=https://bitcoinpy.dev/docs/python-bitcoinlib/p2pkh/>P2PKH address</a></h3><nav id=TableOfContents>
+<ul>
+<li><a href=#generate-address>Generate address</a></li>
+<li><a href=#spend-from-address>Spend from address</a></li>
+</ul>
+</nav>
+<h3 class=section_link><a id=docs-p2sh-address-multisig href=https://bitcoinpy.dev/docs/python-bitcoinlib/p2sh-multisig/>P2SH address (multisig)</a></h3><nav id=TableOfContents>
+<ul>
+<li>
+<ul>
+<li><a href=#generate-address-1-of-1>Generate address (1-of-1)</a></li>
+<li><a href=#spend-from-address-1-of-1>Spend from address (1-of-1)</a></li>
+</ul>
+</li>
+<li><a href=#generate-address-2-of-2>Generate address (2-of-2)</a></li>
+<li><a href=#spend-from-address-2-of-2>Spend from address (2-of-2)</a></li>
+</ul>
+</nav>
+<h3 class=section_link><a id=docs-p2tr-address href=https://bitcoinpy.dev/docs/python-bitcoinlib/p2tr/>P2TR address</a></h3><nav id=TableOfContents></nav>
+</section>
+</section>
+<section class="section aside_inner">
+<h2 class=section_title><a href=https://bitcoinpy.dev/docs/buidl/ class=group>buidl</a></h2>
+<section id=docs-buidl>
+<h3 class=section_link><a id=docs-p2wpkh-address href=https://bitcoinpy.dev/docs/buidl/p2wpkh/>P2WPKH address</a></h3><nav id=TableOfContents>
+<ul>
+<li><a href=#generate-address>Generate address</a></li>
+<li><a href=#spend-from-address>Spend from address</a></li>
+</ul>
+</nav>
+<h3 class=section_link><a id=docs-p2wsh-address-multisig href=https://bitcoinpy.dev/docs/buidl/p2wsh-multisig/>P2WSH address (multisig)</a></h3><nav id=TableOfContents>
+<ul>
+<li><a href=#generate-address-1-of-1>Generate address (1-of-1)</a></li>
+<li><a href=#spend-from-address-1-of-1>Spend from address (1-of-1)</a></li>
+<li><a href=#generate-address-2-of-2>Generate address (2-of-2)</a></li>
+<li><a href=#spend-from-address-2-of-2>Spend from address (2-of-2)</a></li>
+</ul>
+</nav>
+<h3 class=section_link><a id=docs-p2pkh-address href=https://bitcoinpy.dev/docs/buidl/p2pkh/>P2PKH address</a></h3><nav id=TableOfContents>
+<ul>
+<li><a href=#generate-address>Generate address</a></li>
+<li><a href=#spend-from-address>Spend from address</a></li>
+</ul>
+</nav>
+<h3 class=section_link><a id=docs-p2sh-address-multisig href=https://bitcoinpy.dev/docs/buidl/p2sh-multisig/>P2SH address (multisig)</a></h3><nav id=TableOfContents>
+<ul>
+<li><a href=#generate-address-1-of-1>Generate address (1-of-1)</a></li>
+<li><a href=#spend-from-address-1-of-1>Spend from address (1-of-1)</a></li>
+<li><a href=#generate-address-2-of-2>Generate address (2-of-2)</a></li>
+<li><a href=#spend-from-address-2-of-2>Spend from address (2-of-2)</a></li>
+</ul>
+</nav>
+<h3 class=section_link><a id=docs-p2tr-address href=https://bitcoinpy.dev/docs/buidl/p2tr/>P2TR address</a></h3><nav id=TableOfContents></nav>
+</section>
+</section>
+</section>
+</section>
+</aside>
+<main class=content>
+<h1>Intro to Transactions</h1><p>Bitcoin doesn't actually have different types of transactions but has different types of addresses
+formats. Each address has a different way of "unlocking" its funds. The way that dictates how to
+unlock funds is set (or scripted) at the time when the address is generated.</p>
+<h6 id=p2pkh>P2PKH</h6>
+<p>Locks bitcoins to the hash of a public key, this is most commonly used for payments.</p>
+<h6 id=p2sh>P2SH</h6>
+<p>Lock bitcoins to the hash of a script, this format enabled more advanced functionalities
+(eg. MultiSigs, HTLCs etc.).</p>
+<h6 id=p2wpkh-segwit>P2WPKH (SegWit)</h6>
+<p>Native SegWit address with the same semantics as P2PKH, using this address format makes transactions
+cheaper compared to P2PKH .</p>
+<h6 id=p2wsh-segwit>P2WSH (SegWit)</h6>
+<p>Native SegWit address with the same semantics as P2SH, using this address format makes transactions
+cheaper compared to P2PKH.</p>
+<h6 id=p2tr-taproot>P2TR (Taproot)</h6>
+<p>Locks bitcoins to a script that can be unlocked by a public key or a <a href=https://river.com/learn/terms/m/merkelized-alternative-script-tree-mast/>MAST</a> (Merkelized Alternative Script Tree). MAST expands the flexibility and utility of Bitcoin contracts
+in an inexpensive and privacy preserving way.</p>
+<h6 id=p2sh-p2wpkh-wrapped-segwit>P2SH-P2WPKH (Wrapped SegWit)</h6>
+<p>"Wrapped" SegWit address for P2WPKH it enables software that doesn't support SegWit natively to be
+able to send to SegWit addresses. This format is actually P2SH but it uses a native SegWit P2WPKH
+script as redeem scripts of a P2SH.</p>
+<h6 id=p2sh-p2wsh-wrapped-segwit>P2SH-P2WSH (Wrapped SegWit)</h6>
+<p>"Wrapped" SegWit address for P2WSH, it enables software that doesn't support SegWit natively to be
+able to send to SegWit addresses. This format is actually P2SH but it uses a native SegWit P2WSH
+script as redeem scripts of a P2SH.</p>
+<hr>
+<p>Sources:</p>
+<ul>
+<li><a href=https://river.com/learn/terms/w/wrapped-segwit/>Wrapped Segwit</a></li>
+<li><a href=https://wiki.trezor.io/Glossary>Trezor's Wiki</a></li>
+<li><a href=https://bitcoindev.network/>Bitcoin Developer Network</a></li>
+</ul>
+<div class="pager pager_lean">
+</div>
+</main>
+</div>
+</div>
 <footer class="pt-2 pb-2">
 <div class=wrap>
 <p>&copy; <span class=year>2021</span> <a href=https://bitcoinpy.dev target=_blank rel=noopener>BitcoinPy</a></p>

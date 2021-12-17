@@ -8,17 +8,28 @@
 <link rel=mask-icon href=https://bitcoinpy.dev/favicons/safari-pinned-tab.svg color=#004750>
 <link rel="shortcut icon" href=https://bitcoinpy.dev/favicons/favicon.ico>
 <meta name=msapplication-config content="https://bitcoinpy.dev/favicons/browserconfig.xml">
-<title>Running Bitcoin | BitcoinPy</title><meta property="og:title" content="Running Bitcoin">
-<meta property="og:description" content>
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://bitcoinpy.dev/docs/running-bitcoin/">
-<meta itemprop=name content="Running Bitcoin">
-<meta itemprop=description content><meta name=twitter:card content="summary">
-<meta name=twitter:title content="Running Bitcoin">
-<meta name=twitter:description content>
+<title>P2PKH address | BitcoinPy</title><meta property="og:title" content="P2PKH address">
+<meta property="og:description" content="P2PKH is an abbreviation for Pay to Public Key Hash.
+scriptPubKey: OP_DUP OP_HASH160 <pubKeyHash> OP_EQUALVERIFY OP_CHECKSIG
+Generate address 1import hashlib 2 3from bitcoin import SelectParams 4from bitcoin.core import b2x, lx, COIN, COutPoint, CMutableTxOut, CMutableTxIn, CMutableTransaction, Hash160 5from bitcoin.core.script import CScript, OP_DUP, OP_HASH160, OP_EQUALVERIFY, OP_CHECKSIG, SignatureHash, SIGHASH_ALL 6from bitcoin.core.scripteval import VerifyScript, SCRIPT_VERIFY_P2SH 7from bitcoin.wallet import CBitcoinAddress, CBitcoinSecret, P2PKHBitcoinAddress 8 9SelectParams('regtest') 10 11# Create the (in)famous correct brainwallet secret key. 12h = hashlib.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://bitcoinpy.dev/docs/python-bitcoinlib/p2pkh/"><meta property="article:section" content="docs">
+<meta itemprop=name content="P2PKH address">
+<meta itemprop=description content="P2PKH is an abbreviation for Pay to Public Key Hash.
+scriptPubKey: OP_DUP OP_HASH160 <pubKeyHash> OP_EQUALVERIFY OP_CHECKSIG
+Generate address 1import hashlib 2 3from bitcoin import SelectParams 4from bitcoin.core import b2x, lx, COIN, COutPoint, CMutableTxOut, CMutableTxIn, CMutableTransaction, Hash160 5from bitcoin.core.script import CScript, OP_DUP, OP_HASH160, OP_EQUALVERIFY, OP_CHECKSIG, SignatureHash, SIGHASH_ALL 6from bitcoin.core.scripteval import VerifyScript, SCRIPT_VERIFY_P2SH 7from bitcoin.wallet import CBitcoinAddress, CBitcoinSecret, P2PKHBitcoinAddress 8 9SelectParams('regtest') 10 11# Create the (in)famous correct brainwallet secret key. 12h = hashlib.">
+<meta itemprop=wordCount content="449">
+<meta itemprop=keywords content><meta name=twitter:card content="summary">
+<meta name=twitter:title content="P2PKH address">
+<meta name=twitter:description content="P2PKH is an abbreviation for Pay to Public Key Hash.
+scriptPubKey: OP_DUP OP_HASH160 <pubKeyHash> OP_EQUALVERIFY OP_CHECKSIG
+Generate address 1import hashlib 2 3from bitcoin import SelectParams 4from bitcoin.core import b2x, lx, COIN, COutPoint, CMutableTxOut, CMutableTxIn, CMutableTransaction, Hash160 5from bitcoin.core.script import CScript, OP_DUP, OP_HASH160, OP_EQUALVERIFY, OP_CHECKSIG, SignatureHash, SIGHASH_ALL 6from bitcoin.core.scripteval import VerifyScript, SCRIPT_VERIFY_P2SH 7from bitcoin.wallet import CBitcoinAddress, CBitcoinSecret, P2PKHBitcoinAddress 8 9SelectParams('regtest') 10 11# Create the (in)famous correct brainwallet secret key. 12h = hashlib.">
 <link rel=stylesheet href=https://bitcoinpy.dev/css/styles.d68a90e27a257ef394ed19bb97738b1d590d21aa0e0b5a5025613c6638df6b18b2747e45b95ec3ecb5b437a73434cb6eed001de3b302393b9b0cdb25136c2bba.css integrity="sha512-1oqQ4nolfvOU7Rm7l3OLHVkNIaoOC1pQJWE8ZjjfaxiydH5FuV7D7LW0N6c0NMtu7QAd47MCOTubDNslE2wrug=="><link rel=stylesheet href=/overrides.css>
+<meta name=description content="P2PKH is an abbreviation for Pay to Public Key Hash.
+scriptPubKey: OP_DUP OP_HASH160 &amp;lt;pubKeyHash&amp;gt; OP_EQUALVERIFY OP_CHECKSIG
+Generate address 1import hashlib 2 3from bitcoin import SelectParams 4from bitcoin.core import b2x, lx, COIN, COutPoint, CMutableTxOut, CMutableTxIn, CMutableTransaction, Hash160 5from bitcoin.core.script import CScript, OP_DUP, OP_HASH160, OP_EQUALVERIFY, OP_CHECKSIG, SignatureHash, SIGHASH_ALL 6from bitcoin.core.scripteval import VerifyScript, SCRIPT_VERIFY_P2SH 7from bitcoin.wallet import CBitcoinAddress, CBitcoinSecret, P2PKHBitcoinAddress 8 9SelectParams(&amp;#39;regtest&amp;#39;) 10 11# Create the (in)famous correct brainwallet secret key. 12h = hashlib.">
 </head>
-<body class=page-section id=pagetop>
+<body class=page-page id=pagetop>
 <header class=nav_header>
 <nav class="wrap nav menu">
 <a href=https://bitcoinpy.dev/ class=nav_brand>
@@ -68,7 +79,7 @@
 <h2 class=section_title><a href=https://bitcoinpy.dev/docs/ class=group>Overview</a></h2>
 <section id=docs-overview>
 <section class="section aside_inner">
-<h2 class="section_title active"><a href=https://bitcoinpy.dev/docs/running-bitcoin/ class=group>Running Bitcoin</a></h2>
+<h2 class=section_title><a href=https://bitcoinpy.dev/docs/running-bitcoin/ class=group>Running Bitcoin</a></h2>
 </section>
 <section class="section aside_inner">
 <h2 class=section_title><a href=https://bitcoinpy.dev/docs/intro-to-transactions/ class=group>Intro to Transactions</a></h2>
@@ -90,7 +101,7 @@
 <li><a href=#spend-from-address-2-of-2>Spend from address (2-of-2)</a></li>
 </ul>
 </nav>
-<h3 class=section_link><a id=docs-p2pkh-address href=https://bitcoinpy.dev/docs/python-bitcoinlib/p2pkh/>P2PKH address</a></h3><nav id=TableOfContents>
+<h3 class="section_link active"><a id=docs-p2pkh-address href=https://bitcoinpy.dev/docs/python-bitcoinlib/p2pkh/>P2PKH address</a></h3><nav id=TableOfContents>
 <ul>
 <li><a href=#generate-address>Generate address</a></li>
 <li><a href=#spend-from-address>Spend from address</a></li>
@@ -149,123 +160,95 @@
 </section>
 </aside>
 <main class=content>
-<h1>Running Bitcoin</h1><p>Running Bitcoin is easy. This section with show you how to get your node up and running.</p>
-<h2 id=installating>Installating</h2>
-<p>We'll be install Bitcoin binary files here. In case you'd prefer to build and install
-Bitcoin from source have a look at a relevant <code>build-</code> <a href=https://github.com/bitcoin/bitcoin/tree/master/doc>file</a>
-for your operating system.</p>
-<p>Below steps are intended for users running Linux. We might add guides for other OS in the
-future.</p>
-<ol>
-<li>Download a relevant file from: <a href=https://bitcoincore.org/en/download/>https://bitcoincore.org/en/download/</a></li>
-<li>Extract the files: <code>tar xvzf bitcoin-22.0-x86_64-linux-gnu.tar.gz</code></li>
-<li><a href=https://bitcoincore.org/en/download/#verify-your-download>Verify your download</a></li>
-<li>Copy binary files to local bin directory so they can be accessed from anywhere, eg: <code>sudo cp bitcoin-22.0/bin/* /usr/local/bin/</code></li>
-</ol>
-<h2 id=configuring>Configuring</h2>
-<p>Now that you have successfully installed Bitcoin, we'll go ahead with the configuration.</p>
-<p>Bitcoin node can run on several networks:</p>
-<ul>
-<li><code>mainnet</code>: main (production) network, these is the only network where coins have value</li>
-<li><code>testnet</code>: public testnet network with a long history where things are tested, this network
-mimics mainnet as much as possible which is why it's based on PoW</li>
-<li><code>signet</code>: new type of public testnet network with centralized consensus where a dedicated
-entity or a group with authority to create new blocks can produce new blocks using valid signatures
-(not PoW based)</li>
-<li><code>regtest</code>: private (sandboxed) version of testnet for individual developers where developer
-himself has a full control (spinning up and connecting nodes, minig blocks (no actualy PoW needed),
-triggering manual reorgs etc.)</li>
-</ul>
-<p>During this configuration we will guide you to configure a node that will connect to <code>testnet</code>. Later on
-we will explain how to connect to other networks.</p>
-<h4 id=1-create-configuration-file>1. Create configuration file</h4>
-<ul>
-<li>Create a <code>.bitcoin</code> folder in your home directory: <code>mkdir ~/.bitcoin</code></li>
-<li>Create a <code>bitcoin.conf</code> file to this directory: <code>touch .bitcoin/bitcoin.conf</code></li>
-</ul>
-<p>By default all bitcoin binaries read the configuration from <code>~/.bitcoin/bitcoin.conf</code> path.</p>
-<h4 id=2-setup-configuration-file>2. Setup configuration file</h4>
-<p>For more info about specific configuration parameters visit <a href=https://github.com/bitcoin/bitcoin/blob/master/share/examples/bitcoin.conf>bitcoin.conf example file</a> and <a href=https://jlopp.github.io/bitcoin-core-config-generator/>jlopp's config generator</a>.</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-toml data-lang=toml><span class=ln> 1</span><span class=c># Generated by https://jlopp.github.io/bitcoin-core-config-generator/</span>
+<h1>P2PKH address</h1><p>P2PKH is an abbreviation for Pay to Public Key Hash.</p>
+<p>scriptPubKey: <code>OP_DUP</code> <code>OP_HASH160</code> <code>&lt;pubKeyHash></code> <code>OP_EQUALVERIFY</code> <code>OP_CHECKSIG</code></p>
+<h2 id=generate-address>Generate address</h2>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-py data-lang=py><span class=ln> 1</span><span class=kn>import</span> <span class=nn>hashlib</span>
 <span class=ln> 2</span>
-<span class=ln> 3</span><span class=c># This config should be placed in following path:</span>
-<span class=ln> 4</span><span class=c># ~/.bitcoin/bitcoin.conf</span>
+<span class=ln> 3</span><span class=kn>from</span> <span class=nn>bitcoin</span> <span class=kn>import</span> <span class=n>SelectParams</span>
+<span class=ln> 4</span><span class=kn>from</span> <span class=nn>bitcoin.core</span> <span class=kn>import</span> <span class=n>b2x</span><span class=p>,</span> <span class=n>lx</span><span class=p>,</span> <span class=n>COIN</span><span class=p>,</span> <span class=n>COutPoint</span><span class=p>,</span> <span class=n>CMutableTxOut</span><span class=p>,</span> <span class=n>CMutableTxIn</span><span class=p>,</span> <span class=n>CMutableTransaction</span><span class=p>,</span> <span class=n>Hash160</span>
+<span class=ln> 5</span><span class=kn>from</span> <span class=nn>bitcoin.core.script</span> <span class=kn>import</span> <span class=n>CScript</span><span class=p>,</span> <span class=n>OP_DUP</span><span class=p>,</span> <span class=n>OP_HASH160</span><span class=p>,</span> <span class=n>OP_EQUALVERIFY</span><span class=p>,</span> <span class=n>OP_CHECKSIG</span><span class=p>,</span> <span class=n>SignatureHash</span><span class=p>,</span> <span class=n>SIGHASH_ALL</span>
+<span class=ln> 6</span><span class=kn>from</span> <span class=nn>bitcoin.core.scripteval</span> <span class=kn>import</span> <span class=n>VerifyScript</span><span class=p>,</span> <span class=n>SCRIPT_VERIFY_P2SH</span>
+<span class=ln> 7</span><span class=kn>from</span> <span class=nn>bitcoin.wallet</span> <span class=kn>import</span> <span class=n>CBitcoinAddress</span><span class=p>,</span> <span class=n>CBitcoinSecret</span><span class=p>,</span> <span class=n>P2PKHBitcoinAddress</span>
+<span class=ln> 8</span>
+<span class=ln> 9</span><span class=n>SelectParams</span><span class=p>(</span><span class=s1>&#39;regtest&#39;</span><span class=p>)</span>
+<span class=ln>10</span>
+<span class=ln>11</span><span class=c1># Create the (in)famous correct brainwallet secret key.</span>
+<span class=ln>12</span><span class=n>h</span> <span class=o>=</span> <span class=n>hashlib</span><span class=o>.</span><span class=n>sha256</span><span class=p>(</span><span class=sa>b</span><span class=s1>&#39;correct horse battery staple&#39;</span><span class=p>)</span><span class=o>.</span><span class=n>digest</span><span class=p>()</span>
+<span class=ln>13</span><span class=n>seckey</span> <span class=o>=</span> <span class=n>CBitcoinSecret</span><span class=o>.</span><span class=n>from_secret_bytes</span><span class=p>(</span><span class=n>h</span><span class=p>)</span>
+<span class=ln>14</span>
+<span class=ln>15</span><span class=n>public_key</span> <span class=o>=</span> <span class=n>seckey</span><span class=o>.</span><span class=n>pub</span>
+<span class=ln>16</span><span class=n>address</span> <span class=o>=</span> <span class=n>P2PKHBitcoinAddress</span><span class=o>.</span><span class=n>from_pubkey</span><span class=p>(</span><span class=n>public_key</span><span class=p>)</span>
+<span class=ln>17</span><span class=nb>print</span><span class=p>(</span><span class=s1>&#39;Address:&#39;</span><span class=p>,</span> <span class=nb>str</span><span class=p>(</span><span class=n>address</span><span class=p>))</span>
+<span class=ln>18</span><span class=c1># outputs: Address: mrdwvWkma2D6n9mGsbtkazedQQuoksnqJV</span>
+</code></pre></div><h2 id=spend-from-address>Spend from address</h2>
+<p>Assuming the previously generated address has received funds, we can spend them. In order to spend
+them, we'll need information about the transaction id (txid) and a vector of an output (vout). You
+can get both from an explorer or by querying your running Bitcoin node by running
+<a href=https://chainquery.com/bitcoin-cli/listunspent>listunspent</a> along with some filters:</p>
+<p><code>bitcoin-cli listunspent 1 9999999 "[\"address\"]"</code></p>
+<p>Note that you must have an address in the watchlist in order to get any output. To add an address
+to a watchlist run <a href=https://chainquery.com/bitcoin-cli/importaddress>importaddress</a>:</p>
+<p><code>bitcoin-cli importaddress &lt;address> "&lt;label>" false false</code></p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-py data-lang=py><span class=ln> 1</span><span class=c1># we are continuing the code from above</span>
+<span class=ln> 2</span>
+<span class=ln> 3</span><span class=n>txid</span> <span class=o>=</span> <span class=n>lx</span><span class=p>(</span><span class=s2>&#34;c36a4408a242402cb1584e640a5cbe883513a78aae0cf8ea02986cc76845e9e0&#34;</span><span class=p>)</span>
+<span class=ln> 4</span><span class=n>vout</span> <span class=o>=</span> <span class=mi>0</span>
 <span class=ln> 5</span>
-<span class=ln> 6</span><span class=c># [chain]</span>
-<span class=ln> 7</span><span class=c># Run this node on the Bitcoin Test Network. Equivalent to -chain=test</span>
-<span class=ln> 8</span><span class=nx>testnet</span><span class=p>=</span><span class=mi>1</span>
-<span class=ln> 9</span>
-<span class=ln>10</span><span class=c># [debug]</span>
-<span class=ln>11</span><span class=c># Enable debug logging for all categories.</span>
-<span class=ln>12</span><span class=nx>debug</span><span class=p>=</span><span class=mi>1</span>
-<span class=ln>13</span>
-<span class=ln>14</span><span class=c># [network]</span>
-<span class=ln>15</span><span class=c># Automatically create Tor hidden service.</span>
-<span class=ln>16</span><span class=nx>listenonion</span><span class=p>=</span><span class=mi>0</span>
-<span class=ln>17</span>
-<span class=ln>18</span><span class=c># [rpc]</span>
-<span class=ln>19</span><span class=c># Accept command line and JSON-RPC commands.</span>
-<span class=ln>20</span><span class=nx>server</span><span class=p>=</span><span class=mi>1</span>
-<span class=ln>21</span><span class=nx>rpcuser</span><span class=p>=</span><span class=nx>user-change-me</span>
-<span class=ln>22</span><span class=nx>rpcpassword</span><span class=p>=</span><span class=nx>password-change-me</span>
+<span class=ln> 6</span><span class=c1># Specify the amount send to your P2WSH address.</span>
+<span class=ln> 7</span><span class=n>amount</span> <span class=o>=</span> <span class=nb>int</span><span class=p>(</span><span class=mi>1</span> <span class=o>*</span> <span class=n>COIN</span><span class=p>)</span>
+<span class=ln> 8</span>
+<span class=ln> 9</span><span class=c1># Calculate an amount for the upcoming new UTXO. Set a high fee (5%) to bypass bitcoind minfee</span>
+<span class=ln>10</span><span class=c1># setting on regtest.</span>
+<span class=ln>11</span><span class=n>amount_less_fee</span> <span class=o>=</span> <span class=n>amount</span> <span class=o>*</span> <span class=mf>0.99</span>
+<span class=ln>12</span>
+<span class=ln>13</span><span class=c1># Create the txin structure, which includes the outpoint. The scriptSig</span>
+<span class=ln>14</span><span class=c1># defaults to being empty.</span>
+<span class=ln>15</span><span class=n>txin</span> <span class=o>=</span> <span class=n>CMutableTxIn</span><span class=p>(</span><span class=n>COutPoint</span><span class=p>(</span><span class=n>txid</span><span class=p>,</span> <span class=n>vout</span><span class=p>))</span>
+<span class=ln>16</span>
+<span class=ln>17</span><span class=c1># We also need the scriptPubKey of the output we&#39;re spending because</span>
+<span class=ln>18</span><span class=c1># SignatureHash() replaces the transaction scriptSig&#39;s with it.</span>
+<span class=ln>19</span><span class=c1>#</span>
+<span class=ln>20</span><span class=c1># Here we&#39;ll create that scriptPubKey from scratch using the pubkey that</span>
+<span class=ln>21</span><span class=c1># corresponds to the secret key we generated above.</span>
+<span class=ln>22</span><span class=n>scriptPubKey</span> <span class=o>=</span> <span class=n>CScript</span><span class=p>([</span><span class=n>OP_DUP</span><span class=p>,</span> <span class=n>OP_HASH160</span><span class=p>,</span> <span class=n>Hash160</span><span class=p>(</span><span class=n>seckey</span><span class=o>.</span><span class=n>pub</span><span class=p>),</span> <span class=n>OP_EQUALVERIFY</span><span class=p>,</span> <span class=n>OP_CHECKSIG</span><span class=p>])</span>
 <span class=ln>23</span>
-<span class=ln>24</span>
-<span class=ln>25</span><span class=c># [Sections]</span>
-<span class=ln>26</span><span class=c># Most options automatically apply to mainnet, testnet, and regtest networks.</span>
-<span class=ln>27</span><span class=c># If you want to confine an option to just one network, you should add it in the relevant section.</span>
-<span class=ln>28</span><span class=c># EXCEPTIONS: The options addnode, connect, port, bind, rpcport, rpcbind and wallet</span>
-<span class=ln>29</span><span class=c># only apply to mainnet unless they appear in the appropriate section below.</span>
-<span class=ln>30</span>
-<span class=ln>31</span><span class=c># Options only for mainnet</span>
-<span class=ln>32</span><span class=p>[</span><span class=nx>main</span><span class=p>]</span>
-<span class=ln>33</span>
-<span class=ln>34</span><span class=c># Options only for testnet</span>
-<span class=ln>35</span><span class=p>[</span><span class=nx>test</span><span class=p>]</span>
-<span class=ln>36</span>
-<span class=ln>37</span><span class=c># Options only for regtest</span>
-<span class=ln>38</span><span class=p>[</span><span class=nx>regtest</span><span class=p>]</span>
-<span class=ln>39</span>
-<span class=ln>40</span><span class=c># Options only for signet</span>
-<span class=ln>41</span><span class=p>[</span><span class=nx>regtest</span><span class=p>]</span>
-</code></pre></div><h4 id=3-run-bitcoin>3. Run Bitcoin</h4>
-<p>You can start the node by running <code>bitcoind</code>. You should see youre node booting up and starting to
-sync. Syncing on testnet takes a few hours and with our configuration it will eat up around 40gb
-of disk space.</p>
-<p>If you'd prefer to start a <code>bitcoind</code> as a background process you need to run it with daemon mode
-enabled eg: <code>bitcoind -daemon</code>. To see output as you did before you can see the logs in
-<code>.bitcoin/testnet3/debug.log</code>.</p>
-<h2 id=congratulations->Congratulations 🎉</h2>
-<p>You're running Bitcoin.</p>
-<h2 id=run-on-other-networks>Run on other networks</h2>
-<p>In order to connect to networks other than <code>testnet</code> (the one we used in the example config file), you'll need to make some modifications.</p>
-<h4 id=mainnet>Mainnet</h4>
-<p>Modify the config:</p>
-<ol>
-<li>Under <code>[chain]</code> replace <code>testnet=1</code> with <code>mainnet=1</code>.</li>
-</ol>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-toml data-lang=toml><span class=ln>1</span><span class=c># [chain]</span>
-<span class=ln>2</span><span class=nx>mainnet</span><span class=p>=</span><span class=mi>1</span>
-</code></pre></div><h4 id=signet>Signet</h4>
-<p>Modify the config:</p>
-<ol>
-<li>Under <code>[chain]</code> replace <code>testnet=1</code> with <code>signet=1</code>.</li>
-</ol>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-toml data-lang=toml><span class=ln>1</span><span class=c># [chain]</span>
-<span class=ln>2</span><span class=nx>signet</span><span class=p>=</span><span class=mi>1</span>
-</code></pre></div><h4 id=regtest>Regtest</h4>
-<p>Modify the config:</p>
-<ol>
-<li>Under <code>[chain]</code> replace <code>testnet=1</code> with <code>regtest=1</code>.</li>
-</ol>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-toml data-lang=toml><span class=ln>1</span><span class=c># [chain]</span>
-<span class=ln>2</span><span class=nx>regtest</span><span class=p>=</span><span class=mi>1</span>
-</code></pre></div><ol start=2>
-<li>Add the following to the <code>bitcoin.conf</code> file</li>
-</ol>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-toml data-lang=toml><span class=ln>1</span><span class=c># [relay]</span>
-<span class=ln>2</span><span class=nx>minrelaytxfee</span><span class=p>=</span><span class=mf>0.00001</span>
-</code></pre></div>
-<div class="pager pager_lean">
+<span class=ln>24</span><span class=n>destination</span> <span class=o>=</span> <span class=n>CBitcoinAddress</span><span class=p>(</span><span class=s1>&#39;bcrt1q05cfmjm79ujnnpe2r8wr5kv3kcrtsq3jec3n0l&#39;</span><span class=p>)</span><span class=o>.</span><span class=n>to_scriptPubKey</span><span class=p>()</span>
+<span class=ln>25</span>
+<span class=ln>26</span><span class=c1># Create the txout. This time we create the scriptPubKey from a Bitcoin address.</span>
+<span class=ln>27</span><span class=n>txout</span> <span class=o>=</span> <span class=n>CMutableTxOut</span><span class=p>(</span><span class=n>amount_less_fee</span><span class=p>,</span> <span class=n>destination</span><span class=p>)</span>
+<span class=ln>28</span>
+<span class=ln>29</span><span class=c1># Create the unsigned transaction.</span>
+<span class=ln>30</span><span class=n>tx</span> <span class=o>=</span> <span class=n>CMutableTransaction</span><span class=p>([</span><span class=n>txin</span><span class=p>],</span> <span class=p>[</span><span class=n>txout</span><span class=p>])</span>
+<span class=ln>31</span>
+<span class=ln>32</span><span class=c1># Calculate the signature hash for that transaction.</span>
+<span class=ln>33</span><span class=n>sighash</span> <span class=o>=</span> <span class=n>SignatureHash</span><span class=p>(</span><span class=n>scriptPubKey</span><span class=p>,</span> <span class=n>tx</span><span class=p>,</span> <span class=mi>0</span><span class=p>,</span> <span class=n>SIGHASH_ALL</span><span class=p>)</span>
+<span class=ln>34</span>
+<span class=ln>35</span><span class=c1># Now sign it. We have to append the type of signature we want to the end, in</span>
+<span class=ln>36</span><span class=c1># this case the usual SIGHASH_ALL.</span>
+<span class=ln>37</span><span class=n>sig</span> <span class=o>=</span> <span class=n>seckey</span><span class=o>.</span><span class=n>sign</span><span class=p>(</span><span class=n>sighash</span><span class=p>)</span> <span class=o>+</span> <span class=nb>bytes</span><span class=p>([</span><span class=n>SIGHASH_ALL</span><span class=p>])</span>
+<span class=ln>38</span>
+<span class=ln>39</span><span class=c1># Set the scriptSig of our transaction input appropriately.</span>
+<span class=ln>40</span><span class=n>txin</span><span class=o>.</span><span class=n>scriptSig</span> <span class=o>=</span> <span class=n>CScript</span><span class=p>([</span><span class=n>sig</span><span class=p>,</span> <span class=n>seckey</span><span class=o>.</span><span class=n>pub</span><span class=p>])</span>
+<span class=ln>41</span>
+<span class=ln>42</span><span class=c1># Done! Print the transaction</span>
+<span class=ln>43</span><span class=nb>print</span><span class=p>(</span><span class=n>b2x</span><span class=p>(</span><span class=n>tx</span><span class=o>.</span><span class=n>serialize</span><span class=p>()))</span>
+<span class=ln>44</span><span class=c1># outputs: 0100000001e0e94568c76c9802eaf80cae8aa7133588be5c0a644e58b12c4042a208446ac3000000006b4830450221009abd104d04ecf518c288979ce387defe2ac1d25cb2cf4b3cd97f54e182ef0c3c022055a558c31bcb79237bb75a6659d07eee7875046693818d6f6f0e6064e733c72401210378d430274f8c5ec1321338151e9f27f4c676a008bdf8638d07c0b6be9ab35c71ffffffff01c09ee605000000001600147d309dcb7e2f2539872a19dc3a5991b606b8023200000000</span>
+</code></pre></div><p>Now that we have our signed and encoded transaction, we can broadcast it using
+<a href=https://chainquery.com/bitcoin-cli/sendrawtransaction>sendrawtransaction</a>:</p>
+<p><code>bitcoin-cli sendrawtransaction &lt;transaction></code></p>
+<p>If the transaction is broadcasted successfully a transaction id will be returned. In this case it was <code>cd6bac96d5f43afaa3663647ed7e7301925ac7760d0d22f1fb7f540a7c080dd7</code>.</p>
+<div class=pager>
+<div class="pager_item prev">
+<a href=https://bitcoinpy.dev/docs/buidl/p2pkh/ class="pager_link button" title="P2PKH address">
+<span class=pager_label>P2PKH address</span>
+</a>
+</div>
+<div class="pager_item next">
+<a href=https://bitcoinpy.dev/docs/buidl/p2sh-multisig/ class="pager_link button" title="P2SH address (multisig)">
+<span class=pager_label>P2SH address (multisig)</span>
+</a>
+</div>
 </div>
 </main>
 </div>

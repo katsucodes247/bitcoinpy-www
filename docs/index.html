@@ -8,7 +8,7 @@
 <link rel=mask-icon href=https://bitcoinpy.dev/favicons/safari-pinned-tab.svg color=#004750>
 <link rel="shortcut icon" href=https://bitcoinpy.dev/favicons/favicon.ico>
 <meta name=msapplication-config content="https://bitcoinpy.dev/favicons/browserconfig.xml">
-<title>Overview | BitcoinPy - Bitcoin Python Resource</title><meta property="og:title" content="Overview">
+<title>Overview | BitcoinPy</title><meta property="og:title" content="Overview">
 <meta property="og:description" content>
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://bitcoinpy.dev/docs/">
@@ -16,7 +16,7 @@
 <meta itemprop=description content><meta name=twitter:card content="summary">
 <meta name=twitter:title content="Overview">
 <meta name=twitter:description content>
-<link rel=stylesheet href=https://bitcoinpy.dev/css/styles.3c1c2e57871ba783a4d85c82cb38c2dfd4be3ee80d6cbdbaa129405d9af1b18c43afa4f48e280dc331df5f85a5ee0949e4757cf2a98b54a8125d4bbb0dea11c5.css integrity="sha512-PBwuV4cbp4Ok2FyCyzjC39S+PugNbL26oSlAXZrxsYxDr6T0jigNwzHfX4Wl7glJ5HV88qmLVKgSXUu7DeoRxQ=="><link rel=stylesheet href=/overrides.css>
+<link rel=stylesheet href=https://bitcoinpy.dev/css/styles.d68a90e27a257ef394ed19bb97738b1d590d21aa0e0b5a5025613c6638df6b18b2747e45b95ec3ecb5b437a73434cb6eed001de3b302393b9b0cdb25136c2bba.css integrity="sha512-1oqQ4nolfvOU7Rm7l3OLHVkNIaoOC1pQJWE8ZjjfaxiydH5FuV7D7LW0N6c0NMtu7QAd47MCOTubDNslE2wrug=="><link rel=stylesheet href=/overrides.css>
 </head>
 <body class=page-section id=pagetop>
 <header class=nav_header>
@@ -24,7 +24,7 @@
 <a href=https://bitcoinpy.dev/ class=nav_brand>
 <picture data-lit=https://bitcoinpy.dev/images/bitcoinpy-light.svg data-dark=https://bitcoinpy.dev/images/bitcoinpy.svg>
 <source srcset=https://bitcoinpy.dev/images/bitcoinpy.svg media="(prefers-color-scheme: dark)">
-<img srcset=https://bitcoinpy.dev/images/bitcoinpy-light.svg alt="BitcoinPy - Bitcoin Python Resource Logo">
+<img srcset=https://bitcoinpy.dev/images/bitcoinpy-light.svg alt="BitcoinPy Logo">
 </picture>
 <label class="nav_toggle toggle" title="Site Menu" role=button><svg class="icon icon_harmburger"><use xlink:href="#harmburger"/></svg>
 </label>
@@ -69,102 +69,80 @@
 <section id=docs-overview>
 <section class="section aside_inner">
 <h2 class=section_title><a href=https://bitcoinpy.dev/docs/running-bitcoin/ class=group>Running Bitcoin</a></h2>
-<section id=docs-running-bitcoin>
-<h3 class=section_link><a id=docs-regtest-guide href=https://bitcoinpy.dev/docs/running-bitcoin/regtest-guide/>Regtest Guide</a></h3><nav id=TableOfContents>
-<ul>
-<li>
-<ul>
-<li>
-<ul>
-<li><a href=#generate-address>Generate address</a></li>
-<li><a href=#generate-mine-blocks>Generate (mine) blocks</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</nav>
 </section>
+<section class="section aside_inner">
+<h2 class=section_title><a href=https://bitcoinpy.dev/docs/intro-to-transactions/ class=group>Intro to Transactions</a></h2>
 </section>
 <section class="section aside_inner">
 <h2 class=section_title><a href=https://bitcoinpy.dev/docs/python-bitcoinlib/ class=group>python-bitcoinlib</a></h2>
 <section id=docs-python-bitcoinlib>
-<h3 class=section_link><a id=docs-transactions href=https://bitcoinpy.dev/docs/python-bitcoinlib/transactions/>Transactions</a></h3><nav id=TableOfContents>
-<ul>
-<li><a href=#p2wpkh>P2WPKH</a>
+<h3 class=section_link><a id=docs-p2wpkh-address href=https://bitcoinpy.dev/docs/python-bitcoinlib/p2wpkh/>P2WPKH address</a></h3><nav id=TableOfContents>
 <ul>
 <li><a href=#generate-address>Generate address</a></li>
 <li><a href=#spend-from-address>Spend from address</a></li>
 </ul>
-</li>
-<li><a href=#p2wsh>P2WSH</a>
+</nav>
+<h3 class=section_link><a id=docs-p2wsh-address-multisig href=https://bitcoinpy.dev/docs/python-bitcoinlib/p2wsh-multisig/>P2WSH address (multisig)</a></h3><nav id=TableOfContents>
 <ul>
-<li><a href=#generate-address-singlesig>Generate address (singlesig)</a></li>
-<li><a href=#spend-from-address-singlesig>Spend from address (singlesig)</a></li>
-<li><a href=#generate-address-multisig>Generate address (multisig)</a></li>
-<li><a href=#spend-from-address-multisig>Spend from address (multisig)</a></li>
-</ul>
-</li>
-<li><a href=#p2pkh>P2PKH</a>
-<ul>
-<li><a href=#generate-address-1>Generate address</a></li>
-<li><a href=#spend-from-address-1>Spend from address</a></li>
-</ul>
-</li>
-<li><a href=#p2sh>P2SH</a>
-<ul>
-<li><a href=#generate-address-singlesig-1>Generate address (singlesig)</a></li>
-<li><a href=#spend-from-address-singlesig-1>Spend from address (singlesig)</a></li>
-<li><a href=#generate-address-multisig-1>Generate address (multisig)</a></li>
-<li><a href=#spend-from-address-multisig-1>Spend from address (multisig)</a></li>
-</ul>
-</li>
-<li><a href=#p2tr>P2TR</a></li>
+<li><a href=#generate-address-1-of-1>Generate address (1-of-1)</a></li>
+<li><a href=#spend-from-address-1-of-1>Spend from address (1-of-1)</a></li>
+<li><a href=#generate-address-2-of-2>Generate address (2-of-2)</a></li>
+<li><a href=#spend-from-address-2-of-2>Spend from address (2-of-2)</a></li>
 </ul>
 </nav>
+<h3 class=section_link><a id=docs-p2pkh-address href=https://bitcoinpy.dev/docs/python-bitcoinlib/p2pkh/>P2PKH address</a></h3><nav id=TableOfContents>
+<ul>
+<li><a href=#generate-address>Generate address</a></li>
+<li><a href=#spend-from-address>Spend from address</a></li>
+</ul>
+</nav>
+<h3 class=section_link><a id=docs-p2sh-address-multisig href=https://bitcoinpy.dev/docs/python-bitcoinlib/p2sh-multisig/>P2SH address (multisig)</a></h3><nav id=TableOfContents>
+<ul>
+<li>
+<ul>
+<li><a href=#generate-address-1-of-1>Generate address (1-of-1)</a></li>
+<li><a href=#spend-from-address-1-of-1>Spend from address (1-of-1)</a></li>
+</ul>
+</li>
+<li><a href=#generate-address-2-of-2>Generate address (2-of-2)</a></li>
+<li><a href=#spend-from-address-2-of-2>Spend from address (2-of-2)</a></li>
+</ul>
+</nav>
+<h3 class=section_link><a id=docs-p2tr-address href=https://bitcoinpy.dev/docs/python-bitcoinlib/p2tr/>P2TR address</a></h3><nav id=TableOfContents></nav>
 </section>
 </section>
 <section class="section aside_inner">
 <h2 class=section_title><a href=https://bitcoinpy.dev/docs/buidl/ class=group>buidl</a></h2>
 <section id=docs-buidl>
-<h3 class=section_link><a id=docs-transactions href=https://bitcoinpy.dev/docs/buidl/transactions/>Transactions</a></h3><nav id=TableOfContents>
-<ul>
-<li><a href=#p2wpkh>P2WPKH</a>
+<h3 class=section_link><a id=docs-p2wpkh-address href=https://bitcoinpy.dev/docs/buidl/p2wpkh/>P2WPKH address</a></h3><nav id=TableOfContents>
 <ul>
 <li><a href=#generate-address>Generate address</a></li>
 <li><a href=#spend-from-address>Spend from address</a></li>
 </ul>
-</li>
-<li><a href=#p2wsh>P2WSH</a>
+</nav>
+<h3 class=section_link><a id=docs-p2wsh-address-multisig href=https://bitcoinpy.dev/docs/buidl/p2wsh-multisig/>P2WSH address (multisig)</a></h3><nav id=TableOfContents>
 <ul>
-<li><a href=#generate-address-singlesig>Generate address (singlesig)</a></li>
-<li><a href=#spend-from-address-singlesig>Spend from address (singlesig)</a></li>
-<li><a href=#generate-address-multisig>Generate address (multisig)</a></li>
-<li><a href=#spend-from-address-multisig>Spend from address (multisig)</a></li>
-</ul>
-</li>
-<li><a href=#p2pkh>P2PKH</a>
-<ul>
-<li><a href=#generate-address-1>Generate address</a></li>
-<li><a href=#spend-from-address-1>Spend from address</a></li>
-</ul>
-</li>
-<li><a href=#p2sh>P2SH</a>
-<ul>
-<li><a href=#generate-address-singlesig-1>Generate address (singlesig)</a></li>
-<li><a href=#spend-from-address-singlesig-1>Spend from address (singlesig)</a></li>
-<li><a href=#generate-address-multisig-1>Generate address (multisig)</a></li>
-<li><a href=#spend-from-address-multisig-1>Spend from address (multisig)</a></li>
-</ul>
-</li>
-<li><a href=#p2tr>P2TR</a>
-<ul>
-<li><a href=#generate-address-2>Generate address</a></li>
-<li><a href=#spend-from-address-2>Spend from address</a></li>
-</ul>
-</li>
+<li><a href=#generate-address-1-of-1>Generate address (1-of-1)</a></li>
+<li><a href=#spend-from-address-1-of-1>Spend from address (1-of-1)</a></li>
+<li><a href=#generate-address-2-of-2>Generate address (2-of-2)</a></li>
+<li><a href=#spend-from-address-2-of-2>Spend from address (2-of-2)</a></li>
 </ul>
 </nav>
+<h3 class=section_link><a id=docs-p2pkh-address href=https://bitcoinpy.dev/docs/buidl/p2pkh/>P2PKH address</a></h3><nav id=TableOfContents>
+<ul>
+<li><a href=#generate-address>Generate address</a></li>
+<li><a href=#spend-from-address>Spend from address</a></li>
+</ul>
+</nav>
+<h3 class=section_link><a id=docs-p2sh-address-multisig href=https://bitcoinpy.dev/docs/buidl/p2sh-multisig/>P2SH address (multisig)</a></h3><nav id=TableOfContents>
+<ul>
+<li><a href=#generate-address-1-of-1>Generate address (1-of-1)</a></li>
+<li><a href=#spend-from-address-1-of-1>Spend from address (1-of-1)</a></li>
+<li><a href=#generate-address-2-of-2>Generate address (2-of-2)</a></li>
+<li><a href=#spend-from-address-2-of-2>Spend from address (2-of-2)</a></li>
+</ul>
+</nav>
+<h3 class=section_link><a id=docs-p2tr-address href=https://bitcoinpy.dev/docs/buidl/p2tr/>P2TR address</a></h3><nav id=TableOfContents></nav>
 </section>
 </section>
 </section>

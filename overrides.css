@@ -15,3 +15,11 @@ code.noClass {
 .panel_expand {
     font-size: 1rem;
 }
+
+.section_link {
+    /* font-size: 0.85em; */
+}
+
+.toc_item {
+    /* font-size: 0.85rem; */
+}
