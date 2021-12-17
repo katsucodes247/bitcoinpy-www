@@ -23,3 +23,8 @@ code.noClass {
 .toc_item {
     /* font-size: 0.85rem; */
 }
+
+.aside { 
+    padding: 0rem 1.5rem 1rem 0;
+    margin-top: 0;
+}
