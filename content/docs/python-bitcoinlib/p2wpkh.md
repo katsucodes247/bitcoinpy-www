@@ -3,15 +3,6 @@ title: "P2WPKH address"
 weight: 2
 ---
 
-P2WPKH is an abbreviation for Pay to Witness Public Key Hash. P2WPKH is the **native Segwit**
-version of a P2PKH.
-
-P2WPKH has the same semantics as P2PKH, except that the signature is not placed at the same
-location as before. Segregated Witness (SegWit) moves the proof of ownership from the scriptSig
-part of the transaction to a new part called the witness of the input. 
-
-scriptPubKey: `0` `<witnessPubKeyHash>`
-
 ## Generate address
 
 ```py
@@ -19,7 +10,7 @@ import hashlib
 
 from bitcoin import SelectParams
 from bitcoin.core import b2x, b2lx, lx, COIN, COutPoint, CTxOut, CTxIn, CTxInWitness, CTxWitness, CScriptWitness, CMutableTransaction, Hash160
-from bitcoin.core.script import CScript, OP_0, SignatureHash, SIGHASH_ALL, SIGVERSION_WITNESS_V0
+from bitcoin.core.script import CScript, OP_0, OP_CHECKSIG, SignatureHash, SIGHASH_ALL, SIGVERSION_WITNESS_V0
 from bitcoin.wallet import CBitcoinSecret, P2WPKHBitcoinAddress, CBitcoinAddress
 from bitcoin.rpc import Proxy
 
@@ -30,10 +21,16 @@ SelectParams("regtest")
 h = hashlib.sha256(b'correct horse battery staple').digest()
 seckey = CBitcoinSecret.from_secret_bytes(h)
 
-# Create an address from that private key.
 public_key = seckey.pub
-scriptPubKey = CScript([OP_0, Hash160(public_key)])
-address = P2WPKHBitcoinAddress.from_scriptPubKey(scriptPubKey)
+script_pubkey = CScript([OP_0, Hash160(public_key)])
+address = P2WPKHBitcoinAddress.from_scriptPubKey(script_pubkey)
+
+# Create a witnessScript. witnessScript in SegWit is equivalent to redeemScript in P2PKH
+# transaction, however, while the redeemScript of a P2SH transaction is included in the ScriptSig,
+# the WitnessScript is included in the Witness field, making P2WPKH inputs cheaper to spend than
+# P2PKH inputs.
+witness_script = address.to_redeemScript()
+
 print('Address:', str(address))
 # outputs: Address: bcrt1q08alc0e5ua69scxhvyma568nvguqccrvah6ml0
 ```
@@ -79,7 +76,7 @@ tx = CMutableTransaction([txin], [txout])
 
 # Calculate the signature hash for that transaction.
 sighash = SignatureHash(
-    script=address.to_redeemScript(),
+    script=CScript([seckey.pub, OP_CHECKSIG]),
     txTo=tx,
     inIdx=0,
     hashtype=SIGHASH_ALL,
@@ -89,7 +86,7 @@ sighash = SignatureHash(
 signature = seckey.sign(sighash) + bytes([SIGHASH_ALL])
 
 # Construct a witness for this transaction input. The public key is given in
-# the witness so that the appropriate redeem_script can be calculated by
+# the witness so that the appropriate redeemScript can be calculated by
 # anyone. The original scriptPubKey had only the Hash160 hash of the public
 # key, not the public key itself, and the redeem script can be entirely
 # re-constructed (from implicit template) if given just the public key. So the

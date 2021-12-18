@@ -3,15 +3,6 @@ title: "P2WPKH address"
 weight: 2
 ---
 
-P2WPKH is an abbreviation for Pay to Witness Public Key Hash. P2WPKH is the **native Segwit** 
-version of a P2PKH.
-
-P2WPKH has the same semantics as P2PKH, except that the signature is not placed at the same
-location as before. Segregated Witness (SegWit) moves the proof of ownership from the scriptSig
-part of the transaction to a new part called the witness of the input. 
-
-scriptPubKey: `0` `<witnessPubKeyHash>`
-
 ## Generate address
 
 ```py

@@ -3,22 +3,10 @@ title: "P2SH address (multisig)"
 weight: 5
 ---
 
-P2SH is an abbreviation for Pay to Script Hash. It allows you to lock coins to the hash of a
-script, and you then provide that original script when you come unlock those coins.
-
-{{< tip >}}
-"Script Hash addresses" are intended for multisig or other "smart contract" address. If all
-you wish to do is receive payment to an address (without multisig) it's better to use P2WPKH as
-it's cheaper to spend from those addresses.
-{{< /tip >}}
-
-scriptPubKey: `OP_HASH160` `<scriptHash>` `OP_EQUAL`
-
 {{< tip "warning" >}}
 The example for 1-of-1 should only serve as an example. We don't recommend using it in the real
 world because it is not its intention. Instead of 1-of-1 use P2PKH!
 {{< /tip >}}
-
 
 ## Generate address (1-of-1)
 

@@ -3,10 +3,6 @@ title: "P2PKH address"
 weight: 4
 ---
 
-P2PKH is an abbreviation for Pay to Public Key Hash.
-
-scriptPubKey: `OP_DUP` `OP_HASH160` `<pubKeyHash>` `OP_EQUALVERIFY` `OP_CHECKSIG`
-
 ## Generate address
 
 ```py
@@ -23,6 +19,9 @@ SelectParams('regtest')
 # Create the (in)famous correct brainwallet secret key.
 h = hashlib.sha256(b'correct horse battery staple').digest()
 seckey = CBitcoinSecret.from_secret_bytes(h)
+
+# Create a redeemScript used to unlock bitcoins
+redeem_script = CScript([OP_DUP, OP_HASH160, Hash160(seckey.pub), OP_EQUALVERIFY, OP_CHECKSIG])
 
 public_key = seckey.pub
 address = P2PKHBitcoinAddress.from_pubkey(public_key)
@@ -61,23 +60,15 @@ amount_less_fee = amount * 0.99
 # defaults to being empty.
 txin = CMutableTxIn(COutPoint(txid, vout))
 
-# We also need the scriptPubKey of the output we're spending because
-# SignatureHash() replaces the transaction scriptSig's with it.
-#
-# Here we'll create that scriptPubKey from scratch using the pubkey that
-# corresponds to the secret key we generated above.
-scriptPubKey = CScript([OP_DUP, OP_HASH160, Hash160(seckey.pub), OP_EQUALVERIFY, OP_CHECKSIG])
-
+# Specify a destination address and create the txout.
 destination = CBitcoinAddress('bcrt1q05cfmjm79ujnnpe2r8wr5kv3kcrtsq3jec3n0l').to_scriptPubKey()
-
-# Create the txout. This time we create the scriptPubKey from a Bitcoin address.
 txout = CMutableTxOut(amount_less_fee, destination)
 
 # Create the unsigned transaction.
 tx = CMutableTransaction([txin], [txout])
 
 # Calculate the signature hash for that transaction.
-sighash = SignatureHash(scriptPubKey, tx, 0, SIGHASH_ALL)
+sighash = SignatureHash(redeem_script, tx, 0, SIGHASH_ALL)
 
 # Now sign it. We have to append the type of signature we want to the end, in
 # this case the usual SIGHASH_ALL.

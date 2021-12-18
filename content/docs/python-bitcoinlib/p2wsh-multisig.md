@@ -3,24 +3,6 @@ title: "P2WSH address (multisig)"
 weight: 3
 ---
 
-P2WSH is an abbreviation for Pay to Witness Script Hash. P2WSH is the **native Segwit** version of
-a P2SH.
-
-{{< tip >}}
-"Script Hash addresses" are intended for multisig or other "smart contract" address. If all
-you wish to do is receive payment to an address (without multisig) it's better to use P2WPKH as
-it's cheaper to spend from those addresses.
-{{< /tip >}}
-
-P2WSH has the same semantics as P2SH, except that the signature is not placed at the same location
-as before. Segregated Witness (SegWit) moves the proof of ownership from the scriptSig part of the
-transaction to a new part called the witness of the input. Script Hash allows you to lock coins to
-the hash of a script, and you then provide that original script when you come unlock those coins.
-
-scriptPubKey: `0` `<witnessScriptHash>`
-
-witnessScriptHash: `sha256(pubKey OP_CHECKSIG)`
-
 {{< tip "warning" >}}
 The example for 1-of-1 should only serve as an example. We don't recommend using it in the real
 world because it is not its intention. Instead of 1-of-1 use P2PKH!
@@ -43,15 +25,17 @@ SelectParams("regtest")
 h = hashlib.sha256(b'correct horse battery staple').digest()
 seckey = CBitcoinSecret.from_secret_bytes(h)
 
-# Create a witnessScript and corresponding redeemScript. Similar to a scriptPubKey
-# the redeemScript must be satisfied for the funds to be spent.
-redeemScript = CScript([seckey.pub, OP_CHECKSIG])
-scriptHash = hashlib.sha256(redeemScript).digest()
-scriptPubKey = CScript([OP_0, scriptHash])
+# Create a witnessScript. witnessScript in SegWit is equivalent to redeemScript in P2SH transaction,
+# however, while the redeemScript of a P2SH transaction is included in the ScriptSig, the 
+# WitnessScript is included in the Witness field, making P2WSH inputs cheaper to spend than P2SH 
+# inputs.
+witness_script = CScript([seckey.pub, OP_CHECKSIG])
+script_hash = hashlib.sha256(witness_script).digest()
+script_pubkey = CScript([OP_0, script_hash])
 
 # Convert the P2WSH scriptPubKey to a base58 Bitcoin address and print it.
 # You'll need to send some funds to it to create a txout to spend.
-address = P2WSHBitcoinAddress.from_scriptPubKey(scriptPubKey)
+address = P2WSHBitcoinAddress.from_scriptPubKey(script_pubkey)
 print('Address:', str(address))
 # outputs: Address: bcrt1qgatzazqjupdalx4v28pxjlys2s3yja9gr3xuca3ugcqpery6c3sqx9g8h7
 ```
@@ -96,7 +80,7 @@ tx = CMutableTransaction([txin], [txout])
 
 # Calculate the signature hash for that transaction.
 sighash = SignatureHash(
-    script=redeemScript,
+    script=witness_script,
     txTo=tx,
     inIdx=0,
     hashtype=SIGHASH_ALL,
@@ -109,7 +93,7 @@ sighash = SignatureHash(
 sig = seckey.sign(sighash) + bytes([SIGHASH_ALL])
 
 # Construct a witness for this P2WSH transaction and add to tx.
-witness = CScriptWitness([sig, redeemScript])
+witness = CScriptWitness([sig, witness_script])
 tx.wit = CTxWitness([CTxInWitness(witness)])
 
 # Done! Print the transaction
@@ -149,15 +133,17 @@ seckey1 = CBitcoinSecret.from_secret_bytes(h1)
 h2 = hashlib.sha256(b'correct horse battery staple second').digest()
 seckey2 = CBitcoinSecret.from_secret_bytes(h2)
 
-# Create a witnessScript and corresponding redeemScript. Similar to a scriptPubKey
-# the redeemScript must be satisfied for the funds to be spent.
-redeemScript = CScript([OP_2, seckey1.pub, seckey2.pub, OP_2, OP_CHECKMULTISIG])
-scriptHash = hashlib.sha256(redeemScript).digest()
-scriptPubKey = CScript([OP_0, scriptHash])
+# Create a witnessScript. witnessScript in SegWit is equivalent to redeemScript in P2SH transaction,
+# however, while the redeemScript of a P2SH transaction is included in the ScriptSig, the 
+# WitnessScript is included in the Witness field, making P2WSH inputs cheaper to spend than P2SH 
+# inputs.
+witness_script = CScript([OP_2, seckey1.pub, seckey2.pub, OP_2, OP_CHECKMULTISIG])
+script_hash = hashlib.sha256(witness_script).digest()
+script_pubkey = CScript([OP_0, script_hash])
 
 # Convert the P2WSH scriptPubKey to a base58 Bitcoin address and print it.
 # You'll need to send some funds to it to create a txout to spend.
-address = P2WSHBitcoinAddress.from_scriptPubKey(scriptPubKey)
+address = P2WSHBitcoinAddress.from_scriptPubKey(script_pubkey)
 print('Address:', str(address))
 # outputs: Address: bcrt1qljlyqaexx4mmhpl66e6nqdtagjaht87pghuq6p0f98a765c9uj9s3f3ee3
 ```
@@ -202,7 +188,7 @@ tx = CMutableTransaction([txin], [txout])
 
 # Calculate the signature hash for that transaction.
 sighash = SignatureHash(
-    script=redeemScript,
+    script=witness_script,
     txTo=tx,
     inIdx=0,
     hashtype=SIGHASH_ALL,
@@ -216,7 +202,7 @@ sig1 = seckey1.sign(sighash) + bytes([SIGHASH_ALL])
 sig2 = seckey2.sign(sighash) + bytes([SIGHASH_ALL])
 
 # Construct a witness for this P2WSH transaction and add to tx.
-witness = CScriptWitness([b"", *[sig1, sig2], redeemScript])
+witness = CScriptWitness([b"", *[sig1, sig2], witness_script])
 tx.wit = CTxWitness([CTxInWitness(witness)])
 
 # Done! Print the transaction

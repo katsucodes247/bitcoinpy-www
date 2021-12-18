@@ -3,22 +3,10 @@ title: "P2SH address (multisig)"
 weight: 5
 ---
 
-P2SH is an abbreviation for Pay to Script Hash. It allows you to lock coins to the hash of a
-script, and you then provide that original script when you come unlock those coins.
-
-{{< tip >}}
-"Script Hash addresses" are intended for multisig or other "smart contract" address. If all
-you wish to do is receive payment to an address (without multisig) it's better to use P2WPKH as
-it's cheaper to spend from those addresses.
-{{< /tip >}}
-
-scriptPubKey: `OP_HASH160` `<scriptHash>` `OP_EQUAL`
-
 {{< tip "warning" >}}
 The example for 1-of-1 should only serve as an example. We don't recommend using it in the real
 world because it is not its intention. Instead of 1-of-1 use P2PKH!
 {{< /tip >}}
-
 
 ### Generate address (1-of-1)
 
@@ -87,8 +75,6 @@ txin = CMutableTxIn(COutPoint(txid, vout))
 
 # Specify a destination address and create the txout.
 destination = CBitcoinAddress("bcrt1qzw44fxmxs2y39uxtl9ql0sxwpspwd0p8rum3nw").to_scriptPubKey()
-
-# Create the txout. This time we create the scriptPubKey from a Bitcoin address.
 txout = CMutableTxOut(amount_less_fee, destination)
 
 # Create the unsigned transaction.
@@ -122,39 +108,6 @@ Now that we have our signed and encoded transaction, we can broadcast it using
 If the transaction is broadcasted successfully a transaction id will be returned. In this case it
 was `5cf00f81103b8b0283d98cec2f20421496eba6cc0660b263275e06f142686650`.
 
-
-
-```py
-import hashlib
-
-from bitcoin import SelectParams
-from bitcoin.core import b2x, lx, COIN, COutPoint, CMutableTxOut, CMutableTxIn, CMutableTransaction, Hash160
-from bitcoin.core.script import CScript, OP_DUP, OP_HASH160, OP_EQUALVERIFY, OP_CHECKSIG, SignatureHash, SIGHASH_ALL
-from bitcoin.core.scripteval import VerifyScript, SCRIPT_VERIFY_P2SH
-from bitcoin.wallet import CBitcoinAddress, CBitcoinSecret
-
-SelectParams('regtest')
-
-# Create the (in)famous correct brainwallet secret key.
-h = hashlib.sha256(b'correct horse battery staple').digest()
-seckey = CBitcoinSecret.from_secret_bytes(h)
-
-# Create a redeemScript. Similar to a scriptPubKey the redeemScript must be
-# satisfied for the funds to be spent.
-redeem_script = CScript([seckey.pub, OP_CHECKSIG])
-
-# Create the magic P2SH scriptPubKey format from that redeemScript. You should
-# look at the CScript.to_p2sh_scriptPubKey() function in bitcoin.core.script to
-# understand what's happening, as well as read BIP16:
-# https://github.com/bitcoin/bips/blob/master/bip-0016.mediawiki
-script_pubkey = redeem_script.to_p2sh_scriptPubKey()
-
-# Convert the P2SH scriptPubKey to a base58 Bitcoin address and print it.
-# You'll need to send some funds to it to create a txout to spend.
-address = CBitcoinAddress.from_scriptPubKey(script_pubkey)
-print('Address:',str(address))
-# outputs: Address: 2Msc7itHhx2x8MEkTthvtED9pFC36J7QpQb
-```
 
 ## Generate address (2-of-2)
 

@@ -3,10 +3,6 @@ title: "P2PKH address"
 weight: 4
 ---
 
-P2PKH is an abbreviation for Pay to Public Key Hash.
-
-scriptPubKey: `OP_DUP` `OP_HASH160` `<pubKeyHash>` `OP_EQUALVERIFY` `OP_CHECKSIG`
-
 ## Generate address
 
 ```py
