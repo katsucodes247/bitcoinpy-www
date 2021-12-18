@@ -1,6 +1,6 @@
 <!doctype html><html lang=en class=dark>
 <head><meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.90.1">
+<meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.91.0">
 <link rel=apple-touch-icon sizes=180x180 href=https://bitcoinpy.dev/favicons/apple-touch-icon.png>
 <link rel=icon type=image/png sizes=32x32 href=https://bitcoinpy.dev/favicons/favicon-32x32.png>
 <link rel=icon type=image/png sizes=16x16 href=https://bitcoinpy.dev/favicons/favicon-16x16.png>
@@ -9,29 +9,17 @@
 <link rel="shortcut icon" href=https://bitcoinpy.dev/favicons/favicon.ico>
 <meta name=msapplication-config content="https://bitcoinpy.dev/favicons/browserconfig.xml">
 <title>P2WPKH address | BitcoinPy</title><meta property="og:title" content="P2WPKH address">
-<meta property="og:description" content="P2WPKH is an abbreviation for Pay to Witness Public Key Hash. P2WPKH is the native Segwit version of a P2PKH.
-P2WPKH has the same semantics as P2PKH, except that the signature is not placed at the same location as before. Segregated Witness (SegWit) moves the proof of ownership from the scriptSig part of the transaction to a new part called the witness of the input.
-scriptPubKey: 0 <witnessPubKeyHash>
-Generate address 1import hashlib 2 3from bitcoin import SelectParams 4from bitcoin.">
+<meta property="og:description" content="Generate address 1import hashlib 2 3from bitcoin import SelectParams 4from bitcoin.core import b2x, b2lx, lx, COIN, COutPoint, CTxOut, CTxIn, CTxInWitness, CTxWitness, CScriptWitness, CMutableTransaction, Hash160 5from bitcoin.core.script import CScript, OP_0, OP_CHECKSIG, SignatureHash, SIGHASH_ALL, SIGVERSION_WITNESS_V0 6from bitcoin.wallet import CBitcoinSecret, P2WPKHBitcoinAddress, CBitcoinAddress 7from bitcoin.rpc import Proxy 8 9SelectParams(&#34;regtest&#34;) 10 11 12# Create the (in)famous correct brainwallet secret key. 13h = hashlib.sha256(b'correct horse battery staple').digest() 14seckey = CBitcoinSecret.from_secret_bytes(h) 15 16public_key = seckey.pub 17script_pubkey = CScript([OP_0, Hash160(public_key)]) 18address = P2WPKHBitcoinAddress.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://bitcoinpy.dev/docs/python-bitcoinlib/p2wpkh/"><meta property="article:section" content="docs">
 <meta itemprop=name content="P2WPKH address">
-<meta itemprop=description content="P2WPKH is an abbreviation for Pay to Witness Public Key Hash. P2WPKH is the native Segwit version of a P2PKH.
-P2WPKH has the same semantics as P2PKH, except that the signature is not placed at the same location as before. Segregated Witness (SegWit) moves the proof of ownership from the scriptSig part of the transaction to a new part called the witness of the input.
-scriptPubKey: 0 <witnessPubKeyHash>
-Generate address 1import hashlib 2 3from bitcoin import SelectParams 4from bitcoin.">
-<meta itemprop=wordCount content="549">
+<meta itemprop=description content="Generate address 1import hashlib 2 3from bitcoin import SelectParams 4from bitcoin.core import b2x, b2lx, lx, COIN, COutPoint, CTxOut, CTxIn, CTxInWitness, CTxWitness, CScriptWitness, CMutableTransaction, Hash160 5from bitcoin.core.script import CScript, OP_0, OP_CHECKSIG, SignatureHash, SIGHASH_ALL, SIGVERSION_WITNESS_V0 6from bitcoin.wallet import CBitcoinSecret, P2WPKHBitcoinAddress, CBitcoinAddress 7from bitcoin.rpc import Proxy 8 9SelectParams(&#34;regtest&#34;) 10 11 12# Create the (in)famous correct brainwallet secret key. 13h = hashlib.sha256(b'correct horse battery staple').digest() 14seckey = CBitcoinSecret.from_secret_bytes(h) 15 16public_key = seckey.pub 17script_pubkey = CScript([OP_0, Hash160(public_key)]) 18address = P2WPKHBitcoinAddress.">
+<meta itemprop=wordCount content="527">
 <meta itemprop=keywords content><meta name=twitter:card content="summary">
 <meta name=twitter:title content="P2WPKH address">
-<meta name=twitter:description content="P2WPKH is an abbreviation for Pay to Witness Public Key Hash. P2WPKH is the native Segwit version of a P2PKH.
-P2WPKH has the same semantics as P2PKH, except that the signature is not placed at the same location as before. Segregated Witness (SegWit) moves the proof of ownership from the scriptSig part of the transaction to a new part called the witness of the input.
-scriptPubKey: 0 <witnessPubKeyHash>
-Generate address 1import hashlib 2 3from bitcoin import SelectParams 4from bitcoin.">
+<meta name=twitter:description content="Generate address 1import hashlib 2 3from bitcoin import SelectParams 4from bitcoin.core import b2x, b2lx, lx, COIN, COutPoint, CTxOut, CTxIn, CTxInWitness, CTxWitness, CScriptWitness, CMutableTransaction, Hash160 5from bitcoin.core.script import CScript, OP_0, OP_CHECKSIG, SignatureHash, SIGHASH_ALL, SIGVERSION_WITNESS_V0 6from bitcoin.wallet import CBitcoinSecret, P2WPKHBitcoinAddress, CBitcoinAddress 7from bitcoin.rpc import Proxy 8 9SelectParams(&#34;regtest&#34;) 10 11 12# Create the (in)famous correct brainwallet secret key. 13h = hashlib.sha256(b'correct horse battery staple').digest() 14seckey = CBitcoinSecret.from_secret_bytes(h) 15 16public_key = seckey.pub 17script_pubkey = CScript([OP_0, Hash160(public_key)]) 18address = P2WPKHBitcoinAddress.">
 <link rel=stylesheet href=https://bitcoinpy.dev/css/styles.541f68813f7aabaa275655211eb16e12b93f9d0c9ffc8faf0837e80f8de16a2767afae0d7bf8121043b9ef6cbd23accc183cd8175283b1014fe90ca65e8617e1.css integrity="sha512-VB9ogT96q6onVlUhHrFuErk/nQyf/I+vCDfoD43haidnr64Ne/gSEEO572y9I6zMGDzYF1KDsQFP6QymXoYX4Q=="><link rel=stylesheet href=/overrides.css>
-<meta name=description content="P2WPKH is an abbreviation for Pay to Witness Public Key Hash. P2WPKH is the native Segwit version of a P2PKH.
-P2WPKH has the same semantics as P2PKH, except that the signature is not placed at the same location as before. Segregated Witness (SegWit) moves the proof of ownership from the scriptSig part of the transaction to a new part called the witness of the input.
-scriptPubKey: 0 &amp;lt;witnessPubKeyHash&amp;gt;
-Generate address 1import hashlib 2 3from bitcoin import SelectParams 4from bitcoin.">
+<meta name=description content="Generate address 1import hashlib 2 3from bitcoin import SelectParams 4from bitcoin.core import b2x, b2lx, lx, COIN, COutPoint, CTxOut, CTxIn, CTxInWitness, CTxWitness, CScriptWitness, CMutableTransaction, Hash160 5from bitcoin.core.script import CScript, OP_0, OP_CHECKSIG, SignatureHash, SIGHASH_ALL, SIGVERSION_WITNESS_V0 6from bitcoin.wallet import CBitcoinSecret, P2WPKHBitcoinAddress, CBitcoinAddress 7from bitcoin.rpc import Proxy 8 9SelectParams(&amp;#34;regtest&amp;#34;) 10 11 12# Create the (in)famous correct brainwallet secret key. 13h = hashlib.sha256(b&amp;#39;correct horse battery staple&amp;#39;).digest() 14seckey = CBitcoinSecret.from_secret_bytes(h) 15 16public_key = seckey.pub 17script_pubkey = CScript([OP_0, Hash160(public_key)]) 18address = P2WPKHBitcoinAddress.">
 </head>
 <body class=page-page id=pagetop>
 <header class=nav_header>
@@ -127,18 +115,12 @@ Generate address 1import hashlib 2 3from bitcoin import SelectParams 4from bitco
 </section>
 </aside>
 <main class=content>
-<h1>P2WPKH address</h1><p>P2WPKH is an abbreviation for Pay to Witness Public Key Hash. P2WPKH is the <strong>native Segwit</strong>
-version of a P2PKH.</p>
-<p>P2WPKH has the same semantics as P2PKH, except that the signature is not placed at the same
-location as before. Segregated Witness (SegWit) moves the proof of ownership from the scriptSig
-part of the transaction to a new part called the witness of the input.</p>
-<p>scriptPubKey: <code>0</code> <code>&lt;witnessPubKeyHash></code></p>
-<h2 id=generate-address>Generate address</h2>
+<h1>P2WPKH address</h1><h2 id=generate-address>Generate address</h2>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-py data-lang=py><span class=ln> 1</span><span class=kn>import</span> <span class=nn>hashlib</span>
 <span class=ln> 2</span>
 <span class=ln> 3</span><span class=kn>from</span> <span class=nn>bitcoin</span> <span class=kn>import</span> <span class=n>SelectParams</span>
 <span class=ln> 4</span><span class=kn>from</span> <span class=nn>bitcoin.core</span> <span class=kn>import</span> <span class=n>b2x</span><span class=p>,</span> <span class=n>b2lx</span><span class=p>,</span> <span class=n>lx</span><span class=p>,</span> <span class=n>COIN</span><span class=p>,</span> <span class=n>COutPoint</span><span class=p>,</span> <span class=n>CTxOut</span><span class=p>,</span> <span class=n>CTxIn</span><span class=p>,</span> <span class=n>CTxInWitness</span><span class=p>,</span> <span class=n>CTxWitness</span><span class=p>,</span> <span class=n>CScriptWitness</span><span class=p>,</span> <span class=n>CMutableTransaction</span><span class=p>,</span> <span class=n>Hash160</span>
-<span class=ln> 5</span><span class=kn>from</span> <span class=nn>bitcoin.core.script</span> <span class=kn>import</span> <span class=n>CScript</span><span class=p>,</span> <span class=n>OP_0</span><span class=p>,</span> <span class=n>SignatureHash</span><span class=p>,</span> <span class=n>SIGHASH_ALL</span><span class=p>,</span> <span class=n>SIGVERSION_WITNESS_V0</span>
+<span class=ln> 5</span><span class=kn>from</span> <span class=nn>bitcoin.core.script</span> <span class=kn>import</span> <span class=n>CScript</span><span class=p>,</span> <span class=n>OP_0</span><span class=p>,</span> <span class=n>OP_CHECKSIG</span><span class=p>,</span> <span class=n>SignatureHash</span><span class=p>,</span> <span class=n>SIGHASH_ALL</span><span class=p>,</span> <span class=n>SIGVERSION_WITNESS_V0</span>
 <span class=ln> 6</span><span class=kn>from</span> <span class=nn>bitcoin.wallet</span> <span class=kn>import</span> <span class=n>CBitcoinSecret</span><span class=p>,</span> <span class=n>P2WPKHBitcoinAddress</span><span class=p>,</span> <span class=n>CBitcoinAddress</span>
 <span class=ln> 7</span><span class=kn>from</span> <span class=nn>bitcoin.rpc</span> <span class=kn>import</span> <span class=n>Proxy</span>
 <span class=ln> 8</span>
@@ -149,12 +131,18 @@ part of the transaction to a new part called the witness of the input.</p>
 <span class=ln>13</span><span class=n>h</span> <span class=o>=</span> <span class=n>hashlib</span><span class=o>.</span><span class=n>sha256</span><span class=p>(</span><span class=sa>b</span><span class=s1>&#39;correct horse battery staple&#39;</span><span class=p>)</span><span class=o>.</span><span class=n>digest</span><span class=p>()</span>
 <span class=ln>14</span><span class=n>seckey</span> <span class=o>=</span> <span class=n>CBitcoinSecret</span><span class=o>.</span><span class=n>from_secret_bytes</span><span class=p>(</span><span class=n>h</span><span class=p>)</span>
 <span class=ln>15</span>
-<span class=ln>16</span><span class=c1># Create an address from that private key.</span>
-<span class=ln>17</span><span class=n>public_key</span> <span class=o>=</span> <span class=n>seckey</span><span class=o>.</span><span class=n>pub</span>
-<span class=ln>18</span><span class=n>scriptPubKey</span> <span class=o>=</span> <span class=n>CScript</span><span class=p>([</span><span class=n>OP_0</span><span class=p>,</span> <span class=n>Hash160</span><span class=p>(</span><span class=n>public_key</span><span class=p>)])</span>
-<span class=ln>19</span><span class=n>address</span> <span class=o>=</span> <span class=n>P2WPKHBitcoinAddress</span><span class=o>.</span><span class=n>from_scriptPubKey</span><span class=p>(</span><span class=n>scriptPubKey</span><span class=p>)</span>
-<span class=ln>20</span><span class=nb>print</span><span class=p>(</span><span class=s1>&#39;Address:&#39;</span><span class=p>,</span> <span class=nb>str</span><span class=p>(</span><span class=n>address</span><span class=p>))</span>
-<span class=ln>21</span><span class=c1># outputs: Address: bcrt1q08alc0e5ua69scxhvyma568nvguqccrvah6ml0</span>
+<span class=ln>16</span><span class=n>public_key</span> <span class=o>=</span> <span class=n>seckey</span><span class=o>.</span><span class=n>pub</span>
+<span class=ln>17</span><span class=n>script_pubkey</span> <span class=o>=</span> <span class=n>CScript</span><span class=p>([</span><span class=n>OP_0</span><span class=p>,</span> <span class=n>Hash160</span><span class=p>(</span><span class=n>public_key</span><span class=p>)])</span>
+<span class=ln>18</span><span class=n>address</span> <span class=o>=</span> <span class=n>P2WPKHBitcoinAddress</span><span class=o>.</span><span class=n>from_scriptPubKey</span><span class=p>(</span><span class=n>script_pubkey</span><span class=p>)</span>
+<span class=ln>19</span>
+<span class=ln>20</span><span class=c1># Create a witnessScript. witnessScript in SegWit is equivalent to redeemScript in P2PKH</span>
+<span class=ln>21</span><span class=c1># transaction, however, while the redeemScript of a P2SH transaction is included in the ScriptSig,</span>
+<span class=ln>22</span><span class=c1># the WitnessScript is included in the Witness field, making P2WPKH inputs cheaper to spend than</span>
+<span class=ln>23</span><span class=c1># P2PKH inputs.</span>
+<span class=ln>24</span><span class=n>witness_script</span> <span class=o>=</span> <span class=n>address</span><span class=o>.</span><span class=n>to_redeemScript</span><span class=p>()</span>
+<span class=ln>25</span>
+<span class=ln>26</span><span class=nb>print</span><span class=p>(</span><span class=s1>&#39;Address:&#39;</span><span class=p>,</span> <span class=nb>str</span><span class=p>(</span><span class=n>address</span><span class=p>))</span>
+<span class=ln>27</span><span class=c1># outputs: Address: bcrt1q08alc0e5ua69scxhvyma568nvguqccrvah6ml0</span>
 </code></pre></div><h2 id=spend-from-address>Spend from address</h2>
 <p>Assuming the previously generated address has received funds, we can spend them. In order to spend
 them, we'll need information about the transaction id (txid) and a vector of an output (vout). You
@@ -190,7 +178,7 @@ to a watchlist run <a href=https://chainquery.com/bitcoin-cli/importaddress>impo
 <span class=ln>24</span>
 <span class=ln>25</span><span class=c1># Calculate the signature hash for that transaction.</span>
 <span class=ln>26</span><span class=n>sighash</span> <span class=o>=</span> <span class=n>SignatureHash</span><span class=p>(</span>
-<span class=ln>27</span>    <span class=n>script</span><span class=o>=</span><span class=n>address</span><span class=o>.</span><span class=n>to_redeemScript</span><span class=p>(),</span>
+<span class=ln>27</span>    <span class=n>script</span><span class=o>=</span><span class=n>CScript</span><span class=p>([</span><span class=n>seckey</span><span class=o>.</span><span class=n>pub</span><span class=p>,</span> <span class=n>OP_CHECKSIG</span><span class=p>]),</span>
 <span class=ln>28</span>    <span class=n>txTo</span><span class=o>=</span><span class=n>tx</span><span class=p>,</span>
 <span class=ln>29</span>    <span class=n>inIdx</span><span class=o>=</span><span class=mi>0</span><span class=p>,</span>
 <span class=ln>30</span>    <span class=n>hashtype</span><span class=o>=</span><span class=n>SIGHASH_ALL</span><span class=p>,</span>
@@ -200,7 +188,7 @@ to a watchlist run <a href=https://chainquery.com/bitcoin-cli/importaddress>impo
 <span class=ln>34</span><span class=n>signature</span> <span class=o>=</span> <span class=n>seckey</span><span class=o>.</span><span class=n>sign</span><span class=p>(</span><span class=n>sighash</span><span class=p>)</span> <span class=o>+</span> <span class=nb>bytes</span><span class=p>([</span><span class=n>SIGHASH_ALL</span><span class=p>])</span>
 <span class=ln>35</span>
 <span class=ln>36</span><span class=c1># Construct a witness for this transaction input. The public key is given in</span>
-<span class=ln>37</span><span class=c1># the witness so that the appropriate redeem_script can be calculated by</span>
+<span class=ln>37</span><span class=c1># the witness so that the appropriate redeemScript can be calculated by</span>
 <span class=ln>38</span><span class=c1># anyone. The original scriptPubKey had only the Hash160 hash of the public</span>
 <span class=ln>39</span><span class=c1># key, not the public key itself, and the redeem script can be entirely</span>
 <span class=ln>40</span><span class=c1># re-constructed (from implicit template) if given just the public key. So the</span>

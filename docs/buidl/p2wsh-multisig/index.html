@@ -1,6 +1,6 @@
 <!doctype html><html lang=en class=dark>
 <head><meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.90.1">
+<meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.91.0">
 <link rel=apple-touch-icon sizes=180x180 href=https://bitcoinpy.dev/favicons/apple-touch-icon.png>
 <link rel=icon type=image/png sizes=32x32 href=https://bitcoinpy.dev/favicons/favicon-32x32.png>
 <link rel=icon type=image/png sizes=16x16 href=https://bitcoinpy.dev/favicons/favicon-16x16.png>
@@ -9,21 +9,17 @@
 <link rel="shortcut icon" href=https://bitcoinpy.dev/favicons/favicon.ico>
 <meta name=msapplication-config content="https://bitcoinpy.dev/favicons/browserconfig.xml">
 <title>P2WSH address (multisig) | BitcoinPy</title><meta property="og:title" content="P2WSH address (multisig)">
-<meta property="og:description" content="P2WSH is an abbreviation for Pay to Witness Script Hash. P2WSH is the native Segwit version of a P2SH.
-&#34;Script Hash addresses&#34; are intended for multisig or other &#34;smart contract&#34; address. If all you wish to do is receive payment to an address (without multisig) it's better to use P2WPKH as it's cheaper to spend from those addresses.  P2WSH has the same semantics as P2SH, except that the signature is not placed at the same location as before.">
+<meta property="og:description" content="The example for 1-of-1 should only serve as an example. We don't recommend using it in the real world because it is not its intention. Instead of 1-of-1 use P2PKH!  Generate address (1-of-1) 1import hashlib 2 3from buidl.ecc import PrivateKey, Signature 4from buidl.helper import decode_base58, big_endian_to_int 5from buidl.bech32 import decode_bech32, encode_bech32_checksum 6from buidl.script import P2PKHScriptPubKey, RedeemScript, WitnessScript, P2WPKHScriptPubKey 7from buidl.tx import Tx, TxIn, TxOut 8from buidl.witness import Witness 9 10h = hashlib.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://bitcoinpy.dev/docs/buidl/p2wsh-multisig/"><meta property="article:section" content="docs">
 <meta itemprop=name content="P2WSH address (multisig)">
-<meta itemprop=description content="P2WSH is an abbreviation for Pay to Witness Script Hash. P2WSH is the native Segwit version of a P2SH.
-&#34;Script Hash addresses&#34; are intended for multisig or other &#34;smart contract&#34; address. If all you wish to do is receive payment to an address (without multisig) it's better to use P2WPKH as it's cheaper to spend from those addresses.  P2WSH has the same semantics as P2SH, except that the signature is not placed at the same location as before.">
-<meta itemprop=wordCount content="945">
+<meta itemprop=description content="The example for 1-of-1 should only serve as an example. We don't recommend using it in the real world because it is not its intention. Instead of 1-of-1 use P2PKH!  Generate address (1-of-1) 1import hashlib 2 3from buidl.ecc import PrivateKey, Signature 4from buidl.helper import decode_base58, big_endian_to_int 5from buidl.bech32 import decode_bech32, encode_bech32_checksum 6from buidl.script import P2PKHScriptPubKey, RedeemScript, WitnessScript, P2WPKHScriptPubKey 7from buidl.tx import Tx, TxIn, TxOut 8from buidl.witness import Witness 9 10h = hashlib.">
+<meta itemprop=wordCount content="858">
 <meta itemprop=keywords content><meta name=twitter:card content="summary">
 <meta name=twitter:title content="P2WSH address (multisig)">
-<meta name=twitter:description content="P2WSH is an abbreviation for Pay to Witness Script Hash. P2WSH is the native Segwit version of a P2SH.
-&#34;Script Hash addresses&#34; are intended for multisig or other &#34;smart contract&#34; address. If all you wish to do is receive payment to an address (without multisig) it's better to use P2WPKH as it's cheaper to spend from those addresses.  P2WSH has the same semantics as P2SH, except that the signature is not placed at the same location as before.">
+<meta name=twitter:description content="The example for 1-of-1 should only serve as an example. We don't recommend using it in the real world because it is not its intention. Instead of 1-of-1 use P2PKH!  Generate address (1-of-1) 1import hashlib 2 3from buidl.ecc import PrivateKey, Signature 4from buidl.helper import decode_base58, big_endian_to_int 5from buidl.bech32 import decode_bech32, encode_bech32_checksum 6from buidl.script import P2PKHScriptPubKey, RedeemScript, WitnessScript, P2WPKHScriptPubKey 7from buidl.tx import Tx, TxIn, TxOut 8from buidl.witness import Witness 9 10h = hashlib.">
 <link rel=stylesheet href=https://bitcoinpy.dev/css/styles.541f68813f7aabaa275655211eb16e12b93f9d0c9ffc8faf0837e80f8de16a2767afae0d7bf8121043b9ef6cbd23accc183cd8175283b1014fe90ca65e8617e1.css integrity="sha512-VB9ogT96q6onVlUhHrFuErk/nQyf/I+vCDfoD43haidnr64Ne/gSEEO572y9I6zMGDzYF1KDsQFP6QymXoYX4Q=="><link rel=stylesheet href=/overrides.css>
-<meta name=description content="P2WSH is an abbreviation for Pay to Witness Script Hash. P2WSH is the native Segwit version of a P2SH.
-&amp;quot;Script Hash addresses&amp;quot; are intended for multisig or other &amp;quot;smart contract&amp;quot; address. If all you wish to do is receive payment to an address (without multisig) it's better to use P2WPKH as it's cheaper to spend from those addresses.  P2WSH has the same semantics as P2SH, except that the signature is not placed at the same location as before.">
+<meta name=description content="The example for 1-of-1 should only serve as an example. We don't recommend using it in the real world because it is not its intention. Instead of 1-of-1 use P2PKH!  Generate address (1-of-1) 1import hashlib 2 3from buidl.ecc import PrivateKey, Signature 4from buidl.helper import decode_base58, big_endian_to_int 5from buidl.bech32 import decode_bech32, encode_bech32_checksum 6from buidl.script import P2PKHScriptPubKey, RedeemScript, WitnessScript, P2WPKHScriptPubKey 7from buidl.tx import Tx, TxIn, TxOut 8from buidl.witness import Witness 9 10h = hashlib.">
 </head>
 <body class=page-page id=pagetop>
 <header class=nav_header>
@@ -115,19 +111,7 @@
 </section>
 </aside>
 <main class=content>
-<h1>P2WSH address (multisig)</h1><p>P2WSH is an abbreviation for Pay to Witness Script Hash. P2WSH is the <strong>native Segwit</strong> version of
-a P2SH.</p>
-<div class=tip>
-"Script Hash addresses" are intended for multisig or other "smart contract" address. If all
-you wish to do is receive payment to an address (without multisig) it's better to use P2WPKH as
-it's cheaper to spend from those addresses.
-</div>
-<p>P2WSH has the same semantics as P2SH, except that the signature is not placed at the same location
-as before. Segregated Witness (SegWit) moves the proof of ownership from the scriptSig part of the
-transaction to a new part called the witness of the input. Script Hash allows you to lock coins to
-the hash of a script, and you then provide that original script when you come unlock those coins.</p>
-<p>scriptPubKey: <code>0</code> <code>&lt;witnessScriptHash></code></p>
-<p>witnessScriptHash: <code>sha256(pubKey OP_CHECKSIG)</code></p>
+<h1>P2WSH address (multisig)</h1>
 <div class="tip tip_warning">
 The example for 1-of-1 should only serve as an example. We don't recommend using it in the real
 world because it is not its intention. Instead of 1-of-1 use P2PKH!
@@ -145,13 +129,15 @@ world because it is not its intention. Instead of 1-of-1 use P2PKH!
 <span class=ln>10</span><span class=n>h</span> <span class=o>=</span> <span class=n>hashlib</span><span class=o>.</span><span class=n>sha256</span><span class=p>(</span><span class=sa>b</span><span class=s1>&#39;correct horse battery staple&#39;</span><span class=p>)</span><span class=o>.</span><span class=n>digest</span><span class=p>()</span>
 <span class=ln>11</span><span class=n>private_key</span> <span class=o>=</span> <span class=n>PrivateKey</span><span class=p>(</span><span class=n>secret</span><span class=o>=</span><span class=n>big_endian_to_int</span><span class=p>(</span><span class=n>h</span><span class=p>),</span> <span class=n>network</span><span class=o>=</span><span class=s2>&#34;signet&#34;</span><span class=p>)</span>
 <span class=ln>12</span>
-<span class=ln>13</span><span class=c1># Create a witnessScript and corresponding redeemScript. Similar to a scriptPubKey</span>
-<span class=ln>14</span><span class=c1># the redeemScript must be satisfied for the funds to be spent.</span>
-<span class=ln>15</span><span class=n>redeem_script</span> <span class=o>=</span> <span class=n>WitnessScript</span><span class=p>([</span><span class=n>private_key</span><span class=o>.</span><span class=n>point</span><span class=o>.</span><span class=n>sec</span><span class=p>(),</span> <span class=mh>0xac</span><span class=p>])</span>
-<span class=ln>16</span>
-<span class=ln>17</span><span class=n>address</span> <span class=o>=</span> <span class=n>redeem_script</span><span class=o>.</span><span class=n>address</span><span class=p>(</span><span class=s2>&#34;signet&#34;</span><span class=p>)</span>
-<span class=ln>18</span><span class=nb>print</span><span class=p>(</span><span class=s1>&#39;Address:&#39;</span><span class=p>,</span> <span class=nb>str</span><span class=p>(</span><span class=n>address</span><span class=p>))</span>
-<span class=ln>19</span><span class=c1># outputs: tb1qgatzazqjupdalx4v28pxjlys2s3yja9gr3xuca3ugcqpery6c3sqtuzpzy</span>
+<span class=ln>13</span><span class=c1># Create a witnessScript. witnessScript in SegWit is equivalent to redeemScript in P2SH transaction,</span>
+<span class=ln>14</span><span class=c1># however, while the redeemScript of a P2SH transaction is included in the ScriptSig, the </span>
+<span class=ln>15</span><span class=c1># WitnessScript is included in the Witness field, making P2WSH inputs cheaper to spend than P2SH </span>
+<span class=ln>16</span><span class=c1># inputs.</span>
+<span class=ln>17</span><span class=n>witness_script</span> <span class=o>=</span> <span class=n>WitnessScript</span><span class=p>([</span><span class=n>private_key</span><span class=o>.</span><span class=n>point</span><span class=o>.</span><span class=n>sec</span><span class=p>(),</span> <span class=mh>0xac</span><span class=p>])</span>
+<span class=ln>18</span>
+<span class=ln>19</span><span class=n>address</span> <span class=o>=</span> <span class=n>witness_script</span><span class=o>.</span><span class=n>address</span><span class=p>(</span><span class=s2>&#34;signet&#34;</span><span class=p>)</span>
+<span class=ln>20</span><span class=nb>print</span><span class=p>(</span><span class=s1>&#39;Address:&#39;</span><span class=p>,</span> <span class=nb>str</span><span class=p>(</span><span class=n>address</span><span class=p>))</span>
+<span class=ln>21</span><span class=c1># outputs: tb1qgatzazqjupdalx4v28pxjlys2s3yja9gr3xuca3ugcqpery6c3sqtuzpzy</span>
 </code></pre></div><h2 id=spend-from-address-1-of-1>Spend from address (1-of-1)</h2>
 <p>Assuming the previously generated address has received funds, we can spend them. In order to spend
 them, we'll need information about the transaction id (txid) and a vector of an output (vout). You
@@ -184,16 +170,16 @@ to a watchlist run <a href=https://chainquery.com/bitcoin-cli/importaddress>impo
 <span class=ln>21</span>
 <span class=ln>22</span><span class=n>tx</span> <span class=o>=</span> <span class=n>Tx</span><span class=p>(</span><span class=mi>1</span><span class=p>,</span> <span class=p>[</span><span class=n>txin</span><span class=p>],</span> <span class=p>[</span><span class=n>txout</span><span class=p>],</span> <span class=mi>0</span><span class=p>,</span> <span class=n>network</span><span class=o>=</span><span class=s2>&#34;signet&#34;</span><span class=p>,</span> <span class=n>segwit</span><span class=o>=</span><span class=kc>True</span><span class=p>)</span>
 <span class=ln>23</span>
-<span class=ln>24</span><span class=n>sig1</span> <span class=o>=</span> <span class=n>tx</span><span class=o>.</span><span class=n>get_sig_segwit</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=n>private_key</span><span class=p>,</span> <span class=n>witness_script</span><span class=o>=</span><span class=n>redeem_script</span><span class=p>)</span>
+<span class=ln>24</span><span class=n>sig1</span> <span class=o>=</span> <span class=n>tx</span><span class=o>.</span><span class=n>get_sig_segwit</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=n>private_key</span><span class=p>,</span> <span class=n>witness_script</span><span class=o>=</span><span class=n>witness_script</span><span class=p>)</span>
 <span class=ln>25</span>
 <span class=ln>26</span><span class=n>tx</span><span class=o>.</span><span class=n>check_sig_segwit</span><span class=p>(</span>
 <span class=ln>27</span>    <span class=mi>0</span><span class=p>,</span>
 <span class=ln>28</span>    <span class=n>private_key</span><span class=o>.</span><span class=n>point</span><span class=p>,</span>
 <span class=ln>29</span>    <span class=n>Signature</span><span class=o>.</span><span class=n>parse</span><span class=p>(</span><span class=n>sig1</span><span class=p>[:</span><span class=o>-</span><span class=mi>1</span><span class=p>]),</span>
-<span class=ln>30</span>    <span class=n>witness_script</span><span class=o>=</span><span class=n>redeem_script</span><span class=p>,</span>
+<span class=ln>30</span>    <span class=n>witness_script</span><span class=o>=</span><span class=n>witness_script</span><span class=p>,</span>
 <span class=ln>31</span><span class=p>)</span>
 <span class=ln>32</span>
-<span class=ln>33</span><span class=n>txin</span><span class=o>.</span><span class=n>witness</span> <span class=o>=</span> <span class=n>Witness</span><span class=p>([</span><span class=n>sig1</span><span class=p>,</span> <span class=n>redeem_script</span><span class=o>.</span><span class=n>raw_serialize</span><span class=p>()])</span>
+<span class=ln>33</span><span class=n>txin</span><span class=o>.</span><span class=n>witness</span> <span class=o>=</span> <span class=n>Witness</span><span class=p>([</span><span class=n>sig1</span><span class=p>,</span> <span class=n>witness_script</span><span class=o>.</span><span class=n>raw_serialize</span><span class=p>()])</span>
 <span class=ln>34</span>
 <span class=ln>35</span><span class=nb>print</span><span class=p>(</span><span class=n>tx</span><span class=o>.</span><span class=n>serialize</span><span class=p>()</span><span class=o>.</span><span class=n>hex</span><span class=p>())</span>
 <span class=ln>36</span><span class=c1># outputs: 0100000000010173825fd8144871c8529e13cfede488838a9f2c9aa098e8fbd0d6de858c3d4df20000000000ffffffff01b882010000000000160014003f808a60b27baa380da9f62122e170b294058b0247304402201b812e3a58b18bf83ee65db660af469708583073beaecbd4d7147757068e5ece022034a0b51dc40cdbcba1362f544a467e3dc605395f5e0029d5d2e342aea1ddfac20123210378d430274f8c5ec1321338151e9f27f4c676a008bdf8638d07c0b6be9ab35c71ac00000000</span>
@@ -222,15 +208,17 @@ required in order to unlock funds.</p>
 <span class=ln>15</span><span class=n>h</span> <span class=o>=</span> <span class=n>hashlib</span><span class=o>.</span><span class=n>sha256</span><span class=p>(</span><span class=sa>b</span><span class=s1>&#39;correct horse battery staple second&#39;</span><span class=p>)</span><span class=o>.</span><span class=n>digest</span><span class=p>()</span>
 <span class=ln>16</span><span class=n>private_key2</span> <span class=o>=</span> <span class=n>PrivateKey</span><span class=p>(</span><span class=n>secret</span><span class=o>=</span><span class=n>big_endian_to_int</span><span class=p>(</span><span class=n>h</span><span class=p>),</span> <span class=n>network</span><span class=o>=</span><span class=s2>&#34;signet&#34;</span><span class=p>)</span>
 <span class=ln>17</span>
-<span class=ln>18</span><span class=c1># Create a witnessScript and corresponding redeemScript. Similar to a scriptPubKey</span>
-<span class=ln>19</span><span class=c1># the redeemScript must be satisfied for the funds to be spent.</span>
-<span class=ln>20</span><span class=n>redeem_script</span> <span class=o>=</span> <span class=n>WitnessScript</span><span class=p>(</span>
-<span class=ln>21</span>    <span class=p>[</span><span class=mh>0x52</span><span class=p>,</span> <span class=n>private_key1</span><span class=o>.</span><span class=n>point</span><span class=o>.</span><span class=n>sec</span><span class=p>(),</span> <span class=n>private_key2</span><span class=o>.</span><span class=n>point</span><span class=o>.</span><span class=n>sec</span><span class=p>(),</span> <span class=mh>0x52</span><span class=p>,</span> <span class=mh>0xAE</span><span class=p>]</span>
-<span class=ln>22</span><span class=p>)</span>
-<span class=ln>23</span>
-<span class=ln>24</span><span class=n>address</span> <span class=o>=</span> <span class=n>redeem_script</span><span class=o>.</span><span class=n>address</span><span class=p>(</span><span class=s2>&#34;signet&#34;</span><span class=p>)</span>
-<span class=ln>25</span><span class=nb>print</span><span class=p>(</span><span class=s1>&#39;Address:&#39;</span><span class=p>,</span> <span class=nb>str</span><span class=p>(</span><span class=n>address</span><span class=p>))</span>
-<span class=ln>26</span><span class=c1># outputs: tb1qljlyqaexx4mmhpl66e6nqdtagjaht87pghuq6p0f98a765c9uj9susmlvt</span>
+<span class=ln>18</span><span class=c1># Create a witnessScript. witnessScript in SegWit is equivalent to redeemScript in P2SH transaction,</span>
+<span class=ln>19</span><span class=c1># however, while the redeemScript of a P2SH transaction is included in the ScriptSig, the </span>
+<span class=ln>20</span><span class=c1># WitnessScript is included in the Witness field, making P2WSH inputs cheaper to spend than P2SH </span>
+<span class=ln>21</span><span class=c1># inputs.</span>
+<span class=ln>22</span><span class=n>witness_script</span> <span class=o>=</span> <span class=n>WitnessScript</span><span class=p>(</span>
+<span class=ln>23</span>    <span class=p>[</span><span class=mh>0x52</span><span class=p>,</span> <span class=n>private_key1</span><span class=o>.</span><span class=n>point</span><span class=o>.</span><span class=n>sec</span><span class=p>(),</span> <span class=n>private_key2</span><span class=o>.</span><span class=n>point</span><span class=o>.</span><span class=n>sec</span><span class=p>(),</span> <span class=mh>0x52</span><span class=p>,</span> <span class=mh>0xAE</span><span class=p>]</span>
+<span class=ln>24</span><span class=p>)</span>
+<span class=ln>25</span>
+<span class=ln>26</span><span class=n>address</span> <span class=o>=</span> <span class=n>witness_script</span><span class=o>.</span><span class=n>address</span><span class=p>(</span><span class=s2>&#34;signet&#34;</span><span class=p>)</span>
+<span class=ln>27</span><span class=nb>print</span><span class=p>(</span><span class=s1>&#39;Address:&#39;</span><span class=p>,</span> <span class=nb>str</span><span class=p>(</span><span class=n>address</span><span class=p>))</span>
+<span class=ln>28</span><span class=c1># outputs: tb1qljlyqaexx4mmhpl66e6nqdtagjaht87pghuq6p0f98a765c9uj9susmlvt</span>
 </code></pre></div><h2 id=spend-from-address-2-of-2>Spend from address (2-of-2)</h2>
 <p>Assuming the previously generated address has received funds, we can spend them. In order to spend
 them, we'll need information about the transaction id (txid) and a vector of an output (vout). You
@@ -263,24 +251,24 @@ to a watchlist run <a href=https://chainquery.com/bitcoin-cli/importaddress>impo
 <span class=ln>21</span>
 <span class=ln>22</span><span class=n>tx</span> <span class=o>=</span> <span class=n>Tx</span><span class=p>(</span><span class=mi>1</span><span class=p>,</span> <span class=p>[</span><span class=n>txin</span><span class=p>],</span> <span class=p>[</span><span class=n>txout</span><span class=p>],</span> <span class=mi>0</span><span class=p>,</span> <span class=n>network</span><span class=o>=</span><span class=s2>&#34;signet&#34;</span><span class=p>,</span> <span class=n>segwit</span><span class=o>=</span><span class=kc>True</span><span class=p>)</span>
 <span class=ln>23</span>
-<span class=ln>24</span><span class=n>sig1</span> <span class=o>=</span> <span class=n>tx</span><span class=o>.</span><span class=n>get_sig_segwit</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=n>private_key1</span><span class=p>,</span> <span class=n>witness_script</span><span class=o>=</span><span class=n>redeem_script</span><span class=p>)</span>
-<span class=ln>25</span><span class=n>sig2</span> <span class=o>=</span> <span class=n>tx</span><span class=o>.</span><span class=n>get_sig_segwit</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=n>private_key2</span><span class=p>,</span> <span class=n>witness_script</span><span class=o>=</span><span class=n>redeem_script</span><span class=p>)</span>
+<span class=ln>24</span><span class=n>sig1</span> <span class=o>=</span> <span class=n>tx</span><span class=o>.</span><span class=n>get_sig_segwit</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=n>private_key1</span><span class=p>,</span> <span class=n>witness_script</span><span class=o>=</span><span class=n>witness_script</span><span class=p>)</span>
+<span class=ln>25</span><span class=n>sig2</span> <span class=o>=</span> <span class=n>tx</span><span class=o>.</span><span class=n>get_sig_segwit</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=n>private_key2</span><span class=p>,</span> <span class=n>witness_script</span><span class=o>=</span><span class=n>witness_script</span><span class=p>)</span>
 <span class=ln>26</span>
 <span class=ln>27</span><span class=n>tx</span><span class=o>.</span><span class=n>check_sig_segwit</span><span class=p>(</span>
 <span class=ln>28</span>    <span class=mi>0</span><span class=p>,</span>
 <span class=ln>29</span>    <span class=n>private_key1</span><span class=o>.</span><span class=n>point</span><span class=p>,</span>
 <span class=ln>30</span>    <span class=n>Signature</span><span class=o>.</span><span class=n>parse</span><span class=p>(</span><span class=n>sig1</span><span class=p>[:</span><span class=o>-</span><span class=mi>1</span><span class=p>]),</span>
-<span class=ln>31</span>    <span class=n>witness_script</span><span class=o>=</span><span class=n>redeem_script</span><span class=p>,</span>
+<span class=ln>31</span>    <span class=n>witness_script</span><span class=o>=</span><span class=n>witness_script</span><span class=p>,</span>
 <span class=ln>32</span><span class=p>)</span>
 <span class=ln>33</span>
 <span class=ln>34</span><span class=n>tx</span><span class=o>.</span><span class=n>check_sig_segwit</span><span class=p>(</span>
 <span class=ln>35</span>    <span class=mi>0</span><span class=p>,</span>
 <span class=ln>36</span>    <span class=n>private_key2</span><span class=o>.</span><span class=n>point</span><span class=p>,</span>
 <span class=ln>37</span>    <span class=n>Signature</span><span class=o>.</span><span class=n>parse</span><span class=p>(</span><span class=n>sig2</span><span class=p>[:</span><span class=o>-</span><span class=mi>1</span><span class=p>]),</span>
-<span class=ln>38</span>    <span class=n>witness_script</span><span class=o>=</span><span class=n>redeem_script</span><span class=p>,</span>
+<span class=ln>38</span>    <span class=n>witness_script</span><span class=o>=</span><span class=n>witness_script</span><span class=p>,</span>
 <span class=ln>39</span><span class=p>)</span>
 <span class=ln>40</span>
-<span class=ln>41</span><span class=n>txin</span><span class=o>.</span><span class=n>finalize_p2wsh_multisig</span><span class=p>([</span><span class=n>sig1</span><span class=p>,</span> <span class=n>sig2</span><span class=p>],</span> <span class=n>redeem_script</span><span class=p>)</span>
+<span class=ln>41</span><span class=n>txin</span><span class=o>.</span><span class=n>finalize_p2wsh_multisig</span><span class=p>([</span><span class=n>sig1</span><span class=p>,</span> <span class=n>sig2</span><span class=p>],</span> <span class=n>witness_script</span><span class=p>)</span>
 <span class=ln>42</span>
 <span class=ln>43</span><span class=nb>print</span><span class=p>(</span><span class=n>tx</span><span class=o>.</span><span class=n>serialize</span><span class=p>()</span><span class=o>.</span><span class=n>hex</span><span class=p>())</span>
 <span class=ln>44</span><span class=c1># outputs: 0100000000010103091a49f6d461011920b9200ef2d328ef7a51930d21f2300aa25cfa9f3710e80000000000ffffffff01b882010000000000160014706385687f40be0af4d91a18b7d62f7c2f934ea90400483045022100b24100d90fdd15d3e694789106f780c4c13f4929ec5cc82445418bedac9dfc93022038f5cc4ade88b41f1398d5f1e31a9d4f9d861f67aa24dff30a6d20e509b591c801483045022100fa9f78c7769010a57aa96939b32fad0d216a1dcf3a1f44a09f0e7b29f56b773402207a795dad938599c920d864001b454ae2f44358f5ac098e913049ea7fd9925cb001475221038d19497c3922b807c91b829d6873ae5bfa2ae500f3237100265a302fdce87b052103d3a9dff5a0bb0267f19a9ee1c374901c39045fbe041c1c168d4da4ce0112595552ae00000000</span>

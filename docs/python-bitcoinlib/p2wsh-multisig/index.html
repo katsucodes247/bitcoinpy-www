@@ -1,6 +1,6 @@
 <!doctype html><html lang=en class=dark>
 <head><meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.90.1">
+<meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.91.0">
 <link rel=apple-touch-icon sizes=180x180 href=https://bitcoinpy.dev/favicons/apple-touch-icon.png>
 <link rel=icon type=image/png sizes=32x32 href=https://bitcoinpy.dev/favicons/favicon-32x32.png>
 <link rel=icon type=image/png sizes=16x16 href=https://bitcoinpy.dev/favicons/favicon-16x16.png>
@@ -9,21 +9,17 @@
 <link rel="shortcut icon" href=https://bitcoinpy.dev/favicons/favicon.ico>
 <meta name=msapplication-config content="https://bitcoinpy.dev/favicons/browserconfig.xml">
 <title>P2WSH address (multisig) | BitcoinPy</title><meta property="og:title" content="P2WSH address (multisig)">
-<meta property="og:description" content="P2WSH is an abbreviation for Pay to Witness Script Hash. P2WSH is the native Segwit version of a P2SH.
-&#34;Script Hash addresses&#34; are intended for multisig or other &#34;smart contract&#34; address. If all you wish to do is receive payment to an address (without multisig) it's better to use P2WPKH as it's cheaper to spend from those addresses.  P2WSH has the same semantics as P2SH, except that the signature is not placed at the same location as before.">
+<meta property="og:description" content="The example for 1-of-1 should only serve as an example. We don't recommend using it in the real world because it is not its intention. Instead of 1-of-1 use P2PKH!  Generate address (1-of-1) 1import hashlib 2 3from bitcoin import SelectParams 4from bitcoin.core import b2x, lx, COIN, COutPoint, CMutableTxOut, CMutableTxIn, CMutableTransaction, CTxInWitness, CTxWitness 5from bitcoin.core.script import CScript, CScriptWitness, OP_0, OP_CHECKSIG, SignatureHash, SIGHASH_ALL, SIGVERSION_WITNESS_V0 6from bitcoin.wallet import CBitcoinSecret, CBitcoinAddress, P2WSHBitcoinAddress 7 8# We'll be using regtest throughout this guide 9SelectParams(&#34;regtest&#34;) 10 11# Create the (in)famous correct brainwallet secret key.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://bitcoinpy.dev/docs/python-bitcoinlib/p2wsh-multisig/"><meta property="article:section" content="docs">
 <meta itemprop=name content="P2WSH address (multisig)">
-<meta itemprop=description content="P2WSH is an abbreviation for Pay to Witness Script Hash. P2WSH is the native Segwit version of a P2SH.
-&#34;Script Hash addresses&#34; are intended for multisig or other &#34;smart contract&#34; address. If all you wish to do is receive payment to an address (without multisig) it's better to use P2WPKH as it's cheaper to spend from those addresses.  P2WSH has the same semantics as P2SH, except that the signature is not placed at the same location as before.">
-<meta itemprop=wordCount content="1152">
+<meta itemprop=description content="The example for 1-of-1 should only serve as an example. We don't recommend using it in the real world because it is not its intention. Instead of 1-of-1 use P2PKH!  Generate address (1-of-1) 1import hashlib 2 3from bitcoin import SelectParams 4from bitcoin.core import b2x, lx, COIN, COutPoint, CMutableTxOut, CMutableTxIn, CMutableTransaction, CTxInWitness, CTxWitness 5from bitcoin.core.script import CScript, CScriptWitness, OP_0, OP_CHECKSIG, SignatureHash, SIGHASH_ALL, SIGVERSION_WITNESS_V0 6from bitcoin.wallet import CBitcoinSecret, CBitcoinAddress, P2WSHBitcoinAddress 7 8# We'll be using regtest throughout this guide 9SelectParams(&#34;regtest&#34;) 10 11# Create the (in)famous correct brainwallet secret key.">
+<meta itemprop=wordCount content="1065">
 <meta itemprop=keywords content><meta name=twitter:card content="summary">
 <meta name=twitter:title content="P2WSH address (multisig)">
-<meta name=twitter:description content="P2WSH is an abbreviation for Pay to Witness Script Hash. P2WSH is the native Segwit version of a P2SH.
-&#34;Script Hash addresses&#34; are intended for multisig or other &#34;smart contract&#34; address. If all you wish to do is receive payment to an address (without multisig) it's better to use P2WPKH as it's cheaper to spend from those addresses.  P2WSH has the same semantics as P2SH, except that the signature is not placed at the same location as before.">
+<meta name=twitter:description content="The example for 1-of-1 should only serve as an example. We don't recommend using it in the real world because it is not its intention. Instead of 1-of-1 use P2PKH!  Generate address (1-of-1) 1import hashlib 2 3from bitcoin import SelectParams 4from bitcoin.core import b2x, lx, COIN, COutPoint, CMutableTxOut, CMutableTxIn, CMutableTransaction, CTxInWitness, CTxWitness 5from bitcoin.core.script import CScript, CScriptWitness, OP_0, OP_CHECKSIG, SignatureHash, SIGHASH_ALL, SIGVERSION_WITNESS_V0 6from bitcoin.wallet import CBitcoinSecret, CBitcoinAddress, P2WSHBitcoinAddress 7 8# We'll be using regtest throughout this guide 9SelectParams(&#34;regtest&#34;) 10 11# Create the (in)famous correct brainwallet secret key.">
 <link rel=stylesheet href=https://bitcoinpy.dev/css/styles.541f68813f7aabaa275655211eb16e12b93f9d0c9ffc8faf0837e80f8de16a2767afae0d7bf8121043b9ef6cbd23accc183cd8175283b1014fe90ca65e8617e1.css integrity="sha512-VB9ogT96q6onVlUhHrFuErk/nQyf/I+vCDfoD43haidnr64Ne/gSEEO572y9I6zMGDzYF1KDsQFP6QymXoYX4Q=="><link rel=stylesheet href=/overrides.css>
-<meta name=description content="P2WSH is an abbreviation for Pay to Witness Script Hash. P2WSH is the native Segwit version of a P2SH.
-&amp;quot;Script Hash addresses&amp;quot; are intended for multisig or other &amp;quot;smart contract&amp;quot; address. If all you wish to do is receive payment to an address (without multisig) it's better to use P2WPKH as it's cheaper to spend from those addresses.  P2WSH has the same semantics as P2SH, except that the signature is not placed at the same location as before.">
+<meta name=description content="The example for 1-of-1 should only serve as an example. We don't recommend using it in the real world because it is not its intention. Instead of 1-of-1 use P2PKH!  Generate address (1-of-1) 1import hashlib 2 3from bitcoin import SelectParams 4from bitcoin.core import b2x, lx, COIN, COutPoint, CMutableTxOut, CMutableTxIn, CMutableTransaction, CTxInWitness, CTxWitness 5from bitcoin.core.script import CScript, CScriptWitness, OP_0, OP_CHECKSIG, SignatureHash, SIGHASH_ALL, SIGVERSION_WITNESS_V0 6from bitcoin.wallet import CBitcoinSecret, CBitcoinAddress, P2WSHBitcoinAddress 7 8# We&amp;#39;ll be using regtest throughout this guide 9SelectParams(&amp;#34;regtest&amp;#34;) 10 11# Create the (in)famous correct brainwallet secret key.">
 </head>
 <body class=page-page id=pagetop>
 <header class=nav_header>
@@ -119,19 +115,7 @@
 </section>
 </aside>
 <main class=content>
-<h1>P2WSH address (multisig)</h1><p>P2WSH is an abbreviation for Pay to Witness Script Hash. P2WSH is the <strong>native Segwit</strong> version of
-a P2SH.</p>
-<div class=tip>
-"Script Hash addresses" are intended for multisig or other "smart contract" address. If all
-you wish to do is receive payment to an address (without multisig) it's better to use P2WPKH as
-it's cheaper to spend from those addresses.
-</div>
-<p>P2WSH has the same semantics as P2SH, except that the signature is not placed at the same location
-as before. Segregated Witness (SegWit) moves the proof of ownership from the scriptSig part of the
-transaction to a new part called the witness of the input. Script Hash allows you to lock coins to
-the hash of a script, and you then provide that original script when you come unlock those coins.</p>
-<p>scriptPubKey: <code>0</code> <code>&lt;witnessScriptHash></code></p>
-<p>witnessScriptHash: <code>sha256(pubKey OP_CHECKSIG)</code></p>
+<h1>P2WSH address (multisig)</h1>
 <div class="tip tip_warning">
 The example for 1-of-1 should only serve as an example. We don't recommend using it in the real
 world because it is not its intention. Instead of 1-of-1 use P2PKH!
@@ -151,17 +135,19 @@ world because it is not its intention. Instead of 1-of-1 use P2PKH!
 <span class=ln>12</span><span class=n>h</span> <span class=o>=</span> <span class=n>hashlib</span><span class=o>.</span><span class=n>sha256</span><span class=p>(</span><span class=sa>b</span><span class=s1>&#39;correct horse battery staple&#39;</span><span class=p>)</span><span class=o>.</span><span class=n>digest</span><span class=p>()</span>
 <span class=ln>13</span><span class=n>seckey</span> <span class=o>=</span> <span class=n>CBitcoinSecret</span><span class=o>.</span><span class=n>from_secret_bytes</span><span class=p>(</span><span class=n>h</span><span class=p>)</span>
 <span class=ln>14</span>
-<span class=ln>15</span><span class=c1># Create a witnessScript and corresponding redeemScript. Similar to a scriptPubKey</span>
-<span class=ln>16</span><span class=c1># the redeemScript must be satisfied for the funds to be spent.</span>
-<span class=ln>17</span><span class=n>redeemScript</span> <span class=o>=</span> <span class=n>CScript</span><span class=p>([</span><span class=n>seckey</span><span class=o>.</span><span class=n>pub</span><span class=p>,</span> <span class=n>OP_CHECKSIG</span><span class=p>])</span>
-<span class=ln>18</span><span class=n>scriptHash</span> <span class=o>=</span> <span class=n>hashlib</span><span class=o>.</span><span class=n>sha256</span><span class=p>(</span><span class=n>redeemScript</span><span class=p>)</span><span class=o>.</span><span class=n>digest</span><span class=p>()</span>
-<span class=ln>19</span><span class=n>scriptPubKey</span> <span class=o>=</span> <span class=n>CScript</span><span class=p>([</span><span class=n>OP_0</span><span class=p>,</span> <span class=n>scriptHash</span><span class=p>])</span>
-<span class=ln>20</span>
-<span class=ln>21</span><span class=c1># Convert the P2WSH scriptPubKey to a base58 Bitcoin address and print it.</span>
-<span class=ln>22</span><span class=c1># You&#39;ll need to send some funds to it to create a txout to spend.</span>
-<span class=ln>23</span><span class=n>address</span> <span class=o>=</span> <span class=n>P2WSHBitcoinAddress</span><span class=o>.</span><span class=n>from_scriptPubKey</span><span class=p>(</span><span class=n>scriptPubKey</span><span class=p>)</span>
-<span class=ln>24</span><span class=nb>print</span><span class=p>(</span><span class=s1>&#39;Address:&#39;</span><span class=p>,</span> <span class=nb>str</span><span class=p>(</span><span class=n>address</span><span class=p>))</span>
-<span class=ln>25</span><span class=c1># outputs: Address: bcrt1qgatzazqjupdalx4v28pxjlys2s3yja9gr3xuca3ugcqpery6c3sqx9g8h7</span>
+<span class=ln>15</span><span class=c1># Create a witnessScript. witnessScript in SegWit is equivalent to redeemScript in P2SH transaction,</span>
+<span class=ln>16</span><span class=c1># however, while the redeemScript of a P2SH transaction is included in the ScriptSig, the </span>
+<span class=ln>17</span><span class=c1># WitnessScript is included in the Witness field, making P2WSH inputs cheaper to spend than P2SH </span>
+<span class=ln>18</span><span class=c1># inputs.</span>
+<span class=ln>19</span><span class=n>witness_script</span> <span class=o>=</span> <span class=n>CScript</span><span class=p>([</span><span class=n>seckey</span><span class=o>.</span><span class=n>pub</span><span class=p>,</span> <span class=n>OP_CHECKSIG</span><span class=p>])</span>
+<span class=ln>20</span><span class=n>script_hash</span> <span class=o>=</span> <span class=n>hashlib</span><span class=o>.</span><span class=n>sha256</span><span class=p>(</span><span class=n>witness_script</span><span class=p>)</span><span class=o>.</span><span class=n>digest</span><span class=p>()</span>
+<span class=ln>21</span><span class=n>script_pubkey</span> <span class=o>=</span> <span class=n>CScript</span><span class=p>([</span><span class=n>OP_0</span><span class=p>,</span> <span class=n>script_hash</span><span class=p>])</span>
+<span class=ln>22</span>
+<span class=ln>23</span><span class=c1># Convert the P2WSH scriptPubKey to a base58 Bitcoin address and print it.</span>
+<span class=ln>24</span><span class=c1># You&#39;ll need to send some funds to it to create a txout to spend.</span>
+<span class=ln>25</span><span class=n>address</span> <span class=o>=</span> <span class=n>P2WSHBitcoinAddress</span><span class=o>.</span><span class=n>from_scriptPubKey</span><span class=p>(</span><span class=n>script_pubkey</span><span class=p>)</span>
+<span class=ln>26</span><span class=nb>print</span><span class=p>(</span><span class=s1>&#39;Address:&#39;</span><span class=p>,</span> <span class=nb>str</span><span class=p>(</span><span class=n>address</span><span class=p>))</span>
+<span class=ln>27</span><span class=c1># outputs: Address: bcrt1qgatzazqjupdalx4v28pxjlys2s3yja9gr3xuca3ugcqpery6c3sqx9g8h7</span>
 </code></pre></div><h2 id=spend-from-address-1-of-1>Spend from address (1-of-1)</h2>
 <p>Assuming the previously generated address has received funds, we can spend them. In order to spend
 them, we'll need information about the transaction id (txid) and a vector of an output (vout). You
@@ -196,7 +182,7 @@ to a watchlist run <a href=https://chainquery.com/bitcoin-cli/importaddress>impo
 <span class=ln>23</span>
 <span class=ln>24</span><span class=c1># Calculate the signature hash for that transaction.</span>
 <span class=ln>25</span><span class=n>sighash</span> <span class=o>=</span> <span class=n>SignatureHash</span><span class=p>(</span>
-<span class=ln>26</span>    <span class=n>script</span><span class=o>=</span><span class=n>redeemScript</span><span class=p>,</span>
+<span class=ln>26</span>    <span class=n>script</span><span class=o>=</span><span class=n>witness_script</span><span class=p>,</span>
 <span class=ln>27</span>    <span class=n>txTo</span><span class=o>=</span><span class=n>tx</span><span class=p>,</span>
 <span class=ln>28</span>    <span class=n>inIdx</span><span class=o>=</span><span class=mi>0</span><span class=p>,</span>
 <span class=ln>29</span>    <span class=n>hashtype</span><span class=o>=</span><span class=n>SIGHASH_ALL</span><span class=p>,</span>
@@ -209,7 +195,7 @@ to a watchlist run <a href=https://chainquery.com/bitcoin-cli/importaddress>impo
 <span class=ln>36</span><span class=n>sig</span> <span class=o>=</span> <span class=n>seckey</span><span class=o>.</span><span class=n>sign</span><span class=p>(</span><span class=n>sighash</span><span class=p>)</span> <span class=o>+</span> <span class=nb>bytes</span><span class=p>([</span><span class=n>SIGHASH_ALL</span><span class=p>])</span>
 <span class=ln>37</span>
 <span class=ln>38</span><span class=c1># Construct a witness for this P2WSH transaction and add to tx.</span>
-<span class=ln>39</span><span class=n>witness</span> <span class=o>=</span> <span class=n>CScriptWitness</span><span class=p>([</span><span class=n>sig</span><span class=p>,</span> <span class=n>redeemScript</span><span class=p>])</span>
+<span class=ln>39</span><span class=n>witness</span> <span class=o>=</span> <span class=n>CScriptWitness</span><span class=p>([</span><span class=n>sig</span><span class=p>,</span> <span class=n>witness_script</span><span class=p>])</span>
 <span class=ln>40</span><span class=n>tx</span><span class=o>.</span><span class=n>wit</span> <span class=o>=</span> <span class=n>CTxWitness</span><span class=p>([</span><span class=n>CTxInWitness</span><span class=p>(</span><span class=n>witness</span><span class=p>)])</span>
 <span class=ln>41</span>
 <span class=ln>42</span><span class=c1># Done! Print the transaction</span>
@@ -241,17 +227,19 @@ required in order to unlock funds.</p>
 <span class=ln>17</span><span class=n>h2</span> <span class=o>=</span> <span class=n>hashlib</span><span class=o>.</span><span class=n>sha256</span><span class=p>(</span><span class=sa>b</span><span class=s1>&#39;correct horse battery staple second&#39;</span><span class=p>)</span><span class=o>.</span><span class=n>digest</span><span class=p>()</span>
 <span class=ln>18</span><span class=n>seckey2</span> <span class=o>=</span> <span class=n>CBitcoinSecret</span><span class=o>.</span><span class=n>from_secret_bytes</span><span class=p>(</span><span class=n>h2</span><span class=p>)</span>
 <span class=ln>19</span>
-<span class=ln>20</span><span class=c1># Create a witnessScript and corresponding redeemScript. Similar to a scriptPubKey</span>
-<span class=ln>21</span><span class=c1># the redeemScript must be satisfied for the funds to be spent.</span>
-<span class=ln>22</span><span class=n>redeemScript</span> <span class=o>=</span> <span class=n>CScript</span><span class=p>([</span><span class=n>OP_2</span><span class=p>,</span> <span class=n>seckey1</span><span class=o>.</span><span class=n>pub</span><span class=p>,</span> <span class=n>seckey2</span><span class=o>.</span><span class=n>pub</span><span class=p>,</span> <span class=n>OP_2</span><span class=p>,</span> <span class=n>OP_CHECKMULTISIG</span><span class=p>])</span>
-<span class=ln>23</span><span class=n>scriptHash</span> <span class=o>=</span> <span class=n>hashlib</span><span class=o>.</span><span class=n>sha256</span><span class=p>(</span><span class=n>redeemScript</span><span class=p>)</span><span class=o>.</span><span class=n>digest</span><span class=p>()</span>
-<span class=ln>24</span><span class=n>scriptPubKey</span> <span class=o>=</span> <span class=n>CScript</span><span class=p>([</span><span class=n>OP_0</span><span class=p>,</span> <span class=n>scriptHash</span><span class=p>])</span>
-<span class=ln>25</span>
-<span class=ln>26</span><span class=c1># Convert the P2WSH scriptPubKey to a base58 Bitcoin address and print it.</span>
-<span class=ln>27</span><span class=c1># You&#39;ll need to send some funds to it to create a txout to spend.</span>
-<span class=ln>28</span><span class=n>address</span> <span class=o>=</span> <span class=n>P2WSHBitcoinAddress</span><span class=o>.</span><span class=n>from_scriptPubKey</span><span class=p>(</span><span class=n>scriptPubKey</span><span class=p>)</span>
-<span class=ln>29</span><span class=nb>print</span><span class=p>(</span><span class=s1>&#39;Address:&#39;</span><span class=p>,</span> <span class=nb>str</span><span class=p>(</span><span class=n>address</span><span class=p>))</span>
-<span class=ln>30</span><span class=c1># outputs: Address: bcrt1qljlyqaexx4mmhpl66e6nqdtagjaht87pghuq6p0f98a765c9uj9s3f3ee3</span>
+<span class=ln>20</span><span class=c1># Create a witnessScript. witnessScript in SegWit is equivalent to redeemScript in P2SH transaction,</span>
+<span class=ln>21</span><span class=c1># however, while the redeemScript of a P2SH transaction is included in the ScriptSig, the </span>
+<span class=ln>22</span><span class=c1># WitnessScript is included in the Witness field, making P2WSH inputs cheaper to spend than P2SH </span>
+<span class=ln>23</span><span class=c1># inputs.</span>
+<span class=ln>24</span><span class=n>witness_script</span> <span class=o>=</span> <span class=n>CScript</span><span class=p>([</span><span class=n>OP_2</span><span class=p>,</span> <span class=n>seckey1</span><span class=o>.</span><span class=n>pub</span><span class=p>,</span> <span class=n>seckey2</span><span class=o>.</span><span class=n>pub</span><span class=p>,</span> <span class=n>OP_2</span><span class=p>,</span> <span class=n>OP_CHECKMULTISIG</span><span class=p>])</span>
+<span class=ln>25</span><span class=n>script_hash</span> <span class=o>=</span> <span class=n>hashlib</span><span class=o>.</span><span class=n>sha256</span><span class=p>(</span><span class=n>witness_script</span><span class=p>)</span><span class=o>.</span><span class=n>digest</span><span class=p>()</span>
+<span class=ln>26</span><span class=n>script_pubkey</span> <span class=o>=</span> <span class=n>CScript</span><span class=p>([</span><span class=n>OP_0</span><span class=p>,</span> <span class=n>script_hash</span><span class=p>])</span>
+<span class=ln>27</span>
+<span class=ln>28</span><span class=c1># Convert the P2WSH scriptPubKey to a base58 Bitcoin address and print it.</span>
+<span class=ln>29</span><span class=c1># You&#39;ll need to send some funds to it to create a txout to spend.</span>
+<span class=ln>30</span><span class=n>address</span> <span class=o>=</span> <span class=n>P2WSHBitcoinAddress</span><span class=o>.</span><span class=n>from_scriptPubKey</span><span class=p>(</span><span class=n>script_pubkey</span><span class=p>)</span>
+<span class=ln>31</span><span class=nb>print</span><span class=p>(</span><span class=s1>&#39;Address:&#39;</span><span class=p>,</span> <span class=nb>str</span><span class=p>(</span><span class=n>address</span><span class=p>))</span>
+<span class=ln>32</span><span class=c1># outputs: Address: bcrt1qljlyqaexx4mmhpl66e6nqdtagjaht87pghuq6p0f98a765c9uj9s3f3ee3</span>
 </code></pre></div><h2 id=spend-from-address-2-of-2>Spend from address (2-of-2)</h2>
 <p>Assuming the previously generated address has received funds, we can spend them. In order to spend
 them, we'll need information about the transaction id (txid) and a vector of an output (vout). You
@@ -286,7 +274,7 @@ to a watchlist run <a href=https://chainquery.com/bitcoin-cli/importaddress>impo
 <span class=ln>23</span>
 <span class=ln>24</span><span class=c1># Calculate the signature hash for that transaction.</span>
 <span class=ln>25</span><span class=n>sighash</span> <span class=o>=</span> <span class=n>SignatureHash</span><span class=p>(</span>
-<span class=ln>26</span>    <span class=n>script</span><span class=o>=</span><span class=n>redeemScript</span><span class=p>,</span>
+<span class=ln>26</span>    <span class=n>script</span><span class=o>=</span><span class=n>witness_script</span><span class=p>,</span>
 <span class=ln>27</span>    <span class=n>txTo</span><span class=o>=</span><span class=n>tx</span><span class=p>,</span>
 <span class=ln>28</span>    <span class=n>inIdx</span><span class=o>=</span><span class=mi>0</span><span class=p>,</span>
 <span class=ln>29</span>    <span class=n>hashtype</span><span class=o>=</span><span class=n>SIGHASH_ALL</span><span class=p>,</span>
@@ -300,7 +288,7 @@ to a watchlist run <a href=https://chainquery.com/bitcoin-cli/importaddress>impo
 <span class=ln>37</span><span class=n>sig2</span> <span class=o>=</span> <span class=n>seckey2</span><span class=o>.</span><span class=n>sign</span><span class=p>(</span><span class=n>sighash</span><span class=p>)</span> <span class=o>+</span> <span class=nb>bytes</span><span class=p>([</span><span class=n>SIGHASH_ALL</span><span class=p>])</span>
 <span class=ln>38</span>
 <span class=ln>39</span><span class=c1># Construct a witness for this P2WSH transaction and add to tx.</span>
-<span class=ln>40</span><span class=n>witness</span> <span class=o>=</span> <span class=n>CScriptWitness</span><span class=p>([</span><span class=sa>b</span><span class=s2>&#34;&#34;</span><span class=p>,</span> <span class=o>*</span><span class=p>[</span><span class=n>sig1</span><span class=p>,</span> <span class=n>sig2</span><span class=p>],</span> <span class=n>redeemScript</span><span class=p>])</span>
+<span class=ln>40</span><span class=n>witness</span> <span class=o>=</span> <span class=n>CScriptWitness</span><span class=p>([</span><span class=sa>b</span><span class=s2>&#34;&#34;</span><span class=p>,</span> <span class=o>*</span><span class=p>[</span><span class=n>sig1</span><span class=p>,</span> <span class=n>sig2</span><span class=p>],</span> <span class=n>witness_script</span><span class=p>])</span>
 <span class=ln>41</span><span class=n>tx</span><span class=o>.</span><span class=n>wit</span> <span class=o>=</span> <span class=n>CTxWitness</span><span class=p>([</span><span class=n>CTxInWitness</span><span class=p>(</span><span class=n>witness</span><span class=p>)])</span>
 <span class=ln>42</span>
 <span class=ln>43</span><span class=c1># Done! Print the transaction</span>

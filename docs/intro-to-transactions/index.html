@@ -1,6 +1,6 @@
 <!doctype html><html lang=en class=dark>
 <head><meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.90.1">
+<meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.91.0">
 <link rel=apple-touch-icon sizes=180x180 href=https://bitcoinpy.dev/favicons/apple-touch-icon.png>
 <link rel=icon type=image/png sizes=32x32 href=https://bitcoinpy.dev/favicons/favicon-32x32.png>
 <link rel=icon type=image/png sizes=16x16 href=https://bitcoinpy.dev/favicons/favicon-16x16.png>
@@ -81,16 +81,41 @@
 formats. Each address has a different way of "unlocking" its funds. The way that dictates how to
 unlock funds is set (or scripted) at the time when the address is generated.</p>
 <h6 id=p2pkh>P2PKH</h6>
-<p>Locks bitcoins to the hash of a public key, this is most commonly used for payments.</p>
+<p>P2PKH is an abbreviation for Pay to Public Key Hash. It locks bitcoins to the hash of a public key,
+this is most commonly used for payments.</p>
+<p>Note that P2PKH is considered to be a legacy address so P2WPKH should be used instead.</p>
 <h6 id=p2sh>P2SH</h6>
-<p>Lock bitcoins to the hash of a script, this format enabled more advanced functionalities
-(eg. MultiSigs, HTLCs etc.).</p>
+<p>P2SH is an abbreviation for Pay to Script Hash. It allows you to lock coins to the hash of a
+script, and you then provide that original script when you come unlock those coins. P2SH locks
+bitcoins to the hash of a script, this format enabled more advanced functionalities (eg. MultiSigs,
+HTLCs etc.).</p>
+<p>Note that P2SH is considered to be a legacy address so P2WSH should be used instead.</p>
+<div class=tip>
+"Script Hash addresses" are intended for multisig or other "smart contract" address. If all
+you wish to do is receive payment to an address (without multisig) it's better to use P2WPKH as
+it's cheaper to spend from those addresses.
+</div>
 <h6 id=p2wpkh-segwit>P2WPKH (SegWit)</h6>
-<p>Native SegWit address with the same semantics as P2PKH, using this address format makes transactions
-cheaper compared to P2PKH .</p>
+<p>P2WPKH is an abbreviation for Pay to Witness Public Key Hash. P2WPKH is the <strong>native Segwit</strong>
+version of a P2PKH.</p>
+<p>P2WPKH has the same semantics as P2PKH, except that the signature is not placed at the same
+location as before. Segregated Witness (SegWit) moves the proof of ownership from the scriptSig
+part of the transaction to a new part called the witness of the input which as a result makes
+transactions smaller and cheaper.</p>
 <h6 id=p2wsh-segwit>P2WSH (SegWit)</h6>
-<p>Native SegWit address with the same semantics as P2SH, using this address format makes transactions
-cheaper compared to P2PKH.</p>
+<p>P2WSH is an abbreviation for Pay to Witness Script Hash. P2WSH is the <strong>native Segwit</strong> version of
+a P2SH.</p>
+<div class=tip>
+"Script Hash addresses" are intended for multisig or other "smart contract" address. If all
+you wish to do is receive payment to an address (without multisig) it's better to use P2WPKH as
+it's cheaper to spend from those addresses.
+</div>
+<p>P2WSH has the same semantics as P2SH, except that the signature is not placed at the same location
+as before. Segregated Witness (SegWit) moves the proof of ownership from the scriptSig part of the
+transaction to a new part called the witness of the input which as a result makes
+transactions smaller and cheaper.</p>
+<p>Script Hash allows you to lock coins to the hash of a script, and you then provide that original
+script when you come to unlock those coins.</p>
 <h6 id=p2tr-taproot>P2TR (Taproot)</h6>
 <p>Locks bitcoins to a script that can be unlocked by a public key or a <a href=https://river.com/learn/terms/m/merkelized-alternative-script-tree-mast/>MAST</a> (Merkelized Alternative Script Tree). MAST expands the flexibility and utility of Bitcoin contracts
 in an inexpensive and privacy preserving way.</p>
