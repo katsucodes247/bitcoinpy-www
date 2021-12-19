@@ -14,7 +14,7 @@
 <meta property="og:url" content="https://bitcoinpy.dev/docs/python-bitcoinlib/p2sh-multisig/"><meta property="article:section" content="docs">
 <meta itemprop=name content="P2SH address (multisig)">
 <meta itemprop=description content="The example for 1-of-1 should only serve as an example. We don't recommend using it in the real world because it is not its intention. Instead of 1-of-1 use P2PKH!  Generate address (1-of-1) 1import hashlib 2 3from bitcoin import SelectParams 4from bitcoin.core import b2x, lx, COIN, COutPoint, CMutableTxOut, CMutableTxIn, CMutableTransaction, Hash160 5from bitcoin.core.script import CScript, OP_DUP, OP_HASH160, OP_EQUALVERIFY, OP_CHECKSIG, SignatureHash, SIGHASH_ALL 6from bitcoin.core.scripteval import VerifyScript, SCRIPT_VERIFY_P2SH 7from bitcoin.wallet import CBitcoinAddress, CBitcoinSecret 8 9SelectParams('regtest') 10 11# Create the (in)famous correct brainwallet secret key.">
-<meta itemprop=wordCount content="1073">
+<meta itemprop=wordCount content="2160">
 <meta itemprop=keywords content><meta name=twitter:card content="summary">
 <meta name=twitter:title content="P2SH address (multisig)">
 <meta name=twitter:description content="The example for 1-of-1 should only serve as an example. We don't recommend using it in the real world because it is not its intention. Instead of 1-of-1 use P2PKH!  Generate address (1-of-1) 1import hashlib 2 3from bitcoin import SelectParams 4from bitcoin.core import b2x, lx, COIN, COutPoint, CMutableTxOut, CMutableTxIn, CMutableTransaction, Hash160 5from bitcoin.core.script import CScript, OP_DUP, OP_HASH160, OP_EQUALVERIFY, OP_CHECKSIG, SignatureHash, SIGHASH_ALL 6from bitcoin.core.scripteval import VerifyScript, SCRIPT_VERIFY_P2SH 7from bitcoin.wallet import CBitcoinAddress, CBitcoinSecret 8 9SelectParams('regtest') 10 11# Create the (in)famous correct brainwallet secret key.">
@@ -87,6 +87,10 @@
 <li><a href=#spend-from-address-1-of-1>Spend from address (1-of-1)</a></li>
 <li><a href=#generate-address-2-of-2>Generate address (2-of-2)</a></li>
 <li><a href=#spend-from-address-2-of-2>Spend from address (2-of-2)</a></li>
+<li><a href=#generate-address-1-of-3>Generate address (1-of-3)</a></li>
+<li><a href=#spend-from-address-1-of-3>Spend from address (1-of-3)</a></li>
+<li><a href=#generate-address-2-of-3>Generate address (2-of-3)</a></li>
+<li><a href=#spend-from-address-2-of-3>Spend from address (2-of-3)</a></li>
 </ul>
 </nav>
 <h3 class=section_link><a id=docs-p2pkh-address href=https://bitcoinpy.dev/docs/python-bitcoinlib/p2pkh/>P2PKH address</a></h3><nav id=TableOfContents>
@@ -97,14 +101,14 @@
 </nav>
 <h3 class="section_link active"><a id=docs-p2sh-address-multisig href=https://bitcoinpy.dev/docs/python-bitcoinlib/p2sh-multisig/>P2SH address (multisig)</a></h3><nav id=TableOfContents>
 <ul>
-<li>
-<ul>
 <li><a href=#generate-address-1-of-1>Generate address (1-of-1)</a></li>
 <li><a href=#spend-from-address-1-of-1>Spend from address (1-of-1)</a></li>
-</ul>
-</li>
 <li><a href=#generate-address-2-of-2>Generate address (2-of-2)</a></li>
 <li><a href=#spend-from-address-2-of-2>Spend from address (2-of-2)</a></li>
+<li><a href=#generate-address-1-of-3>Generate address (1-of-3)</a></li>
+<li><a href=#spend-from-address-1-of-3>Spend from address (1-of-3)</a></li>
+<li><a href=#generate-address-2-of-3>Generate address (2-of-3)</a></li>
+<li><a href=#spend-from-address-2-of-3>Spend from address (2-of-3)</a></li>
 </ul>
 </nav>
 <h3 class=section_link><a id=docs-p2tr-address href=https://bitcoinpy.dev/docs/python-bitcoinlib/p2tr/>P2TR address</a></h3><nav id=TableOfContents></nav>
@@ -120,7 +124,7 @@
 The example for 1-of-1 should only serve as an example. We don't recommend using it in the real
 world because it is not its intention. Instead of 1-of-1 use P2PKH!
 </div>
-<h3 id=generate-address-1-of-1>Generate address (1-of-1)</h3>
+<h2 id=generate-address-1-of-1>Generate address (1-of-1)</h2>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-py data-lang=py><span class=ln> 1</span><span class=kn>import</span> <span class=nn>hashlib</span>
 <span class=ln> 2</span>
 <span class=ln> 3</span><span class=kn>from</span> <span class=nn>bitcoin</span> <span class=kn>import</span> <span class=n>SelectParams</span>
@@ -150,7 +154,7 @@ world because it is not its intention. Instead of 1-of-1 use P2PKH!
 <span class=ln>27</span><span class=n>address</span> <span class=o>=</span> <span class=n>CBitcoinAddress</span><span class=o>.</span><span class=n>from_scriptPubKey</span><span class=p>(</span><span class=n>script_pubkey</span><span class=p>)</span>
 <span class=ln>28</span><span class=nb>print</span><span class=p>(</span><span class=s1>&#39;Address:&#39;</span><span class=p>,</span><span class=nb>str</span><span class=p>(</span><span class=n>address</span><span class=p>))</span>
 <span class=ln>29</span><span class=c1># outputs: Address: 2Msc7itHhx2x8MEkTthvtED9pFC36J7QpQb</span>
-</code></pre></div><h3 id=spend-from-address-1-of-1>Spend from address (1-of-1)</h3>
+</code></pre></div><h2 id=spend-from-address-1-of-1>Spend from address (1-of-1)</h2>
 <p>Assuming the previously generated address has received funds, we can spend them. In order to spend
 them, we'll need information about the transaction id (txid) and a vector of an output (vout). You
 can get both from an explorer or by querying your running Bitcoin node by running
@@ -218,28 +222,29 @@ required in order to unlock funds.</p>
 <span class=ln> 8</span>
 <span class=ln> 9</span><span class=n>SelectParams</span><span class=p>(</span><span class=s1>&#39;regtest&#39;</span><span class=p>)</span>
 <span class=ln>10</span>
-<span class=ln>11</span><span class=n>h1</span> <span class=o>=</span> <span class=n>hashlib</span><span class=o>.</span><span class=n>sha256</span><span class=p>(</span><span class=sa>b</span><span class=s1>&#39;correct horse battery staple first&#39;</span><span class=p>)</span><span class=o>.</span><span class=n>digest</span><span class=p>()</span>
-<span class=ln>12</span><span class=n>seckey1</span> <span class=o>=</span> <span class=n>CBitcoinSecret</span><span class=o>.</span><span class=n>from_secret_bytes</span><span class=p>(</span><span class=n>h1</span><span class=p>)</span>
-<span class=ln>13</span>
-<span class=ln>14</span><span class=c1># second signature</span>
-<span class=ln>15</span><span class=n>h2</span> <span class=o>=</span> <span class=n>hashlib</span><span class=o>.</span><span class=n>sha256</span><span class=p>(</span><span class=sa>b</span><span class=s1>&#39;correct horse battery staple second&#39;</span><span class=p>)</span><span class=o>.</span><span class=n>digest</span><span class=p>()</span>
-<span class=ln>16</span><span class=n>seckey2</span> <span class=o>=</span> <span class=n>CBitcoinSecret</span><span class=o>.</span><span class=n>from_secret_bytes</span><span class=p>(</span><span class=n>h2</span><span class=p>)</span>
-<span class=ln>17</span>
-<span class=ln>18</span><span class=c1># Create a redeemScript. Similar to a scriptPubKey the redeemScript must be</span>
-<span class=ln>19</span><span class=c1># satisfied for the funds to be spent.</span>
-<span class=ln>20</span><span class=n>redeem_script</span> <span class=o>=</span> <span class=n>CScript</span><span class=p>([</span><span class=n>OP_2</span><span class=p>,</span> <span class=n>seckey1</span><span class=o>.</span><span class=n>pub</span><span class=p>,</span> <span class=n>seckey2</span><span class=o>.</span><span class=n>pub</span><span class=p>,</span> <span class=n>OP_2</span><span class=p>,</span> <span class=n>OP_CHECKMULTISIG</span><span class=p>])</span>
-<span class=ln>21</span>
-<span class=ln>22</span><span class=c1># Create the magic P2SH scriptPubKey format from that redeemScript. You should</span>
-<span class=ln>23</span><span class=c1># look at the CScript.to_p2sh_scriptPubKey() function in bitcoin.core.script to</span>
-<span class=ln>24</span><span class=c1># understand what&#39;s happening, as well as read BIP16:</span>
-<span class=ln>25</span><span class=c1># https://github.com/bitcoin/bips/blob/master/bip-0016.mediawiki</span>
-<span class=ln>26</span><span class=n>script_pubkey</span> <span class=o>=</span> <span class=n>redeem_script</span><span class=o>.</span><span class=n>to_p2sh_scriptPubKey</span><span class=p>()</span>
-<span class=ln>27</span>
-<span class=ln>28</span><span class=c1># Convert the P2SH scriptPubKey to a base58 Bitcoin address and print it.</span>
-<span class=ln>29</span><span class=c1># You&#39;ll need to send some funds to it to create a txout to spend.</span>
-<span class=ln>30</span><span class=n>address</span> <span class=o>=</span> <span class=n>CBitcoinAddress</span><span class=o>.</span><span class=n>from_scriptPubKey</span><span class=p>(</span><span class=n>script_pubkey</span><span class=p>)</span>
-<span class=ln>31</span><span class=nb>print</span><span class=p>(</span><span class=s1>&#39;Address:&#39;</span><span class=p>,</span><span class=nb>str</span><span class=p>(</span><span class=n>address</span><span class=p>))</span>
-<span class=ln>32</span><span class=c1># outputs: Address: 2N3avDJKpr9c8pkRSYgWAsHSVCmRX3ce3w7</span>
+<span class=ln>11</span><span class=c1># first key</span>
+<span class=ln>12</span><span class=n>h1</span> <span class=o>=</span> <span class=n>hashlib</span><span class=o>.</span><span class=n>sha256</span><span class=p>(</span><span class=sa>b</span><span class=s1>&#39;correct horse battery staple first&#39;</span><span class=p>)</span><span class=o>.</span><span class=n>digest</span><span class=p>()</span>
+<span class=ln>13</span><span class=n>seckey1</span> <span class=o>=</span> <span class=n>CBitcoinSecret</span><span class=o>.</span><span class=n>from_secret_bytes</span><span class=p>(</span><span class=n>h1</span><span class=p>)</span>
+<span class=ln>14</span>
+<span class=ln>15</span><span class=c1># second key</span>
+<span class=ln>16</span><span class=n>h2</span> <span class=o>=</span> <span class=n>hashlib</span><span class=o>.</span><span class=n>sha256</span><span class=p>(</span><span class=sa>b</span><span class=s1>&#39;correct horse battery staple second&#39;</span><span class=p>)</span><span class=o>.</span><span class=n>digest</span><span class=p>()</span>
+<span class=ln>17</span><span class=n>seckey2</span> <span class=o>=</span> <span class=n>CBitcoinSecret</span><span class=o>.</span><span class=n>from_secret_bytes</span><span class=p>(</span><span class=n>h2</span><span class=p>)</span>
+<span class=ln>18</span>
+<span class=ln>19</span><span class=c1># Create a redeemScript. Similar to a scriptPubKey the redeemScript must be</span>
+<span class=ln>20</span><span class=c1># satisfied for the funds to be spent.</span>
+<span class=ln>21</span><span class=n>redeem_script</span> <span class=o>=</span> <span class=n>CScript</span><span class=p>([</span><span class=n>OP_2</span><span class=p>,</span> <span class=n>seckey1</span><span class=o>.</span><span class=n>pub</span><span class=p>,</span> <span class=n>seckey2</span><span class=o>.</span><span class=n>pub</span><span class=p>,</span> <span class=n>OP_2</span><span class=p>,</span> <span class=n>OP_CHECKMULTISIG</span><span class=p>])</span>
+<span class=ln>22</span>
+<span class=ln>23</span><span class=c1># Create the magic P2SH scriptPubKey format from that redeemScript. You should</span>
+<span class=ln>24</span><span class=c1># look at the CScript.to_p2sh_scriptPubKey() function in bitcoin.core.script to</span>
+<span class=ln>25</span><span class=c1># understand what&#39;s happening, as well as read BIP16:</span>
+<span class=ln>26</span><span class=c1># https://github.com/bitcoin/bips/blob/master/bip-0016.mediawiki</span>
+<span class=ln>27</span><span class=n>script_pubkey</span> <span class=o>=</span> <span class=n>redeem_script</span><span class=o>.</span><span class=n>to_p2sh_scriptPubKey</span><span class=p>()</span>
+<span class=ln>28</span>
+<span class=ln>29</span><span class=c1># Convert the P2SH scriptPubKey to a base58 Bitcoin address and print it.</span>
+<span class=ln>30</span><span class=c1># You&#39;ll need to send some funds to it to create a txout to spend.</span>
+<span class=ln>31</span><span class=n>address</span> <span class=o>=</span> <span class=n>CBitcoinAddress</span><span class=o>.</span><span class=n>from_scriptPubKey</span><span class=p>(</span><span class=n>script_pubkey</span><span class=p>)</span>
+<span class=ln>32</span><span class=nb>print</span><span class=p>(</span><span class=s1>&#39;Address:&#39;</span><span class=p>,</span><span class=nb>str</span><span class=p>(</span><span class=n>address</span><span class=p>))</span>
+<span class=ln>33</span><span class=c1># outputs: Address: 2N3avDJKpr9c8pkRSYgWAsHSVCmRX3ce3w7</span>
 </code></pre></div><h2 id=spend-from-address-2-of-2>Spend from address (2-of-2)</h2>
 <p>Assuming the previously generated address has received funds, we can spend them. In order to spend
 them, we'll need information about the transaction id (txid) and a vector of an output (vout). You
@@ -297,6 +302,199 @@ to a watchlist run <a href=https://chainquery.com/bitcoin-cli/importaddress>impo
 <p><code>bitcoin-cli sendrawtransaction &lt;transaction></code></p>
 <p>If the transaction is broadcasted successfully a transaction id will be returned. In this case it
 was <code>844dd295da6877b8e7b01fa79f46aedf1b4f21651c0210ebf5e36f2476f2116d</code>.</p>
+<h2 id=generate-address-1-of-3>Generate address (1-of-3)</h2>
+<p>In this example we show how to create a 1-of-3 multisig address. This means that one out of three
+signatures can unlock and spend bitcoins.</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-py data-lang=py><span class=ln> 1</span><span class=kn>import</span> <span class=nn>hashlib</span>
+<span class=ln> 2</span>
+<span class=ln> 3</span><span class=kn>from</span> <span class=nn>bitcoin</span> <span class=kn>import</span> <span class=n>SelectParams</span>
+<span class=ln> 4</span><span class=kn>from</span> <span class=nn>bitcoin.core</span> <span class=kn>import</span> <span class=n>b2x</span><span class=p>,</span> <span class=n>lx</span><span class=p>,</span> <span class=n>COIN</span><span class=p>,</span> <span class=n>COutPoint</span><span class=p>,</span> <span class=n>CMutableTxOut</span><span class=p>,</span> <span class=n>CMutableTxIn</span><span class=p>,</span> <span class=n>CMutableTransaction</span><span class=p>,</span> <span class=n>Hash160</span>
+<span class=ln> 5</span><span class=kn>from</span> <span class=nn>bitcoin.core.script</span> <span class=kn>import</span> <span class=n>CScript</span><span class=p>,</span> <span class=n>OP_DUP</span><span class=p>,</span> <span class=n>OP_0</span><span class=p>,</span> <span class=n>OP_1</span><span class=p>,</span> <span class=n>OP_3</span><span class=p>,</span> <span class=n>OP_HASH160</span><span class=p>,</span> <span class=n>OP_EQUALVERIFY</span><span class=p>,</span> <span class=n>OP_CHECKMULTISIG</span><span class=p>,</span> <span class=n>SignatureHash</span><span class=p>,</span> <span class=n>SIGHASH_ALL</span>
+<span class=ln> 6</span><span class=kn>from</span> <span class=nn>bitcoin.core.scripteval</span> <span class=kn>import</span> <span class=n>VerifyScript</span><span class=p>,</span> <span class=n>SCRIPT_VERIFY_P2SH</span>
+<span class=ln> 7</span><span class=kn>from</span> <span class=nn>bitcoin.wallet</span> <span class=kn>import</span> <span class=n>CBitcoinAddress</span><span class=p>,</span> <span class=n>CBitcoinSecret</span>
+<span class=ln> 8</span>
+<span class=ln> 9</span><span class=n>SelectParams</span><span class=p>(</span><span class=s1>&#39;regtest&#39;</span><span class=p>)</span>
+<span class=ln>10</span>
+<span class=ln>11</span><span class=c1># first key</span>
+<span class=ln>12</span><span class=n>h1</span> <span class=o>=</span> <span class=n>hashlib</span><span class=o>.</span><span class=n>sha256</span><span class=p>(</span><span class=sa>b</span><span class=s1>&#39;correct horse battery staple first&#39;</span><span class=p>)</span><span class=o>.</span><span class=n>digest</span><span class=p>()</span>
+<span class=ln>13</span><span class=n>seckey1</span> <span class=o>=</span> <span class=n>CBitcoinSecret</span><span class=o>.</span><span class=n>from_secret_bytes</span><span class=p>(</span><span class=n>h1</span><span class=p>)</span>
+<span class=ln>14</span>
+<span class=ln>15</span><span class=c1># second key</span>
+<span class=ln>16</span><span class=n>h2</span> <span class=o>=</span> <span class=n>hashlib</span><span class=o>.</span><span class=n>sha256</span><span class=p>(</span><span class=sa>b</span><span class=s1>&#39;correct horse battery staple second&#39;</span><span class=p>)</span><span class=o>.</span><span class=n>digest</span><span class=p>()</span>
+<span class=ln>17</span><span class=n>seckey2</span> <span class=o>=</span> <span class=n>CBitcoinSecret</span><span class=o>.</span><span class=n>from_secret_bytes</span><span class=p>(</span><span class=n>h2</span><span class=p>)</span>
+<span class=ln>18</span>
+<span class=ln>19</span><span class=c1># third key</span>
+<span class=ln>20</span><span class=n>h3</span> <span class=o>=</span> <span class=n>hashlib</span><span class=o>.</span><span class=n>sha256</span><span class=p>(</span><span class=sa>b</span><span class=s1>&#39;correct horse battery staple third&#39;</span><span class=p>)</span><span class=o>.</span><span class=n>digest</span><span class=p>()</span>
+<span class=ln>21</span><span class=n>seckey3</span> <span class=o>=</span> <span class=n>CBitcoinSecret</span><span class=o>.</span><span class=n>from_secret_bytes</span><span class=p>(</span><span class=n>h2</span><span class=p>)</span>
+<span class=ln>22</span>
+<span class=ln>23</span><span class=c1># Create a redeemScript. Similar to a scriptPubKey the redeemScript must be</span>
+<span class=ln>24</span><span class=c1># satisfied for the funds to be spent.</span>
+<span class=ln>25</span><span class=n>redeem_script</span> <span class=o>=</span> <span class=n>CScript</span><span class=p>([</span><span class=n>OP_1</span><span class=p>,</span> <span class=n>seckey1</span><span class=o>.</span><span class=n>pub</span><span class=p>,</span> <span class=n>seckey2</span><span class=o>.</span><span class=n>pub</span><span class=p>,</span> <span class=n>seckey3</span><span class=o>.</span><span class=n>pub</span><span class=p>,</span> <span class=n>OP_3</span><span class=p>,</span> <span class=n>OP_CHECKMULTISIG</span><span class=p>])</span>
+<span class=ln>26</span>
+<span class=ln>27</span><span class=c1># Create the magic P2SH scriptPubKey format from that redeemScript. You should</span>
+<span class=ln>28</span><span class=c1># look at the CScript.to_p2sh_scriptPubKey() function in bitcoin.core.script to</span>
+<span class=ln>29</span><span class=c1># understand what&#39;s happening, as well as read BIP16:</span>
+<span class=ln>30</span><span class=c1># https://github.com/bitcoin/bips/blob/master/bip-0016.mediawiki</span>
+<span class=ln>31</span><span class=n>script_pubkey</span> <span class=o>=</span> <span class=n>redeem_script</span><span class=o>.</span><span class=n>to_p2sh_scriptPubKey</span><span class=p>()</span>
+<span class=ln>32</span>
+<span class=ln>33</span><span class=c1># Convert the P2SH scriptPubKey to a base58 Bitcoin address and print it.</span>
+<span class=ln>34</span><span class=c1># You&#39;ll need to send some funds to it to create a txout to spend.</span>
+<span class=ln>35</span><span class=n>address</span> <span class=o>=</span> <span class=n>CBitcoinAddress</span><span class=o>.</span><span class=n>from_scriptPubKey</span><span class=p>(</span><span class=n>script_pubkey</span><span class=p>)</span>
+<span class=ln>36</span><span class=nb>print</span><span class=p>(</span><span class=s1>&#39;Address:&#39;</span><span class=p>,</span><span class=nb>str</span><span class=p>(</span><span class=n>address</span><span class=p>))</span>
+<span class=ln>37</span><span class=c1># outputs: Address: 2MzB7ZEastmRyWMdY54fMxRXu3Wf9iu47AE</span>
+</code></pre></div><h2 id=spend-from-address-1-of-3>Spend from address (1-of-3)</h2>
+<p>Assuming the previously generated address has received funds, we can spend them. In order to spend
+them, we'll need information about the transaction id (txid) and a vector of an output (vout). You
+can get both from an explorer or by querying your running Bitcoin node by running
+<a href=https://chainquery.com/bitcoin-cli/listunspent>listunspent</a> along with some filters:</p>
+<p><code>bitcoin-cli listunspent 1 9999999 "[\"address\"]"</code></p>
+<p>Note that you must have an address in the watchlist in order to get any output. To add an address
+to a watchlist run <a href=https://chainquery.com/bitcoin-cli/importaddress>importaddress</a>:</p>
+<p><code>bitcoin-cli importaddress &lt;address> "&lt;label>" false false</code></p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-py data-lang=py><span class=ln> 1</span><span class=c1># we are continuing the code from above</span>
+<span class=ln> 2</span>
+<span class=ln> 3</span><span class=n>txid</span> <span class=o>=</span> <span class=n>lx</span><span class=p>(</span><span class=s2>&#34;8e46a443d5877e21d83cc519cb22dde72e29884e91c4fb3410afa2cf1cb8b03c&#34;</span><span class=p>)</span>
+<span class=ln> 4</span><span class=n>vout</span> <span class=o>=</span> <span class=mi>0</span>
+<span class=ln> 5</span>
+<span class=ln> 6</span><span class=c1># Specify the amount send to your P2WSH address.</span>
+<span class=ln> 7</span><span class=n>amount</span> <span class=o>=</span> <span class=nb>int</span><span class=p>(</span><span class=mi>1</span> <span class=o>*</span> <span class=n>COIN</span><span class=p>)</span>
+<span class=ln> 8</span>
+<span class=ln> 9</span><span class=c1># Calculate an amount for the upcoming new UTXO. Set a high fee (5%) to bypass bitcoind minfee</span>
+<span class=ln>10</span><span class=c1># setting on regtest.</span>
+<span class=ln>11</span><span class=n>amount_less_fee</span> <span class=o>=</span> <span class=n>amount</span> <span class=o>*</span> <span class=mf>0.99</span>
+<span class=ln>12</span>
+<span class=ln>13</span><span class=c1># Create the txin structure, which includes the outpoint. The scriptSig defaults to being empty as</span>
+<span class=ln>14</span><span class=c1># is necessary for spending a P2WSH output.</span>
+<span class=ln>15</span><span class=n>txin</span> <span class=o>=</span> <span class=n>CMutableTxIn</span><span class=p>(</span><span class=n>COutPoint</span><span class=p>(</span><span class=n>txid</span><span class=p>,</span> <span class=n>vout</span><span class=p>))</span>
+<span class=ln>16</span>
+<span class=ln>17</span><span class=c1># Specify a destination address and create the txout.</span>
+<span class=ln>18</span><span class=n>destination</span> <span class=o>=</span> <span class=n>CBitcoinAddress</span><span class=p>(</span><span class=s2>&#34;bcrt1q0q579hm06qf655cr6ns274udgf6k9x7nedkeaa&#34;</span><span class=p>)</span><span class=o>.</span><span class=n>to_scriptPubKey</span><span class=p>()</span> 
+<span class=ln>19</span><span class=n>txout</span> <span class=o>=</span> <span class=n>CMutableTxOut</span><span class=p>(</span><span class=n>amount_less_fee</span><span class=p>,</span> <span class=n>destination</span><span class=p>)</span>
+<span class=ln>20</span>
+<span class=ln>21</span><span class=c1># Create the unsigned transaction.</span>
+<span class=ln>22</span><span class=n>tx</span> <span class=o>=</span> <span class=n>CMutableTransaction</span><span class=p>([</span><span class=n>txin</span><span class=p>],</span> <span class=p>[</span><span class=n>txout</span><span class=p>])</span>
+<span class=ln>23</span>
+<span class=ln>24</span><span class=c1># Calculate the signature hash for that transaction.</span>
+<span class=ln>25</span><span class=n>sighash</span> <span class=o>=</span> <span class=n>SignatureHash</span><span class=p>(</span>
+<span class=ln>26</span>    <span class=n>script</span><span class=o>=</span><span class=n>redeem_script</span><span class=p>,</span>
+<span class=ln>27</span>    <span class=n>txTo</span><span class=o>=</span><span class=n>tx</span><span class=p>,</span>
+<span class=ln>28</span>    <span class=n>inIdx</span><span class=o>=</span><span class=mi>0</span><span class=p>,</span>
+<span class=ln>29</span>    <span class=n>hashtype</span><span class=o>=</span><span class=n>SIGHASH_ALL</span><span class=p>,</span>
+<span class=ln>30</span>    <span class=n>amount</span><span class=o>=</span><span class=n>amount</span><span class=p>,</span>
+<span class=ln>31</span><span class=p>)</span>
+<span class=ln>32</span>
+<span class=ln>33</span><span class=c1># Now sign it. We have to append the type of signature we want to the end, in this case the usual</span>
+<span class=ln>34</span><span class=c1># SIGHASH_ALL.</span>
+<span class=ln>35</span><span class=n>sig2</span> <span class=o>=</span> <span class=n>seckey2</span><span class=o>.</span><span class=n>sign</span><span class=p>(</span><span class=n>sighash</span><span class=p>)</span> <span class=o>+</span> <span class=nb>bytes</span><span class=p>([</span><span class=n>SIGHASH_ALL</span><span class=p>])</span>
+<span class=ln>36</span>
+<span class=ln>37</span><span class=c1># Construct a witness for this P2WSH transaction and add to tx.</span>
+<span class=ln>38</span><span class=n>txin</span><span class=o>.</span><span class=n>scriptSig</span> <span class=o>=</span> <span class=n>CScript</span><span class=p>([</span><span class=n>OP_0</span><span class=p>,</span> <span class=n>sig2</span><span class=p>,</span> <span class=n>redeem_script</span><span class=p>])</span>
+<span class=ln>39</span>
+<span class=ln>40</span><span class=c1># Done! Print the transaction</span>
+<span class=ln>41</span><span class=nb>print</span><span class=p>(</span><span class=n>b2x</span><span class=p>(</span><span class=n>tx</span><span class=o>.</span><span class=n>serialize</span><span class=p>()))</span>
+<span class=ln>42</span><span class=c1># outputs: 01000000013cb0b81ccfa2af1034fbc4914e88292ee7dd22cb19c53cd8217e87d543a4468e00000000b4004730440220437bc4b0a8c600de2cbbd57f14a60c0737c680e7cabc25217bb9a61950b55214022027bfc9d4bf0cc2ea88d416e877a54b8841483b1c18633c8732186d4333049e64014c695121038d19497c3922b807c91b829d6873ae5bfa2ae500f3237100265a302fdce87b052103d3a9dff5a0bb0267f19a9ee1c374901c39045fbe041c1c168d4da4ce011259552103d3a9dff5a0bb0267f19a9ee1c374901c39045fbe041c1c168d4da4ce0112595553aeffffffff01c09ee605000000001600147829e2df6fd013aa5303d4e0af578d4275629bd300000000</span>
+</code></pre></div><p>Now that we have our signed and encoded transaction, we can broadcast it using
+<a href=https://chainquery.com/bitcoin-cli/sendrawtransaction>sendrawtransaction</a>:</p>
+<p><code>bitcoin-cli sendrawtransaction &lt;transaction></code></p>
+<p>If the transaction is broadcasted successfully a transaction id will be returned. In this case it
+was <code>afb52d8ca23ef7b98444845258018905360cf635c7e8b19bb1a541f74a8f3124</code>.</p>
+<h2 id=generate-address-2-of-3>Generate address (2-of-3)</h2>
+<p>In this example we show how to create a 2-of-3 multisig address. This means that two out of three
+signatures can unlock and spend bitcoins.</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-py data-lang=py><span class=ln> 1</span><span class=kn>import</span> <span class=nn>hashlib</span>
+<span class=ln> 2</span>
+<span class=ln> 3</span><span class=kn>from</span> <span class=nn>bitcoin</span> <span class=kn>import</span> <span class=n>SelectParams</span>
+<span class=ln> 4</span><span class=kn>from</span> <span class=nn>bitcoin.core</span> <span class=kn>import</span> <span class=n>b2x</span><span class=p>,</span> <span class=n>lx</span><span class=p>,</span> <span class=n>COIN</span><span class=p>,</span> <span class=n>COutPoint</span><span class=p>,</span> <span class=n>CMutableTxOut</span><span class=p>,</span> <span class=n>CMutableTxIn</span><span class=p>,</span> <span class=n>CMutableTransaction</span><span class=p>,</span> <span class=n>Hash160</span>
+<span class=ln> 5</span><span class=kn>from</span> <span class=nn>bitcoin.core.script</span> <span class=kn>import</span> <span class=n>CScript</span><span class=p>,</span> <span class=n>OP_DUP</span><span class=p>,</span> <span class=n>OP_0</span><span class=p>,</span> <span class=n>OP_2</span><span class=p>,</span> <span class=n>OP_3</span><span class=p>,</span> <span class=n>OP_HASH160</span><span class=p>,</span> <span class=n>OP_EQUALVERIFY</span><span class=p>,</span> <span class=n>OP_CHECKMULTISIG</span><span class=p>,</span> <span class=n>SignatureHash</span><span class=p>,</span> <span class=n>SIGHASH_ALL</span>
+<span class=ln> 6</span><span class=kn>from</span> <span class=nn>bitcoin.core.scripteval</span> <span class=kn>import</span> <span class=n>VerifyScript</span><span class=p>,</span> <span class=n>SCRIPT_VERIFY_P2SH</span>
+<span class=ln> 7</span><span class=kn>from</span> <span class=nn>bitcoin.wallet</span> <span class=kn>import</span> <span class=n>CBitcoinAddress</span><span class=p>,</span> <span class=n>CBitcoinSecret</span>
+<span class=ln> 8</span>
+<span class=ln> 9</span><span class=n>SelectParams</span><span class=p>(</span><span class=s1>&#39;regtest&#39;</span><span class=p>)</span>
+<span class=ln>10</span>
+<span class=ln>11</span><span class=c1># first key</span>
+<span class=ln>12</span><span class=n>h1</span> <span class=o>=</span> <span class=n>hashlib</span><span class=o>.</span><span class=n>sha256</span><span class=p>(</span><span class=sa>b</span><span class=s1>&#39;correct horse battery staple first&#39;</span><span class=p>)</span><span class=o>.</span><span class=n>digest</span><span class=p>()</span>
+<span class=ln>13</span><span class=n>seckey1</span> <span class=o>=</span> <span class=n>CBitcoinSecret</span><span class=o>.</span><span class=n>from_secret_bytes</span><span class=p>(</span><span class=n>h1</span><span class=p>)</span>
+<span class=ln>14</span>
+<span class=ln>15</span><span class=c1># second key</span>
+<span class=ln>16</span><span class=n>h2</span> <span class=o>=</span> <span class=n>hashlib</span><span class=o>.</span><span class=n>sha256</span><span class=p>(</span><span class=sa>b</span><span class=s1>&#39;correct horse battery staple second&#39;</span><span class=p>)</span><span class=o>.</span><span class=n>digest</span><span class=p>()</span>
+<span class=ln>17</span><span class=n>seckey2</span> <span class=o>=</span> <span class=n>CBitcoinSecret</span><span class=o>.</span><span class=n>from_secret_bytes</span><span class=p>(</span><span class=n>h2</span><span class=p>)</span>
+<span class=ln>18</span>
+<span class=ln>19</span><span class=c1># third key</span>
+<span class=ln>20</span><span class=n>h3</span> <span class=o>=</span> <span class=n>hashlib</span><span class=o>.</span><span class=n>sha256</span><span class=p>(</span><span class=sa>b</span><span class=s1>&#39;correct horse battery staple third&#39;</span><span class=p>)</span><span class=o>.</span><span class=n>digest</span><span class=p>()</span>
+<span class=ln>21</span><span class=n>seckey3</span> <span class=o>=</span> <span class=n>CBitcoinSecret</span><span class=o>.</span><span class=n>from_secret_bytes</span><span class=p>(</span><span class=n>h2</span><span class=p>)</span>
+<span class=ln>22</span>
+<span class=ln>23</span><span class=c1># Create a redeemScript. Similar to a scriptPubKey the redeemScript must be</span>
+<span class=ln>24</span><span class=c1># satisfied for the funds to be spent.</span>
+<span class=ln>25</span><span class=n>redeem_script</span> <span class=o>=</span> <span class=n>CScript</span><span class=p>([</span><span class=n>OP_2</span><span class=p>,</span> <span class=n>seckey1</span><span class=o>.</span><span class=n>pub</span><span class=p>,</span> <span class=n>seckey2</span><span class=o>.</span><span class=n>pub</span><span class=p>,</span> <span class=n>seckey3</span><span class=o>.</span><span class=n>pub</span><span class=p>,</span> <span class=n>OP_3</span><span class=p>,</span> <span class=n>OP_CHECKMULTISIG</span><span class=p>])</span>
+<span class=ln>26</span>
+<span class=ln>27</span><span class=c1># Create the magic P2SH scriptPubKey format from that redeemScript. You should</span>
+<span class=ln>28</span><span class=c1># look at the CScript.to_p2sh_scriptPubKey() function in bitcoin.core.script to</span>
+<span class=ln>29</span><span class=c1># understand what&#39;s happening, as well as read BIP16:</span>
+<span class=ln>30</span><span class=c1># https://github.com/bitcoin/bips/blob/master/bip-0016.mediawiki</span>
+<span class=ln>31</span><span class=n>script_pubkey</span> <span class=o>=</span> <span class=n>redeem_script</span><span class=o>.</span><span class=n>to_p2sh_scriptPubKey</span><span class=p>()</span>
+<span class=ln>32</span>
+<span class=ln>33</span><span class=c1># Convert the P2SH scriptPubKey to a base58 Bitcoin address and print it.</span>
+<span class=ln>34</span><span class=c1># You&#39;ll need to send some funds to it to create a txout to spend.</span>
+<span class=ln>35</span><span class=n>address</span> <span class=o>=</span> <span class=n>CBitcoinAddress</span><span class=o>.</span><span class=n>from_scriptPubKey</span><span class=p>(</span><span class=n>script_pubkey</span><span class=p>)</span>
+<span class=ln>36</span><span class=nb>print</span><span class=p>(</span><span class=s1>&#39;Address:&#39;</span><span class=p>,</span><span class=nb>str</span><span class=p>(</span><span class=n>address</span><span class=p>))</span>
+<span class=ln>37</span><span class=c1># outputs: Address: 2MuHBt425GsVo1wXnoN3mvCzdMRFf7HnvJV</span>
+</code></pre></div><h2 id=spend-from-address-2-of-3>Spend from address (2-of-3)</h2>
+<p>Assuming the previously generated address has received funds, we can spend them. In order to spend
+them, we'll need information about the transaction id (txid) and a vector of an output (vout). You
+can get both from an explorer or by querying your running Bitcoin node by running
+<a href=https://chainquery.com/bitcoin-cli/listunspent>listunspent</a> along with some filters:</p>
+<p><code>bitcoin-cli listunspent 1 9999999 "[\"address\"]"</code></p>
+<p>Note that you must have an address in the watchlist in order to get any output. To add an address
+to a watchlist run <a href=https://chainquery.com/bitcoin-cli/importaddress>importaddress</a>:</p>
+<p><code>bitcoin-cli importaddress &lt;address> "&lt;label>" false false</code></p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-py data-lang=py><span class=ln> 1</span><span class=c1># we are continuing the code from above</span>
+<span class=ln> 2</span>
+<span class=ln> 3</span><span class=n>txid</span> <span class=o>=</span> <span class=n>lx</span><span class=p>(</span><span class=s2>&#34;e2d5767f90a0129292baf11ec440824860a0b065becfab433dc6c66e19b4abb6&#34;</span><span class=p>)</span>
+<span class=ln> 4</span><span class=n>vout</span> <span class=o>=</span> <span class=mi>1</span>
+<span class=ln> 5</span>
+<span class=ln> 6</span><span class=c1># Specify the amount send to your P2WSH address.</span>
+<span class=ln> 7</span><span class=n>amount</span> <span class=o>=</span> <span class=nb>int</span><span class=p>(</span><span class=mi>1</span> <span class=o>*</span> <span class=n>COIN</span><span class=p>)</span>
+<span class=ln> 8</span>
+<span class=ln> 9</span><span class=c1># Calculate an amount for the upcoming new UTXO. Set a high fee (5%) to bypass bitcoind minfee</span>
+<span class=ln>10</span><span class=c1># setting on regtest.</span>
+<span class=ln>11</span><span class=n>amount_less_fee</span> <span class=o>=</span> <span class=n>amount</span> <span class=o>*</span> <span class=mf>0.99</span>
+<span class=ln>12</span>
+<span class=ln>13</span><span class=c1># Create the txin structure, which includes the outpoint. The scriptSig defaults to being empty as</span>
+<span class=ln>14</span><span class=c1># is necessary for spending a P2WSH output.</span>
+<span class=ln>15</span><span class=n>txin</span> <span class=o>=</span> <span class=n>CMutableTxIn</span><span class=p>(</span><span class=n>COutPoint</span><span class=p>(</span><span class=n>txid</span><span class=p>,</span> <span class=n>vout</span><span class=p>))</span>
+<span class=ln>16</span>
+<span class=ln>17</span><span class=c1># Specify a destination address and create the txout.</span>
+<span class=ln>18</span><span class=n>destination</span> <span class=o>=</span> <span class=n>CBitcoinAddress</span><span class=p>(</span><span class=s2>&#34;bcrt1q0q579hm06qf655cr6ns274udgf6k9x7nedkeaa&#34;</span><span class=p>)</span><span class=o>.</span><span class=n>to_scriptPubKey</span><span class=p>()</span> 
+<span class=ln>19</span><span class=n>txout</span> <span class=o>=</span> <span class=n>CMutableTxOut</span><span class=p>(</span><span class=n>amount_less_fee</span><span class=p>,</span> <span class=n>destination</span><span class=p>)</span>
+<span class=ln>20</span>
+<span class=ln>21</span><span class=c1># Create the unsigned transaction.</span>
+<span class=ln>22</span><span class=n>tx</span> <span class=o>=</span> <span class=n>CMutableTransaction</span><span class=p>([</span><span class=n>txin</span><span class=p>],</span> <span class=p>[</span><span class=n>txout</span><span class=p>])</span>
+<span class=ln>23</span>
+<span class=ln>24</span><span class=c1># Calculate the signature hash for that transaction.</span>
+<span class=ln>25</span><span class=n>sighash</span> <span class=o>=</span> <span class=n>SignatureHash</span><span class=p>(</span>
+<span class=ln>26</span>    <span class=n>script</span><span class=o>=</span><span class=n>redeem_script</span><span class=p>,</span>
+<span class=ln>27</span>    <span class=n>txTo</span><span class=o>=</span><span class=n>tx</span><span class=p>,</span>
+<span class=ln>28</span>    <span class=n>inIdx</span><span class=o>=</span><span class=mi>0</span><span class=p>,</span>
+<span class=ln>29</span>    <span class=n>hashtype</span><span class=o>=</span><span class=n>SIGHASH_ALL</span><span class=p>,</span>
+<span class=ln>30</span>    <span class=n>amount</span><span class=o>=</span><span class=n>amount</span><span class=p>,</span>
+<span class=ln>31</span><span class=p>)</span>
+<span class=ln>32</span>
+<span class=ln>33</span><span class=c1># Now sign it. We have to append the type of signature we want to the end, in this case the usual</span>
+<span class=ln>34</span><span class=c1># SIGHASH_ALL.</span>
+<span class=ln>35</span><span class=n>sig2</span> <span class=o>=</span> <span class=n>seckey2</span><span class=o>.</span><span class=n>sign</span><span class=p>(</span><span class=n>sighash</span><span class=p>)</span> <span class=o>+</span> <span class=nb>bytes</span><span class=p>([</span><span class=n>SIGHASH_ALL</span><span class=p>])</span>
+<span class=ln>36</span><span class=n>sig3</span> <span class=o>=</span> <span class=n>seckey3</span><span class=o>.</span><span class=n>sign</span><span class=p>(</span><span class=n>sighash</span><span class=p>)</span> <span class=o>+</span> <span class=nb>bytes</span><span class=p>([</span><span class=n>SIGHASH_ALL</span><span class=p>])</span>
+<span class=ln>37</span>
+<span class=ln>38</span><span class=c1># Construct a witness for this P2WSH transaction and add to tx.</span>
+<span class=ln>39</span><span class=n>txin</span><span class=o>.</span><span class=n>scriptSig</span> <span class=o>=</span> <span class=n>CScript</span><span class=p>([</span><span class=n>OP_0</span><span class=p>,</span> <span class=n>sig2</span><span class=p>,</span> <span class=n>sig3</span><span class=p>,</span> <span class=n>redeem_script</span><span class=p>])</span>
+<span class=ln>40</span>
+<span class=ln>41</span><span class=c1># Done! Print the transaction</span>
+<span class=ln>42</span><span class=nb>print</span><span class=p>(</span><span class=n>b2x</span><span class=p>(</span><span class=n>tx</span><span class=o>.</span><span class=n>serialize</span><span class=p>()))</span>
+<span class=ln>43</span><span class=c1># outputs: 0100000001b6abb4196ec6c63d43abcfbe65b0a060488240c41ef1ba929212a0907f76d5e201000000fdfe0000483045022100806e36bc310c0ed942e9ec979407dc0981340d304ec058e8e2aed4c74af34af202201eafaf6392f8f58d5f80b9fe621fd6cea1bfd8db5d427080152ee9f3e2c2899701483045022100ad999b0c72368ea7e83dd25286d2289e0da38247f1a05fab90c1a48d1879934202201e3bdcdb1f2528bd4f2a8ffd6eadf1aef36e934160f709a713af54a8e376d7c1014c695221038d19497c3922b807c91b829d6873ae5bfa2ae500f3237100265a302fdce87b052103d3a9dff5a0bb0267f19a9ee1c374901c39045fbe041c1c168d4da4ce011259552103d3a9dff5a0bb0267f19a9ee1c374901c39045fbe041c1c168d4da4ce0112595553aeffffffff01c09ee605000000001600147829e2df6fd013aa5303d4e0af578d4275629bd300000000</span>
+</code></pre></div><p>Now that we have our signed and encoded transaction, we can broadcast it using
+<a href=https://chainquery.com/bitcoin-cli/sendrawtransaction>sendrawtransaction</a>:</p>
+<p><code>bitcoin-cli sendrawtransaction &lt;transaction></code></p>
+<p>If the transaction is broadcasted successfully a transaction id will be returned. In this case it
+was <code>11c69b64290a67e95f7148b1e399db89ab98982a18f3dc02ed408f90b66158ea</code>.</p>
 <div class=pager>
 <div class="pager_item prev">
 <a href=https://bitcoinpy.dev/docs/buidl/p2sh-multisig/ class="pager_link button" title="P2SH address (multisig)" rel=prev>
