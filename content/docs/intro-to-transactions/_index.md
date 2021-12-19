@@ -86,6 +86,7 @@ script as redeem scripts  of a P2SH.
 
 Sources:
 
-- [Wrapped Segwit](https://river.com/learn/terms/w/wrapped-segwit/)
+- [Wrapped Segwit](https://river.com/learn/terms/)
 - [Trezor's Wiki](https://wiki.trezor.io/Glossary)
 - [Bitcoin Developer Network](https://bitcoindev.network/)
+- [BIP-141](https://github.com/bitcoin/bips/blob/master/bip-0141.mediawiki)
