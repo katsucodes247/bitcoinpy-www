@@ -25,9 +25,8 @@ import hashlib
 
 from bitcoin import SelectParams
 from bitcoin.core import b2x, x, lx, COIN, COutPoint, CMutableTxOut, CMutableTxIn, CMutableTransaction, Hash160, CScriptWitness, CTxInWitness, CTxWitness
-from bitcoin.core.script import CScript, OP_0, OP_1, OP_TRUE, OP_IF, OP_ELSE, OP_SHA256, OP_DUP, OP_HASH160, OP_EQUALVERIFY, OP_CHECKLOCKTIMEVERIFY, OP_CHECKSIG, SignatureHash, SIGHASH_ALL, OP_DROP, OP_ENDIF, SIGVERSION_WITNESS_V0
-from bitcoin.core.scripteval import VerifyScript, SCRIPT_VERIFY_P2SH
-from bitcoin.wallet import CBitcoinAddress, CBitcoinSecret, P2SHBitcoinAddress, P2WSHBitcoinAddress
+from bitcoin.core.script import CScript, OP_0, OP_IF, OP_ELSE, OP_SHA256, OP_DUP, OP_HASH160, OP_EQUALVERIFY, OP_CHECKLOCKTIMEVERIFY, OP_CHECKSIG, SignatureHash, SIGHASH_ALL, OP_DROP, OP_ENDIF, SIGVERSION_WITNESS_V0
+from bitcoin.wallet import CBitcoinAddress, CBitcoinSecret, P2WSHBitcoinAddress
 
 SelectParams('regtest')
 
