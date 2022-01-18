@@ -3,20 +3,21 @@ title: "HTLC"
 weight: 6
 ---
 
-Below is a **sample** Hash Time Locked Contract (HTLC). It's a conditional payment that can be spent
-in two ways. Either sender (the person who locked the funds in) can unlock them after some number of
-blocks have been mined or the receiver (the person whom the funds are intended for) when he gets
-reveald the secret code that only sender knows.
+Hash Time Locked Contract (HTLC) is a conditional payment that can be spent in two ways. Either 
+sender (the person who locked the funds in) can unlock them after some number of blocks have been
+mined or the receiver (the person whom the funds are intended for) when he gets reveald the secret
+code that only sender knows.
 
 Note that each condition also runs a `OP_EQUALVERIFY` check on a public key to enforce that:
 - only the sender can spend after X amount of blocks are mined
-- only the recipient can spend if he knows the secret (sender or anyone else can not spend these coins if they know the secret)
+- only the recipient can spend if he knows the secret (sender or anyone else can not spend these
+coins if they know the secret)
 
 HTLC are used in Lightning Network, atomic swaps, same-chain coin swaps and other advanced protocols.
 
-There are different ways of how HTLC's can be constructed and bellow example is just one of the way and not
-necesseraly the best way. For example `OP_CHECKLOCKTIMEVERIFY` would better ber replaced with `OP_CSV`, and
-the script itself could be optimized to be smaller in size.
+There are different ways of how HTLC's can be constructed and bellow example is just one of the way
+and not necesseraly the best way. For example `OP_CHECKLOCKTIMEVERIFY` would better ber replaced
+with `OP_CSV`, and the script itself could be optimized to be smaller in size.
 
 ## Generate address
 
