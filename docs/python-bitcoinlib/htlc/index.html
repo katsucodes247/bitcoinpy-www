@@ -9,20 +9,20 @@
 <link rel="shortcut icon" href=https://bitcoinpy.dev/favicons/favicon.ico>
 <meta name=msapplication-config content="https://bitcoinpy.dev/favicons/browserconfig.xml">
 <title>HTLC | BitcoinPy</title><meta property="og:title" content="HTLC">
-<meta property="og:description" content="Below is a sample Hash Time Locked Contract (HTLC). It's a conditional payment that can be spent in two ways. Either sender (the person who locked the funds in) can unlock them after some number of blocks have been mined or the receiver (the person whom the funds are intended for) when he gets reveald the secret code that only sender knows.
+<meta property="og:description" content="Hash Time Locked Contract (HTLC) is a conditional payment that can be spent in two ways. Either sender (the person who locked the funds in) can unlock them after some number of blocks have been mined or the receiver (the person whom the funds are intended for) when he gets reveald the secret code that only sender knows.
 Note that each condition also runs a OP_EQUALVERIFY check on a public key to enforce that:">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://bitcoinpy.dev/docs/python-bitcoinlib/htlc/"><meta property="article:section" content="docs">
 <meta itemprop=name content="HTLC">
-<meta itemprop=description content="Below is a sample Hash Time Locked Contract (HTLC). It's a conditional payment that can be spent in two ways. Either sender (the person who locked the funds in) can unlock them after some number of blocks have been mined or the receiver (the person whom the funds are intended for) when he gets reveald the secret code that only sender knows.
+<meta itemprop=description content="Hash Time Locked Contract (HTLC) is a conditional payment that can be spent in two ways. Either sender (the person who locked the funds in) can unlock them after some number of blocks have been mined or the receiver (the person whom the funds are intended for) when he gets reveald the secret code that only sender knows.
 Note that each condition also runs a OP_EQUALVERIFY check on a public key to enforce that:">
-<meta itemprop=wordCount content="969">
+<meta itemprop=wordCount content="965">
 <meta itemprop=keywords content><meta name=twitter:card content="summary">
 <meta name=twitter:title content="HTLC">
-<meta name=twitter:description content="Below is a sample Hash Time Locked Contract (HTLC). It's a conditional payment that can be spent in two ways. Either sender (the person who locked the funds in) can unlock them after some number of blocks have been mined or the receiver (the person whom the funds are intended for) when he gets reveald the secret code that only sender knows.
+<meta name=twitter:description content="Hash Time Locked Contract (HTLC) is a conditional payment that can be spent in two ways. Either sender (the person who locked the funds in) can unlock them after some number of blocks have been mined or the receiver (the person whom the funds are intended for) when he gets reveald the secret code that only sender knows.
 Note that each condition also runs a OP_EQUALVERIFY check on a public key to enforce that:">
 <link rel=stylesheet href=https://bitcoinpy.dev/css/styles.541f68813f7aabaa275655211eb16e12b93f9d0c9ffc8faf0837e80f8de16a2767afae0d7bf8121043b9ef6cbd23accc183cd8175283b1014fe90ca65e8617e1.css integrity="sha512-VB9ogT96q6onVlUhHrFuErk/nQyf/I+vCDfoD43haidnr64Ne/gSEEO572y9I6zMGDzYF1KDsQFP6QymXoYX4Q=="><link rel=stylesheet href=/overrides.css>
-<meta name=description content="Below is a sample Hash Time Locked Contract (HTLC). It's a conditional payment that can be spent in two ways. Either sender (the person who locked the funds in) can unlock them after some number of blocks have been mined or the receiver (the person whom the funds are intended for) when he gets reveald the secret code that only sender knows.
+<meta name=description content="Hash Time Locked Contract (HTLC) is a conditional payment that can be spent in two ways. Either sender (the person who locked the funds in) can unlock them after some number of blocks have been mined or the receiver (the person whom the funds are intended for) when he gets reveald the secret code that only sender knows.
 Note that each condition also runs a OP_EQUALVERIFY check on a public key to enforce that:">
 <meta name=google-site-verification content="_uDzfOvHTcVN5RC6eS8ck_sY0N9GFg80dFGWqHrJLmM">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-663J586CX4"></script>
@@ -133,19 +133,20 @@ Note that each condition also runs a OP_EQUALVERIFY check on a public key to enf
 </section>
 </aside>
 <main class=content>
-<h1>HTLC</h1><p>Below is a <strong>sample</strong> Hash Time Locked Contract (HTLC). It's a conditional payment that can be spent
-in two ways. Either sender (the person who locked the funds in) can unlock them after some number of
-blocks have been mined or the receiver (the person whom the funds are intended for) when he gets
-reveald the secret code that only sender knows.</p>
+<h1>HTLC</h1><p>Hash Time Locked Contract (HTLC) is a conditional payment that can be spent in two ways. Either
+sender (the person who locked the funds in) can unlock them after some number of blocks have been
+mined or the receiver (the person whom the funds are intended for) when he gets reveald the secret
+code that only sender knows.</p>
 <p>Note that each condition also runs a <code>OP_EQUALVERIFY</code> check on a public key to enforce that:</p>
 <ul>
 <li>only the sender can spend after X amount of blocks are mined</li>
-<li>only the recipient can spend if he knows the secret (sender or anyone else can not spend these coins if they know the secret)</li>
+<li>only the recipient can spend if he knows the secret (sender or anyone else can not spend these
+coins if they know the secret)</li>
 </ul>
 <p>HTLC are used in Lightning Network, atomic swaps, same-chain coin swaps and other advanced protocols.</p>
-<p>There are different ways of how HTLC's can be constructed and bellow example is just one of the way and not
-necesseraly the best way. For example <code>OP_CHECKLOCKTIMEVERIFY</code> would better ber replaced with <code>OP_CSV</code>, and
-the script itself could be optimized to be smaller in size.</p>
+<p>There are different ways of how HTLC's can be constructed and bellow example is just one of the way
+and not necesseraly the best way. For example <code>OP_CHECKLOCKTIMEVERIFY</code> would better ber replaced
+with <code>OP_CSV</code>, and the script itself could be optimized to be smaller in size.</p>
 <h2 id=generate-address>Generate address</h2>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-py data-lang=py><span class=ln> 1</span><span class=kn>import</span> <span class=nn>hashlib</span>
 <span class=ln> 2</span>
