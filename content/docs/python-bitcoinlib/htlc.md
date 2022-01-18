@@ -1,6 +1,6 @@
 ---
 title: "HTLC"
-weight: 5
+weight: 6
 ---
 
 Below is a **sample** Hash Time Locked Contract (HTLC). It's a conditional payment that can be spent
