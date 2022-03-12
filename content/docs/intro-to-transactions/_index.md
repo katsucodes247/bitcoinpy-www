@@ -3,7 +3,7 @@ title: "Intro to Transactions"
 weight: 3
 ---
 
-Bitcoin doesn't actually have different types of transactions but has different types of addresses
+Bitcoin doesn't actually have different types of transactions but has different types of address
 formats. Each address has a different way of "unlocking" its funds. The way that dictates how to
 unlock funds is set (or scripted) at the time when the address is generated.
 

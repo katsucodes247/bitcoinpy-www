@@ -29,3 +29,11 @@ more functionalities included into this library which are for more advanced use 
 described on this page at later stage. [Read more](/docs/buidl/)
 
 Library only supports **mainnet**, **testnet** and **signet** and requires internet to work. 
+
+#### bip_utils
+
+This package allows generating mnemonics, seeds, private/public keys and addresses.
+
+This unfortunatelly isn't a Bitcoin only library and includes supports for other cryptocurrencies.
+
+[Read more](/docs/bip-utils/)
