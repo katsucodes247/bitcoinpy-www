@@ -147,7 +147,7 @@ TODO
 
 Sources:
 
-- [HD Wallet](https://river.com/learn/terms/h/hd-wallet/)
+- [HD Wallet](https://river.com/learn/terms/h/hd-wallets/)
 - [BIP-32 @ River](https://river.com/learn/terms/b/bip-32/)
 - [BIP-44 @ River](https://river.com/learn/terms/b/bip-44-derivation-paths-for-p2pkh/)
 - [BIP-49 @ River](https://river.com/learn/terms/b/bip-49-derivation-paths-for-wrapped-segwit/)
