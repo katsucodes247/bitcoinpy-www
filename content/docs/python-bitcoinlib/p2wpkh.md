@@ -9,10 +9,9 @@ weight: 2
 import hashlib
 
 from bitcoin import SelectParams
-from bitcoin.core import b2x, b2lx, lx, COIN, COutPoint, CTxOut, CTxIn, CTxInWitness, CTxWitness, CScriptWitness, CMutableTransaction, Hash160
-from bitcoin.core.script import CScript, OP_0, OP_CHECKSIG, SignatureHash, SIGHASH_ALL, SIGVERSION_WITNESS_V0
+from bitcoin.core import b2x, lx, COIN, COutPoint, CTxOut, CTxIn, CTxInWitness, CTxWitness, CScriptWitness, CMutableTransaction, Hash160
+from bitcoin.core.script import CScript, OP_0, SignatureHash, SIGHASH_ALL, SIGVERSION_WITNESS_V0
 from bitcoin.wallet import CBitcoinSecret, P2WPKHBitcoinAddress, CBitcoinAddress
-from bitcoin.rpc import Proxy
 
 SelectParams("regtest")
 
@@ -24,12 +23,6 @@ seckey = CBitcoinSecret.from_secret_bytes(h)
 public_key = seckey.pub
 script_pubkey = CScript([OP_0, Hash160(public_key)])
 address = P2WPKHBitcoinAddress.from_scriptPubKey(script_pubkey)
-
-# Create a witnessScript. witnessScript in SegWit is equivalent to redeemScript in P2PKH
-# transaction, however, while the redeemScript of a P2SH transaction is included in the ScriptSig,
-# the WitnessScript is included in the Witness field, making P2WPKH inputs cheaper to spend than
-# P2PKH inputs.
-witness_script = address.to_redeemScript()
 
 print('Address:', str(address))
 # outputs: Address: bcrt1q08alc0e5ua69scxhvyma568nvguqccrvah6ml0
