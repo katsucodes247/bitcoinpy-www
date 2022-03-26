@@ -52,7 +52,7 @@ to a watchlist run [importaddress](https://chainquery.com/bitcoin-cli/importaddr
 ```py
 # we are continuing the code from above
 
-txid = lx("f11a1f8c9f1dba811b516e41ddf9159428728d4e98b57dff798619604021b88f")
+txid = lx("ace85db02052679bf02216e6d3815f082ad52bf3e1e1ef1bbe3854dc45aa9b2c")
 vout = 1
 
 # Specify the amount send to your P2WSH address.
@@ -76,7 +76,7 @@ tx = CMutableTransaction([txin], [txout])
 
 # Calculate the signature hash for that transaction.
 sighash = SignatureHash(
-    script=CScript([seckey.pub, OP_CHECKSIG]),
+    script=address.to_redeemScript(),
     txTo=tx,
     inIdx=0,
     hashtype=SIGHASH_ALL,
@@ -100,12 +100,11 @@ tx.wit = CTxWitness(ctxinwitnesses)
 
 # Done! Print the transaction
 print(b2x(tx.serialize()))
-# outputs: 010000000001018fb8214060198679ff7db5984e8d72289415f9dd416e511b81ba1d9f8c1f1af10100000000ffffffff01c09ee6050000000016001462345bffdc94495344c121da050c696dc159bb620247304402200f6ecd46b0b3893a955f29a976fbf2eeb1b9a085ce9873ce678faf04504ed4e902207544896b9f17c2b77ec8bc8416d94b2e2043c7917549e48dfacd1a6f2e6b421b01210378d430274f8c5ec1321338151e9f27f4c676a008bdf8638d07c0b6be9ab35c7100000000
+# outputs: 010000000001012c9baa45dc5438be1befe1e1f32bd52a085f81d3e61622f09b675220b05de8ac0100000000ffffffff01c09ee6050000000016001462345bffdc94495344c121da050c696dc159bb6202473044022010440396a713c45ef4600521f26fa5af3324ebda16fc451c56fe72366cc4817c022047bce51f6b7ac97972f2612cd3c165774cfedb71b193367afe3f7a718524bb2301210378d430274f8c5ec1321338151e9f27f4c676a008bdf8638d07c0b6be9ab35c7100000000
 ```
 Now that we have our signed and encoded transaction, we can broadcast it using
 [sendrawtransaction](https://chainquery.com/bitcoin-cli/sendrawtransaction):
 
 `bitcoin-cli sendrawtransaction <transaction>`
 
-If the transaction is broadcasted successfully a transaction id will be returned. In this case it was `210dde7106e38bc8bf761002714e7bd636ee0d5b2dd355327e5dac73b81a68da`.
-
+If the transaction is broadcasted successfully a transaction id will be returned. In this case it was `d8183c2c7564d4458d019ea6fa4d546c13d6d37fd3c53695bcdc80c352d88c4b`.
